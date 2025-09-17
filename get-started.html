@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started with Ainsley - PrivacyQuote</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: #333; 
+            background-color: #f9f9f9; 
+            line-height: 1.6; 
+        }
+        header { 
+            background-color: #007bff; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 2.2em; 
+        }
+        nav { 
+            margin-top: 10px; 
+        }
+        nav a { 
+            color: white; 
+            margin: 0 15px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 1em; 
+        }
+        nav a:hover { 
+            text-decoration: underline; 
+        }
+        .section { 
+            padding: 40px 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            text-align: center; 
+        }
+        .section h2 { 
+            font-size: 2em; 
+            margin-bottom: 20px; 
+            color: #007bff; 
+        }
+        .section p { 
+            font-size: 1.2em; 
+            max-width: 800px; 
+            margin: 0 auto 20px; 
+        }
+        form { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: #ffffff; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+        }
+        label { 
+            display: block; 
+            margin-bottom: 10px; 
+            font-weight: bold; 
+            color: #007bff; 
+        }
+        input, select { 
+            width: 100%; 
+            padding: 10px; 
+            margin-bottom: 20px; 
+            border: 1px solid #ddd; 
+            border-radius: 5px; 
+            font-size: 1em; 
+        }
+        .opt-in { 
+            margin-bottom: 20px; 
+            text-align: left; 
+            font-size: 0.9em; 
+        }
+        .opt-in input[type="checkbox"] { 
+            width: auto; 
+            margin-right: 10px; 
+        }
+        button { 
+            background: #007bff; 
+            color: white; 
+            padding: 15px; 
+            width: 100%; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 1.1em; 
+            font-weight: bold; 
+            transition: transform 0.3s, box-shadow 0.3s; 
+        }
+        button:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+        }
+        button:disabled { 
+            background: #ccc; 
+            cursor: not-allowed; 
+        }
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.5); 
+        }
+        .modal-content { 
+            background-color: #ffffff; 
+            margin: 5% auto; 
+            padding: 30px; 
+            border-radius: 8px; 
+            width: 80%; 
+            max-width: 600px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+        }
+        .close { 
+            color: #aaa; 
+            float: right; 
+            font-size: 28px; 
+            font-weight: bold; 
+            cursor: pointer; 
+        }
+        .close:hover { 
+            color: #007bff; 
+        }
+        .conversation { 
+            font-family: monospace; 
+            line-height: 1.4; 
+            max-height: 400px; 
+            overflow-y: auto; 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            border-radius: 5px; 
+            background: #f9f9f9; 
+            margin-bottom: 20px; 
+        }
+        .conversation .ainsley { 
+            color: #007bff; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+        }
+        .conversation .agent { 
+            color: #28a745; 
+            margin-bottom: 10px; 
+        }
+        .modal-button { 
+            background: #007bff; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 1em; 
+            font-weight: bold; 
+            margin-right: 10px; 
+        }
+        .modal-button:hover { 
+            background: #0056b3; 
+        }
+        footer { 
+            background-color: #343a40; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        footer a { 
+            color: #ffc107; 
+            text-decoration: none; 
+            margin: 0 10px; 
+            font-weight: bold; 
+        }
+        footer a:hover { 
+            text-decoration: underline; 
+        }
+        @media (max-width: 768px) { 
+            .section { padding: 20px; } 
+            form { padding: 15px; } 
+            .modal-content { width: 95%; margin: 10% auto; padding: 20px; } 
+            .conversation { font-size: 0.9em; } 
+            nav a { display: block; margin: 5px 0; } 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PrivacyQuote</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#ainsley">Meet Ainsley</a>
+            <a href="index.html#compliance">Compliance</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-use.html">Terms of Use</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="section">
+        <h2>Welcome to PrivacyQuote</h2>
+        <p>We are grateful for your interest in partnering with us! PrivacyQuote, a subsidiary of Bluewave Data Solutions, is excited to help you maximize your insurance leads with Ainsley, our AI-powered assistant.</p>
+        <p>Please fill out the form below and opt in to receive texts from Ainsley. She’ll guide you through how we can help you connect with your leads, ensuring compliance and boosting conversions. We’re excited to work together!</p>
+        
+        <form id="agentForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Mobile Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890" required>
+
+            <label for="state">State of Operation:</label>
+            <select id="state" name="state" required>
+                <option value="" disabled selected>Select your state</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+            </select>
+
+            <div class="opt-in">
+                <input type="checkbox" id="optIn" name="optIn" required>
+                <label for="optIn" id="optInLabel">I consent to receive automated SMS/MMS messages from PrivacyQuote’s AI assistant, Ainsley, about partnering and lead integration. Message and data rates may apply. Reply STOP to opt out, HELP for info. This is not a condition of purchase. View our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-of-use.html">Terms of Use</a>.</label>
+            </div>
+
+            <button type="submit" id="submitBtn" disabled>Start Texting with Ainsley</button>
+        </form>
+    </section>
+
+    <!-- Modal for SMS Demo -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Ainsley's SMS Demo Conversation with Agent</h3>
+            <div class="conversation">
+                <div class="ainsley">Ainsley: Hi [AgentName]! I’m Ainsley, your AI assistant from PrivacyQuote. Excited to connect and show you how we can boost your insurance lead conversions! Ready to chat about partnering? Reply YES to continue. Msg&data rates may apply. STOP to opt out, HELP for info.</div>
+                <div class="agent">Agent: YES</div>
+                <div class="ainsley">Ainsley: Awesome, thanks for joining me! PrivacyQuote helps agents like you by taking your pre-opted-in leads and nurturing them with friendly SMS chats. I confirm consent, find discounts (like safe driver savings), and set up Click-to-Call connections to you. Curious how we integrate your leads?</div>
+                <div class="agent">Agent: Yeah, sounds great! How does it work with my leads?</div>
+                <div class="ainsley">Ainsley: Super simple! You upload your SMS-opted-in leads to our platform, and I handle the rest—engaging leads in 10-15 message convos, all TCPA-compliant with double opt-in. For example, I might text: “Hi [Lead], got a 2024 BMW X5? Reply YES to explore discounts.” Want to see a demo of that?</div>
+                <div class="agent">Agent: Yes, show me!</div>
+                <div class="ainsley">Ainsley: Cool, check out our lead demo on the homepage! To get your leads integrated, our team can walk you through setup. Ready for a callback to discuss details? Reply CALL to schedule, or let me know what’s on your mind!</div>
+                <div class="agent">Agent: CALL</div>
+                <div class="ainsley">Ainsley: Perfect! Our team will reach out soon to get you started with PrivacyQuote. In the meantime, visit privacyquote.com to learn more or reply with any questions. Excited to work together!</div>
+            </div>
+            <p>This demo shows Ainsley’s nurturing style for agents—explaining our services and guiding you to a callback, all while staying TCPA-compliant.</p>
+            <button class="modal-button" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PrivacyQuote, a subsidiary of Bluewave Data Solutions. All rights reserved.</p>
+        <div>
+            <a href="privacy-policy.html">Privacy Policy</a> |
+            <a href="terms-of-use.html">Terms of Use</a> |
+            <a href="sms-compliance.html">SMS Compliance</a> |
+            <a href="contact.html">Contact</a>
+        </div>
+        <p>Email: support@privacyquote.com | Phone: 1-800-PRIVACY | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
+    </footer>
+
+    <script>
+        // Form and Modal Functionality
+        const form = document.getElementById('agentForm');
+        const optIn = document.getElementById('optIn');
+        const submitBtn = document.getElementById('submitBtn');
+        const modal = document.getElementById('demoModal');
+        const closeBtn = document.querySelector('.close');
+        const stateSelect = document.getElementById('state');
+        const optInLabel = document.getElementById('optInLabel');
+
+        // State-specific opt-in text
+        const stateSpecificText = {
+            'FL': ' In Florida, under the Florida Telephone Solicitation Act (FTSA), your consent ensures no unsolicited texts, and you may revoke consent at any time with no penalty.',
+            'TX': ' In Texas, under the Texas Mini-TCPA, your consent complies with registration and consent rules, protecting you from $500-$5,000 per violation penalties.',
+            'WA': ' In Washington, under the Commercial Electronic Mail Act (CEMA), your consent ensures compliance with anti-spam laws, with opt-out available to avoid up to $2,000 per violation penalties.',
+            'OK': ' In Oklahoma, under the Oklahoma Telephone Solicitation Act (OTSA), your consent ensures no unsolicited texts, with opt-out available to avoid $500 penalties.',
+            'MD': ' In Maryland, under the Stop Unsolicited Faxes and Calls Act, your consent ensures compliance with state telemarketing laws, with opt-out available.',
+            'MI': ' In Michigan, under the Home Solicitation Sales Act, your consent ensures no unsolicited texts, with opt-out available to comply with state regulations.'
+        };
+
+        stateSelect.addEventListener('change', () => {
+            const state = stateSelect.value;
+            const defaultText = 'I consent to receive automated SMS/MMS messages from PrivacyQuote’s AI assistant, Ainsley, about partnering and lead integration. Message and data rates may apply. Reply STOP to opt out, HELP for info. This is not a condition of purchase. View our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-of-use.html">Terms of Use</a>.';
+            optInLabel.innerHTML = defaultText + (stateSpecificText[state] || '');
+        });
+
+        optIn.addEventListener('change', () => {
+            submitBtn.disabled = !optIn.checked;
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            modal.style.display = 'block';
+            // In production, send form data to backend for actual SMS initiation
+            console.log('Form submitted:', new FormData(form));
+        });
+
+        closeBtn.onclick = () => modal.style.display = 'none';
+        window.onclick = (event) => {
+            if (event.target === modal) modal.style.display = 'none';
+        };
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

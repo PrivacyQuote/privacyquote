@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - PrivacyQuote</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: #333; 
+            background-color: #f9f9f9; 
+            line-height: 1.6; 
+        }
+        header { 
+            background-color: #007bff; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 2.2em; 
+        }
+        nav { 
+            margin-top: 10px; 
+        }
+        nav a { 
+            color: white; 
+            margin: 0 15px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 1em; 
+        }
+        nav a:hover { 
+            text-decoration: underline; 
+        }
+        .section { 
+            padding: 40px 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .section h2 { 
+            font-size: 2em; 
+            margin-bottom: 20px; 
+            color: #007bff; 
+        }
+        .section form { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: #ffffff; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+        }
+        .section label { 
+            display: block; 
+            margin-bottom: 10px; 
+            font-weight: bold; 
+            color: #007bff; 
+        }
+        .section input, .section textarea { 
+            width: 100%; 
+            padding: 10px; 
+            margin-bottom: 20px; 
+            border: 1px solid #ddd; 
+            border-radius: 5px; 
+            font-size: 1em; 
+        }
+        .section button { 
+            background: #007bff; 
+            color: white; 
+            padding: 15px; 
+            width: 100%; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 1.1em; 
+            font-weight: bold; 
+        }
+        .section button:hover { 
+            background: #0056b3; 
+        }
+        footer { 
+            background-color: #343a40; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        footer a { 
+            color: #ffc107; 
+            text-decoration: none; 
+            margin: 0 10px; 
+            font-weight: bold; 
+        }
+        footer a:hover { 
+            text-decoration: underline; 
+        }
+        @media (max-width: 768px) { 
+            .section { padding: 20px; } 
+            nav a { display: block; margin: 5px 0; } 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PrivacyQuote</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#ainsley">Meet Ainsley</a>
+            <a href="index.html#compliance">Compliance</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-use.html">Terms of Use</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="section">
+        <h2>Contact Us</h2>
+        <p>For questions, support, or compliance inquiries (e.g., TCPA, DNC, TCR), reach out to us:</p>
+        <p><strong>Email</strong>: support@privacyquote.com</p>
+        <p><strong>Phone</strong>: 1-800-PRIVACY</p>
+        <p><strong>Address</strong>: PrivacyQuote, 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
+        <p>We respond to inquiries within 30 days. For TCPA/DNC issues, please include detailed information.</p>
+
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 PrivacyQuote. All rights reserved.</p>
+        <div>
+            <a href="privacy-policy.html">Privacy Policy</a> |
+            <a href="terms-of-use.html">Terms of Use</a> |
+            <a href="sms-compliance.html">SMS Compliance</a> |
+            <a href="contact.html">Contact</a>
+        </div>
+        <p>Email: support@privacyquote.com | Phone: 1-800-PRIVACY | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
+    </footer>
+</body>
+</html>

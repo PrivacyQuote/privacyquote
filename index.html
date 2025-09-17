@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivacyQuote - AI-Powered Insurance Lead Engagement</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: #333; 
+            background-color: #f9f9f9; 
+            line-height: 1.6; 
+        }
+        header { 
+            background-color: #007bff; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 2.2em; 
+        }
+        nav { 
+            margin-top: 10px; 
+        }
+        nav a { 
+            color: white; 
+            margin: 0 15px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 1em; 
+        }
+        nav a:hover { 
+            text-decoration: underline; 
+        }
+        .hero { 
+            background-color: #e9ecef; 
+            padding: 50px 20px; 
+            text-align: center; 
+        }
+        .hero h1 { 
+            font-size: 2.5em; 
+            margin-bottom: 20px; 
+        }
+        .hero p { 
+            font-size: 1.2em; 
+            max-width: 800px; 
+            margin: 0 auto 30px; 
+        }
+        .hero button { 
+            background: #007bff; 
+            color: white; 
+            padding: 15px 30px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 1.1em; 
+            font-weight: bold; 
+        }
+        .hero button:hover { 
+            background: #0056b3; 
+        }
+        .section { 
+            padding: 40px 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .section h2 { 
+            font-size: 2em; 
+            text-align: center; 
+            margin-bottom: 30px; 
+        }
+        .services { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-around; 
+        }
+        .service-card { 
+            background: #ffffff; 
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            padding: 25px; 
+            margin: 15px; 
+            width: 300px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+            text-align: center; 
+        }
+        .service-card h3 { 
+            color: #007bff; 
+            font-size: 1.4em; 
+        }
+        .ainsley-section { 
+            background: #e3f2fd; 
+            border-radius: 8px; 
+            padding: 40px; 
+            text-align: center; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+            margin: 40px auto; 
+        }
+        .ainsley-section p { 
+            max-width: 800px; 
+            margin: 0 auto 20px; 
+            font-size: 1.1em; 
+            opacity: 0; 
+            animation: fadeIn 1s ease-in forwards; 
+        }
+        .ainsley-section p:nth-child(2) { animation-delay: 0.2s; }
+        .ainsley-section p:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes fadeIn { 
+            to { opacity: 1; } 
+        }
+        .ainsley-section button { 
+            background: #007bff; 
+            color: white; 
+            padding: 12px 25px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 1em; 
+            font-weight: bold; 
+            transition: transform 0.3s, box-shadow 0.3s; 
+        }
+        .ainsley-section button:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+        }
+        .compliance { 
+            background-color: #f8f9fa; 
+            border-radius: 8px; 
+            padding: 40px; 
+        }
+        .compliance ul { 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+        .compliance li { 
+            margin-bottom: 10px; 
+            font-size: 1.1em; 
+        }
+        /* Modal Styles */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.5); 
+        }
+        .modal-content { 
+            background-color: #ffffff; 
+            margin: 5% auto; 
+            padding: 30px; 
+            border-radius: 8px; 
+            width: 80%; 
+            max-width: 600px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+            font-family: Arial, sans-serif; 
+        }
+        .close { 
+            color: #aaa; 
+            float: right; 
+            font-size: 28px; 
+            font-weight: bold; 
+            cursor: pointer; 
+        }
+        .close:hover { 
+            color: #007bff; 
+        }
+        .conversation { 
+            font-family: monospace; 
+            line-height: 1.4; 
+            max-height: 400px; 
+            overflow-y: auto; 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            border-radius: 5px; 
+            background: #f9f9f9; 
+            margin-bottom: 20px; 
+        }
+        .conversation .ainsley { 
+            color: #007bff; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+        }
+        .conversation .rebecca { 
+            color: #28a745; 
+            margin-bottom: 10px; 
+        }
+        .modal-button { 
+            background: #007bff; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 1em; 
+            font-weight: bold; 
+            margin-right: 10px; 
+        }
+        .modal-button:hover { 
+            background: #0056b3; 
+        }
+        footer { 
+            background-color: #343a40; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        footer a { 
+            color: #ffc107; 
+            text-decoration: none; 
+            margin: 0 10px; 
+            font-weight: bold; 
+        }
+        footer a:hover { 
+            text-decoration: underline; 
+        }
+        @media (max-width: 768px) { 
+            .hero h1 { font-size: 2em; } 
+            .services { flex-direction: column; align-items: center; } 
+            .service-card { width: 90%; margin: 10px auto; } 
+            .ainsley-section { padding: 20px; } 
+            .modal-content { width: 95%; margin: 10% auto; padding: 20px; } 
+            .conversation { font-size: 0.9em; } 
+            nav a { display: block; margin: 5px 0; } 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PrivacyQuote</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#ainsley">Meet Ainsley</a>
+            <a href="#services">Services</a>
+            <a href="#compliance">Compliance</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-use.html">Terms of Use</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Engage Your Leads with Secure, AI-Powered SMS Solutions</h1>
+        <p>PrivacyQuote empowers insurance agents to upload their own SMS-opted-in leads and let Ainsley, our conversational AI, nurture them through personalized texting. Ainsley helps discover discounts, qualifies interests, and encourages Click-to-Call connections to you—the agent who provided the lead.</p>
+        <button onclick="window.location.href='get-started.html'">Get Started with Ainsley</button>
+    </section>
+
+    <section id="ainsley" class="section ainsley-section">
+        <h2>Ainsley: Your Trusted Partner for Lead Success</h2>
+        <p>Meet Ainsley, the AI assistant that transforms how you connect with your insurance leads. Designed for agents, Ainsley seamlessly takes your pre-opted-in leads and engages them with friendly, tailored SMS conversations to uncover discounts and drive conversions.</p>
+        <p>With Ainsley, your leads feel valued as she guides them to Click-to-Call connections with you, all while ensuring every text meets strict TCPA and CTIA compliance standards. Ready to elevate your lead game? Let Ainsley do the heavy lifting.</p>
+        <button id="demoBtn">Try Ainsley's SMS Demo</button>
+    </section>
+
+    <section id="services" class="section">
+        <h2>Discover Ainsley's Capabilities</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>Agent-Provided Leads</h3>
+                <p>Upload your purchased, SMS-opted-in leads securely. Ainsley takes it from there, ensuring compliant engagement without us selling or generating leads.</p>
+            </div>
+            <div class="service-card">
+                <h3>Ainsley's Conversational AI</h3>
+                <p>Ainsley engages leads in natural SMS conversations (10-15 messages per session), discovering discounts they qualify for and nurturing them toward action.</p>
+            </div>
+            <div class="service-card">
+                <h3>Double Opt-In & Click-to-Call</h3>
+                <p>Ainsley re-confirms consent with double opt-in, then delivers tailored Click-to-Call links to connect leads directly to you, the providing agent.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="compliance" class="section compliance">
+        <h2>Our Commitment to Compliance</h2>
+        <p>PrivacyQuote and Ainsley prioritize privacy and regulatory compliance. All SMS communications adhere to TCPA and CTIA guidelines, including:</p>
+        <ul>
+            <li>Prior express written consent for all texts.</li>
+            <li>Double opt-in: Consumers reply "YES" to confirm participation with Ainsley.</li>
+            <li>Easy opt-out: Reply "STOP" to unsubscribe anytime.</li>
+            <li>Message frequency: Up to 15 texts per interaction; standard rates apply.</li>
+            <li>No data selling or sharing beyond one-to-one agent connections.</li>
+        </ul>
+        <p>For full details, review our <a href="privacy-policy.html">Privacy Policy</a> and <a href="sms-compliance.html">SMS Compliance Page</a>.</p>
+    </section>
+
+    <!-- Modal for SMS Demo -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Ainsley's SMS Demo Conversation with Rebecca</h3>
+            <div class="conversation">
+                <div class="ainsley">Ainsley: Hi Rebecca! I'm Ainsley, your AI assistant from PrivacyQuote. Ready to explore insurance discounts with me? Reply YES to confirm you're cool with texting about quotes. Msg&data rates may apply. Reply STOP to opt out, HELP for info.</div>
+                <div class="rebecca">Rebecca: YES</div>
+                <div class="ainsley">Ainsley: Awesome! I see you drive a 2024 BMW X5. Is that the only car you own?</div>
+                <div class="rebecca">Rebecca: Yes, that's my only car.</div>
+                <div class="ainsley">Ainsley: Perfect, thanks for confirming! Just to make sure, are you the registered owner of the BMW X5?</div>
+                <div class="rebecca">Rebecca: Yes, I am.</div>
+                <div class="ainsley">Ainsley: Great to hear! Now, to help find the best rates, can you tell me about your driving record? Any tickets, accidents, or major violations in the last 5 years?</div>
+                <div class="rebecca">Rebecca: No, I've had a clean record—no tickets or accidents.</div>
+                <div class="ainsley">Ainsley: That's fantastic, Rebecca! A clean driving record like yours could qualify you for some nice discounts, like safe driver savings. Ready to chat with your agent about personalized quotes? Click here to call: [Click-to-Call Link]. What questions do you have?</div>
+                <div class="rebecca">Rebecca: Sounds good! I'll click to call.</div>
+            </div>
+            <p>This demo shows Ainsley's nurturing style—confirming details casually while building trust and guiding to action. All conversations are TCPA-compliant with easy opt-outs.</p>
+            <button class="modal-button" onclick="closeModal()">Close</button>
+            <button class="modal-button" onclick="window.location.href='get-started.html'">Connect with Our Team</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PrivacyQuote, a subsidiary of Bluewave Data Solutions. All rights reserved.</p>
+        <div>
+            <a href="privacy-policy.html">Privacy Policy</a> |
+            <a href="terms-of-use.html">Terms of Use</a> |
+            <a href="sms-compliance.html">SMS Compliance</a> |
+            <a href="contact.html">Contact</a>
+        </div>
+        <p>Email: support@privacyquote.com | Phone: 1-800-PRIVACY | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
+    </footer>
+
+    <script>
+        // Modal Functionality
+        const modal = document.getElementById('demoModal');
+        const demoBtn = document.getElementById('demoBtn');
+        const closeBtn = document.querySelector('.close');
+
+        demoBtn.onclick = () => modal.style.display = 'block';
+        closeBtn.onclick = () => modal.style.display = 'none';
+        window.onclick = (event) => {
+            if (event.target === modal) modal.style.display = 'none';
+        };
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
