@@ -5,36 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Started with Ainsley - PrivacyQuote</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
+            font-family: 'Roboto', Arial, sans-serif; 
             color: #333; 
             background-color: #f9f9f9; 
             line-height: 1.6; 
         }
         header { 
-            background-color: #007bff; 
+            background: linear-gradient(90deg, #007bff, #0056b3); 
             color: white; 
-            padding: 20px; 
-            text-align: center; 
+            padding: 15px 20px; 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         header h1 { 
-            margin: 0; 
-            font-size: 2.2em; 
+            font-size: 1.8em; 
+            font-weight: 700;
         }
         nav { 
-            margin-top: 10px; 
+            display: flex;
+            align-items: center;
         }
         nav a { 
             color: white; 
-            margin: 0 15px; 
             text-decoration: none; 
-            font-weight: bold; 
+            margin: 0 15px; 
             font-size: 1em; 
+            font-weight: 500; 
+            transition: color 0.3s;
         }
         nav a:hover { 
-            text-decoration: underline; 
+            color: #ffc107; 
         }
         .section { 
             padding: 40px 20px; 
@@ -73,13 +88,15 @@
             border: 1px solid #ddd; 
             border-radius: 5px; 
             font-size: 1em; 
+            font-family: 'Roboto', Arial, sans-serif;
         }
-        .opt-in { 
+        .opt-in, .age-verify { 
             margin-bottom: 20px; 
-            text-align: left; 
             font-size: 0.9em; 
+            display: flex;
+            align-items: center;
         }
-        .opt-in input[type="checkbox"] { 
+        .opt-in input[type="checkbox"], .age-verify input[type="checkbox"] { 
             width: auto; 
             margin-right: 10px; 
         }
@@ -166,6 +183,19 @@
         .modal-button:hover { 
             background: #0056b3; 
         }
+        .secondary-button { 
+            background: #6c757d; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 1em; 
+            margin-top: 20px; 
+        }
+        .secondary-button:hover { 
+            background: #5a6268; 
+        }
         footer { 
             background-color: #343a40; 
             color: white; 
@@ -182,31 +212,42 @@
             text-decoration: underline; 
         }
         @media (max-width: 768px) { 
+            header .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav a { 
+                display: block; 
+                margin: 5px 0; 
+            }
             .section { padding: 20px; } 
             form { padding: 15px; } 
             .modal-content { width: 95%; margin: 10% auto; padding: 20px; } 
             .conversation { font-size: 0.9em; } 
-            nav a { display: block; margin: 5px 0; } 
+            .opt-in, .age-verify { align-items: flex-start; }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>PrivacyQuote</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="index.html#services">Services</a>
-            <a href="index.html#ainsley">Meet Ainsley</a>
-            <a href="index.html#compliance">Compliance</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms-of-use.html">Terms of Use</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+        <div class="container">
+            <h1>PrivacyQuote</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#ainsley">Meet Ainsley</a>
+                <a href="index.html#compliance">Compliance</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-use.html">Terms of Use</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
     </header>
 
     <section class="section">
         <h2>Welcome to PrivacyQuote</h2>
-        <p>We are grateful for your interest in partnering with us! PrivacyQuote, a subsidiary of Bluewave Data Solutions, is excited to help you maximize your insurance leads with Ainsley, our AI-powered assistant.</p>
+        <p>We are grateful for your interest in partnering with us! PrivacyQuote is excited to help you maximize your insurance leads with Ainsley, our AI-powered assistant.</p>
         <p>Please fill out the form below and opt in to receive texts from Ainsley. She’ll guide you through how we can help you connect with your leads, ensuring compliance and boosting conversions. We’re excited to work together!</p>
         
         <form id="agentForm">
@@ -274,6 +315,11 @@
                 <option value="WY">Wyoming</option>
             </select>
 
+            <div class="age-verify">
+                <input type="checkbox" id="ageVerify" name="ageVerify" required>
+                <label for="ageVerify">I confirm I am 18 years of age or older. Our services are designed exclusively for licensed insurance agents, and we do not collect information from individuals under 13.</label>
+            </div>
+
             <div class="opt-in">
                 <input type="checkbox" id="optIn" name="optIn" required>
                 <label for="optIn" id="optInLabel">I consent to receive automated SMS/MMS messages from PrivacyQuote’s AI assistant, Ainsley, about partnering and lead integration. Message and data rates may apply. Reply STOP to opt out, HELP for info. This is not a condition of purchase. View our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-of-use.html">Terms of Use</a>.</label>
@@ -281,9 +327,21 @@
 
             <button type="submit" id="submitBtn" disabled>Start Texting with Ainsley</button>
         </form>
+        <button class="secondary-button" id="sampleBtn">View Sample Conversation</button>
     </section>
 
-    <!-- Modal for SMS Demo -->
+    <!-- Modal for Form Submission Confirmation -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Thank You for Signing Up!</h3>
+            <p>Ainsley will text you shortly at the provided number to discuss partnering with PrivacyQuote. Check your phone for her message! In the meantime, you can view a sample conversation below or explore <a href="index.html">our homepage</a>.</p>
+            <button class="modal-button" onclick="closeConfirmModal()">Close</button>
+            <button class="modal-button" id="viewSampleFromConfirm">View Sample Conversation</button>
+        </div>
+    </div>
+
+    <!-- Modal for SMS Demo Conversation -->
     <div id="demoModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -293,37 +351,45 @@
                 <div class="agent">Agent: YES</div>
                 <div class="ainsley">Ainsley: Awesome, thanks for joining me! PrivacyQuote helps agents like you by taking your pre-opted-in leads and nurturing them with friendly SMS chats. I confirm consent, find discounts (like safe driver savings), and set up Click-to-Call connections to you. Curious how we integrate your leads?</div>
                 <div class="agent">Agent: Yeah, sounds great! How does it work with my leads?</div>
-                <div class="ainsley">Ainsley: Super simple! You upload your SMS-opted-in leads to our platform, and I handle the rest—engaging leads in 10-15 message convos, all TCPA-compliant with double opt-in. For example, I might text: “Hi [Lead], got a 2024 BMW X5? Reply YES to explore discounts.” Want to see a demo of that?</div>
+                <div class="ainsley">Ainsley: Super simple! You upload your SMS-opted-in leads to our platform, and I handle the rest—engaging leads in conversations where frequency varies but typically 10 - 15 messages, all TCPA-compliant with double opt-in. For example, I might text: “Hi [Lead], got a 2024 BMW X5? Reply YES to explore discounts.” Want to see a demo of that?</div>
                 <div class="agent">Agent: Yes, show me!</div>
                 <div class="ainsley">Ainsley: Cool, check out our lead demo on the homepage! To get your leads integrated, our team can walk you through setup. Ready for a callback to discuss details? Reply CALL to schedule, or let me know what’s on your mind!</div>
                 <div class="agent">Agent: CALL</div>
                 <div class="ainsley">Ainsley: Perfect! Our team will reach out soon to get you started with PrivacyQuote. In the meantime, visit privacyquote.com to learn more or reply with any questions. Excited to work together!</div>
             </div>
             <p>This demo shows Ainsley’s nurturing style for agents—explaining our services and guiding you to a callback, all while staying TCPA-compliant.</p>
-            <button class="modal-button" onclick="closeModal()">Close</button>
+            <button class="modal-button" onclick="closeDemoModal()">Close</button>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 PrivacyQuote, a subsidiary of Bluewave Data Solutions. All rights reserved.</p>
+        <p>&copy; 2025 PrivacyQuote. All rights reserved.</p>
         <div>
             <a href="privacy-policy.html">Privacy Policy</a> |
             <a href="terms-of-use.html">Terms of Use</a> |
             <a href="sms-compliance.html">SMS Compliance</a> |
             <a href="contact.html">Contact</a>
         </div>
-        <p>Email: support@privacyquote.com | Phone: 1-800-PRIVACY | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
+        <p>Email: support@privacyquote.com | Phone: 866-580-7552 | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
 
     <script>
         // Form and Modal Functionality
         const form = document.getElementById('agentForm');
         const optIn = document.getElementById('optIn');
-        const submitBtn = document.getElementById('submitBtn');
-        const modal = document.getElementById('demoModal');
-        const closeBtn = document.querySelector('.close');
+        const ageVerify = document.getElementById('ageVerify');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
         const stateSelect = document.getElementById('state');
+        const submitBtn = document.getElementById('submitBtn');
+        const confirmModal = document.getElementById('confirmModal');
+        const demoModal = document.getElementById('demoModal');
+        const sampleBtn = document.getElementById('sampleBtn');
         const optInLabel = document.getElementById('optInLabel');
+        const closeConfirm = document.querySelector('#confirmModal .close');
+        const closeDemo = document.querySelector('#demoModal .close');
+        const viewSampleFromConfirm = document.getElementById('viewSampleFromConfirm');
 
         // State-specific opt-in text
         const stateSpecificText = {
@@ -341,24 +407,47 @@
             optInLabel.innerHTML = defaultText + (stateSpecificText[state] || '');
         });
 
-        optIn.addEventListener('change', () => {
-            submitBtn.disabled = !optIn.checked;
-        });
+        function updateSubmitButton() {
+            submitBtn.disabled = !(optIn.checked && ageVerify.checked && nameInput.value && emailInput.value && phoneInput.value && stateSelect.value);
+        }
+
+        optIn.addEventListener('change', updateSubmitButton);
+        ageVerify.addEventListener('change', updateSubmitButton);
+        nameInput.addEventListener('input', updateSubmitButton);
+        emailInput.addEventListener('input', updateSubmitButton);
+        phoneInput.addEventListener('input', updateSubmitButton);
+        stateSelect.addEventListener('change', updateSubmitButton);
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            modal.style.display = 'block';
-            // In production, send form data to backend for actual SMS initiation
-            console.log('Form submitted:', new FormData(form));
+            const phone = document.getElementById('phone').value;
+            if (!/^\d{10}$/.test(phone)) {
+                alert('Please enter a valid 10-digit US phone number.');
+                return;
+            }
+            confirmModal.style.display = 'block';
+            console.log('Form submitted:', new FormData(form)); // Replace with backend API call
         });
 
-        closeBtn.onclick = () => modal.style.display = 'none';
-        window.onclick = (event) => {
-            if (event.target === modal) modal.style.display = 'none';
+        sampleBtn.onclick = () => demoModal.style.display = 'block';
+        viewSampleFromConfirm.onclick = () => {
+            confirmModal.style.display = 'none';
+            demoModal.style.display = 'block';
         };
 
-        function closeModal() {
-            modal.style.display = 'none';
+        closeConfirm.onclick = () => confirmModal.style.display = 'none';
+        closeDemo.onclick = () => demoModal.style.display = 'none';
+        window.onclick = (event) => {
+            if (event.target === confirmModal) confirmModal.style.display = 'none';
+            if (event.target === demoModal) demoModal.style.display = 'none';
+        };
+
+        function closeConfirmModal() {
+            confirmModal.style.display = 'none';
+        }
+
+        function closeDemoModal() {
+            demoModal.style.display = 'none';
         }
     </script>
 </body>
