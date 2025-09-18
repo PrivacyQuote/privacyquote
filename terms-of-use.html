@@ -5,158 +5,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Use - PrivacyQuote</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            color: #333; 
-            background-color: #f9f9f9; 
-            line-height: 1.6; 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        header { 
-            background-color: #007bff; 
-            color: white; 
-            padding: 20px; 
-            text-align: center; 
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            line-height: 1.6;
         }
-        header h1 { 
-            margin: 0; 
-            font-size: 2.2em; 
+        header {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        nav { 
-            margin-top: 10px; 
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        nav a { 
-            color: white; 
-            margin: 0 15px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 1em; 
+        header h1 {
+            font-size: 1.8em;
+            font-weight: 700;
         }
-        nav a:hover { 
-            text-decoration: underline; 
+        nav {
+            display: flex;
+            align-items: center;
         }
-        .section { 
-            padding: 40px 20px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1em;
+            font-weight: 500;
+            transition: color 0.3s;
         }
-        .section h2 { 
-            font-size: 2em; 
-            margin-bottom: 20px; 
+        nav a:hover {
+            color: #ffc107;
         }
-        .section h3 { 
-            font-size: 1.4em; 
-            margin-top: 20px; 
-            color: #007bff; 
+        .section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        .section ul { 
-            margin: 20px 0; 
-            padding-left: 20px; 
+        .section h2 {
+            font-size: 2em;
+            color: #007bff;
+            margin-bottom: 20px;
         }
-        footer { 
-            background-color: #343a40; 
-            color: white; 
-            padding: 20px; 
-            text-align: center; 
+        .section h3 {
+            font-size: 1.5em;
+            color: #007bff;
+            margin: 20px 0 10px;
         }
-        footer a { 
-            color: #ffc107; 
-            text-decoration: none; 
-            margin: 0 10px; 
-            font-weight: bold; 
+        .section p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
         }
-        footer a:hover { 
-            text-decoration: underline; 
+        .section ul {
+            list-style: none;
+            margin-bottom: 15px;
+            padding-left: 20px;
         }
-        @media (max-width: 768px) { 
-            .section { padding: 20px; } 
-            nav a { display: block; margin: 5px 0; } 
+        .section li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        .section li::before {
+            content: '•';
+            color: #007bff;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        .section a {
+            color: #ffc107;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .section a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+            .section {
+                padding: 30px 20px;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>PrivacyQuote</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="index.html#services">Services</a>
-            <a href="index.html#ainsley">Meet Ainsley</a>
-            <a href="index.html#compliance">Compliance</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms-of-use.html">Terms of Use</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+        <div class="container">
+            <h1>PrivacyQuote</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#ainsley">Meet Ainsley</a>
+                <a href="index.html#compliance">Compliance</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-use.html">Terms of Use</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
     </header>
 
     <section class="section">
         <h2>Terms of Use</h2>
-        <p><strong>Effective Date: September 17, 2025</strong></p>
-        <p>By accessing or using the PrivacyQuote website at <a href="https://privacyquote.com">https://privacyquote.com</a> (the “Site”), our services (including AI-powered SMS lead engagement via Ainsley), or any content, materials, or functionalities (collectively, the “Services” and “Content”), you (“User,” “you,” or “your”) agree to be bound by these Terms of Use (“Terms”), our <a href="privacy-policy.html">Privacy Policy</a>, and any other rules or guidelines on the Site. These Terms form a legally binding agreement between you and PrivacyQuote, a company based in California, including its affiliates, agents, successors, and assigns. If you do not agree, you must immediately cease using the Site or Services.</p>
-        <p>These Terms include provisions for binding arbitration (Section 6), limitations on liability (Section 7), indemnity (Section 9), and consent to SMS communications (Section 5). You represent that: (i) you are at least 18 years old or the age of majority in your jurisdiction; (ii) you can form legally binding contracts; (iii) you have authority to bind yourself or your entity; and (iv) your use complies with all applicable laws, including TCPA, CTIA, and DNC regulations.</p>
+        <p>Last Updated: September 18, 2025</p>
+        <p>Welcome to PrivacyQuote. These Terms of Use govern your access to and use of our website (privacyquote.com) and our AI-powered SMS lead nurturing platform, including services provided by Ainsley, our conversational AI assistant. By accessing or using our services, you agree to these terms. If you do not agree, please do not use our services.</p>
 
-        <h3>1. What We Do</h3>
-        <p>PrivacyQuote provides a platform for insurance agents to upload their own SMS-opted-in leads, purchased from third-party providers, for engagement via our AI assistant, Ainsley. Ainsley conducts conversational SMS (10-15 messages per session) to nurture leads, discover discounts (e.g., safe driver, multi-policy), and encourage Click-to-Call connections to the agent who provided the lead. We do not generate, sell, or distribute leads. We are not an insurance provider, broker, or agent, and we do not endorse, recommend, or guarantee any agent, policy, or outcome. All interactions between agents and consumers are solely between those parties, with PrivacyQuote acting as an independent contractor facilitating compliant communications.</p>
+        <h3>1. Services Overview</h3>
+        <p>PrivacyQuote provides a software as a service (SaaS) platform that enables licensed insurance agents to upload their own SMS-opted-in leads for nurturing through personalized, TCPA-compliant SMS/MMS communications facilitated by Ainsley. We do not generate, sell, or distribute leads.</p>
 
-        <h3>2. Accessing Our Site and Services</h3>
-        <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Site and Services solely for legitimate business purposes (e.g., uploading pre-opted-in leads as an agent or requesting quotes as a consumer). This license does not permit: (i) reselling or distributing Content; (ii) modifying or creating derivative works; (iii) using data mining or automated tools; or (iv) framing without consent. All rights not granted are reserved, including intellectual property rights. We may modify, suspend, or discontinue the Site or Services at any time without liability.</p>
-
-        <h3>3. Unauthorized Use</h3>
-        <p>You agree not to:</p>
+        <h3>2. User Responsibilities</h3>
         <ul>
-            <li>Infringe our or third-party intellectual property, privacy, or proprietary rights.</li>
-            <li>Attempt unauthorized access to the Site, Services, or systems (e.g., hacking, password mining).</li>
-            <li>Disclose login credentials to third parties.</li>
-            <li>Circumvent security features or encryption.</li>
-            <li>Upload leads without verified prior SMS opt-in consent or compliance with federal/state DNC lists, violating TCPA or CTIA rules.</li>
-            <li>Engage in fraudulent activities, such as submitting false lead data.</li>
-            <li>Upload or transmit malware, viruses, or harmful code.</li>
-            <li>Reverse engineer, decompile, or derive source code from the Site or Services.</li>
-            <li>Use the Site for unsolicited communications or spam.</li>
+            <li><strong>Lead Compliance</strong>: You are responsible for ensuring all uploaded leads have provided prior express written consent for SMS/MMS communications, per TCPA and CTIA guidelines. You must verify leads are not on federal or state Do Not Call (DNC) lists before uploading.</li>
+            <li><strong>Accurate Information</strong>: You must provide accurate and complete information when registering or using our platform, including valid contact details and lead data.</li>
+            <li><strong>Prohibited Use</strong>: You may not use our services for unlawful purposes, to send unsolicited messages, or to violate any federal or state regulations, including mini-TCPAs (e.g., Florida FTSA, Texas Mini-TCPA).</li>
         </ul>
-        <p>We may terminate access, report to authorities, or pursue legal remedies for violations.</p>
 
-        <h3>4. Business Relationship</h3>
-        <p>PrivacyQuote and its users (agents and consumers) are independent contractors. These Terms do not create partnerships, joint ventures, agency, employment, or franchise relationships. Agents are solely responsible for ensuring their uploaded leads have prior SMS opt-in consent and are not listed on federal or state DNC lists, and for complying with insurance regulations.</p>
+        <h3>3. Compliance with Laws</h3>
+        <p>PrivacyQuote adheres to TCPA, CTIA, and TCR requirements, including double opt-in consent, opt-out options (“Reply STOP”), and message frequency limits (up to 15 texts per interaction). You agree to comply with these regulations and indemnify PrivacyQuote against any claims arising from your non-compliance.</p>
 
-        <h3>5. Communications and Consent</h3>
-        <p>By providing a mobile number (via forms or lead uploads), you consent to receive automated SMS/MMS messages from Ainsley for lead nurturing, discount discovery, and Click-to-Call facilitation. We comply with TCPA, CTIA, DNC, and TCR requirements:</p>
-        <ul>
-            <li><strong>Prior Express Written Consent</strong>: Agents must confirm leads have pre-opted-in for SMS from third-party providers and are not listed on federal or state DNC lists (e.g., Texas, Florida, Michigan). We require agents to maintain consent and DNC compliance records for at least 5 years for audits.</li>
-            <li><strong>Double Opt-In</strong>: Ainsley sends an initial text (e.g., “Reply YES to discuss insurance quotes with PrivacyQuote’s AI. Msg&data rates apply. STOP to opt out.”) and requires confirmation before proceeding.</li>
-            <li><strong>Opt-Out</strong>: Reply “STOP” to unsubscribe instantly (processed within 5 minutes). Reply “HELP” for support. Contact us at support@privacyquote.com or 1-800-PRIVACY to opt out.</li>
-            <li><strong>Message Frequency</strong>: Up to 15 texts per interaction; standard rates apply.</li>
-            <li><strong>DNC Compliance</strong>: Agents are solely responsible for ensuring uploaded leads are not on the federal DNC or state equivalents. PrivacyQuote does not perform DNC scrubbing but requires agents to verify compliance before uploading.</li>
-            <li><strong>TCR Compliance</strong>: Our toll-free numbers are registered under “Customer Care,” with business verification (EIN, DUNS for 2026), opt-in evidence, and message samples (e.g., “Ainsley: What type of insurance? Auto, home, life?”).</li>
-        </ul>
-        <p>Consent is not a condition of purchase. Opting out of SMS does not affect other communications. See our <a href="privacy-policy.html">Privacy Policy</a> for details.</p>
+        <h3>4. Intellectual Property</h3>
+        <p>All content, software, and trademarks on our platform, including Ainsley’s AI technology, are owned by PrivacyQuote, Inc. You may not copy, modify, or distribute our content without written permission.</p>
 
-        <h3>6. Resolution by Arbitration</h3>
-        <p>Any dispute arising from these Terms, the Site, or Services (“Disputes”) shall be resolved through binding arbitration, except for small claims or intellectual property issues. Notify us in writing at 1225 N Willow Ave., Suite 100, Clovis, CA 93619, Attn: Legal, with Dispute details. If unresolved within 30 days, arbitration will be administered by the American Arbitration Association (AAA) under Consumer Arbitration Rules, governed by the Federal Arbitration Act (FAA). Arbitration occurs in your county of residence (for consumers) or Fresno County, California (for agents), in English, with a single arbitrator. No class actions are allowed; claims must be filed within one year. You may opt out within 30 days by emailing support@privacyquote.com. Changes to this section do not apply retroactively. If any part is invalid, the rest remains enforceable, except if class action waivers are voided, then this section is void.</p>
+        <h3>5. Limitation of Liability</h3>
+        <p>PrivacyQuote is not liable for any indirect, incidental, or consequential damages arising from your use of our services, including but not limited to lost profits or data. Our liability is limited to the amount paid for the services.</p>
 
-        <h3>7. Limitation of Liability</h3>
-        <p>To the maximum extent permitted by law, PrivacyQuote, its affiliates, and agents shall not be liable for indirect, incidental, special, consequential, or punitive damages arising from the Site or Services, including loss of profits, data, or goodwill, even if advised of such damages. We are not liable for errors in Content, system interruptions, or third-party actions (e.g., agent-consumer disputes). Total liability is limited to $100 or fees paid by you in the past 12 months. Some jurisdictions may limit this, so exceptions may apply.</p>
+        <h3>6. Termination</h3>
+        <p>We may terminate your access to our services for violating these terms, including non-compliance with TCPA or uploading invalid leads. You may terminate your account by contacting us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a>.</p>
 
-        <h3>8. Release of Liability</h3>
-        <p>You release PrivacyQuote, its affiliates, and agents from claims, damages, or losses arising from disputes between users (e.g., agents and consumers) or related to lead interactions, including legal fees.</p>
+        <h3>7. Governing Law</h3>
+        <p>These terms are governed by the laws of California. Any disputes will be resolved in courts located in Fresno County, CA.</p>
 
-        <h3>9. Indemnity</h3>
-        <p>You agree to indemnify, defend, and hold harmless PrivacyQuote, its affiliates, and agents from claims, damages, or losses (including attorneys’ fees) arising from your use of the Site or Services, violation of these Terms, or breach of laws (e.g., uploading non-opted-in leads or DNC-listed leads). This obligation survives termination. We may assume defense control, and you must cooperate. No settlements without our consent.</p>
-
-        <h3>10. Choice of Law</h3>
-        <p>These Terms are governed by California law, with the FAA governing arbitration. Non-arbitrable disputes are handled in Fresno County, California courts. Failure to enforce rights is not a waiver. If any provision is invalid, the rest remains enforceable.</p>
-
-        <h3>11. Amendments</h3>
-        <p>We may update these Terms, with changes posted on the Site and effective immediately. Continued use constitutes acceptance. Material changes will be notified via email or Site banner. These Terms are the entire agreement, superseding prior agreements.</p>
-
-        <h3>12. Partial Invalidity</h3>
-        <p>If any provision is invalid or unenforceable, it will be modified to reflect intent, and other provisions remain in force.</p>
-
-        <h3>13. Acknowledgement</h3>
-        <p>You acknowledge you’ve read and understood these Terms, which have the same force as a signed agreement. No third-party rights are conferred except as stated.</p>
-
-        <h3>14. Contact Us</h3>
-        <p>For questions or complaints: PrivacyQuote, 1225 N Willow Ave., Suite 100, Clovis, CA 93619, Email: support@privacyquote.com, Phone: 1-800-PRIVACY. For TCPA/DNC/TCR issues, include details—we respond within 30 days.</p>
+        <h3>8. Contact Us</h3>
+        <p>For questions about these Terms of Use, contact us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552.</p>
     </section>
 
     <footer>
@@ -167,7 +184,7 @@
             <a href="sms-compliance.html">SMS Compliance</a> |
             <a href="contact.html">Contact</a>
         </div>
-        <p>Email: support@privacyquote.com | Phone: 1-800-PRIVACY | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
+        <p>Email: support@privacyquote.com | Phone: 866-580-7552 | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
 </body>
 </html>
