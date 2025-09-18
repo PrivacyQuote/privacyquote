@@ -5,144 +5,171 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMS Compliance - PrivacyQuote</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            color: #333; 
-            background-color: #f9f9f9; 
-            line-height: 1.6; 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        header { 
-            background-color: #007bff; 
-            color: white; 
-            padding: 20px; 
-            text-align: center; 
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            line-height: 1.6;
         }
-        header h1 { 
-            margin: 0; 
-            font-size: 2.2em; 
+        header {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        nav { 
-            margin-top: 10px; 
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        nav a { 
-            color: white; 
-            margin: 0 15px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 1em; 
+        header h1 {
+            font-size: 1.8em;
+            font-weight: 700;
         }
-        nav a:hover { 
-            text-decoration: underline; 
+        nav {
+            display: flex;
+            align-items: center;
         }
-        .section { 
-            padding: 40px 20px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1em;
+            font-weight: 500;
+            transition: color 0.3s;
         }
-        .section h2 { 
-            font-size: 2em; 
-            margin-bottom: 20px; 
-            color: #007bff; 
+        nav a:hover {
+            color: #ffc107;
         }
-        .section h3 { 
-            font-size: 1.4em; 
-            margin-top: 20px; 
-            color: #007bff; 
+        .section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        .section ul { 
-            margin: 20px 0; 
-            padding-left: 20px; 
+        .section h2 {
+            font-size: 2em;
+            color: #007bff;
+            margin-bottom: 20px;
         }
-        footer { 
-            background-color: #343a40; 
-            color: white; 
-            padding: 20px; 
-            text-align: center; 
+        .section h3 {
+            font-size: 1.5em;
+            color: #007bff;
+            margin: 20px 0 10px;
         }
-        footer a { 
-            color: #ffc107; 
-            text-decoration: none; 
-            margin: 0 10px; 
-            font-weight: bold; 
+        .section p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
         }
-        footer a:hover { 
-            text-decoration: underline; 
+        .section ul {
+            list-style: none;
+            margin-bottom: 15px;
+            padding-left: 20px;
         }
-        @media (max-width: 768px) { 
-            .section { padding: 20px; } 
-            nav a { display: block; margin: 5px 0; } 
+        .section li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        .section li::before {
+            content: '✔';
+            color: #007bff;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        .section a {
+            color: #ffc107;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .section a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+            .section {
+                padding: 30px 20px;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>PrivacyQuote</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="index.html#services">Services</a>
-            <a href="index.html#ainsley">Meet Ainsley</a>
-            <a href="index.html#compliance">Compliance</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms-of-use.html">Terms of Use</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+        <div class="container">
+            <h1>PrivacyQuote</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#ainsley">Meet Ainsley</a>
+                <a href="index.html#compliance">Compliance</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-use.html">Terms of Use</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
     </header>
 
     <section class="section">
-        <h2>SMS Compliance Policy</h2>
-        <p><strong>Effective Date: September 17, 2025</strong></p>
-        <p>At PrivacyQuote, we are committed to maintaining the highest standards of compliance in our SMS/MMS communications. This policy outlines our adherence to federal and state laws governing text messaging, ensuring transparent, consent-based, and ethical practices. Our platform enables insurance agents to upload their own pre-opted-in leads, which must be verified by agents as not listed on the National Do Not Call Registry (DNC) or state equivalents, for engagement via Ainsley, our AI assistant. Ainsley conducts conversational SMS (10-15 messages per session) to nurture leads, discover discounts (e.g., safe driver, multi-policy), and encourage Click-to-Call connections to the agent who provided the lead. This policy is designed to support The Campaign Registry (TCR) approval for toll-free SMS verification, emphasizing robust consent and compliance practices.</p>
+        <h2>SMS Compliance</h2>
+        <p>PrivacyQuote, Inc. is committed to ensuring all SMS/MMS communications comply with federal and state regulations, including the Telephone Consumer Protection Act (TCPA), CTIA Messaging Principles, and The Campaign Registry (TCR) requirements for toll-free messaging.</p>
 
-        <h3>Federal Laws and Regulations</h3>
-        <p>We comply with key federal laws governing SMS communications, ensuring ethical and legal messaging practices:</p>
+        <h3>1. Consent Requirements</h3>
+        <p>All SMS/MMS messages sent by Ainsley, our AI assistant, require prior express written consent from recipients. Agents must ensure leads have opted in before uploading to our platform. Ainsley uses a double opt-in process (e.g., “Reply YES to continue”) to confirm consent.</p>
+
+        <h3>2. Opt-Out Options</h3>
+        <p>Recipients can opt out at any time by replying “STOP” to any message. PrivacyQuote immediately ceases communication upon receiving an opt-out request and maintains an internal suppression list to prevent further contact.</p>
+
+        <h3>3. Message Frequency and Content</h3>
+        <p>Messages are limited to 15 texts per interaction, with frequency varying but typically 10 - 15 messages. Standard message and data rates may apply. Content is restricted to insurance-related inquiries (e.g., discounts, vehicle details) and avoids prohibited topics per CTIA guidelines.</p>
+
+        <h3>4. Agent Responsibilities</h3>
         <ul>
-            <li><strong>Telephone Consumer Protection Act (TCPA)</strong>: Requires prior express written consent for automated texts using an automatic telephone dialing system (ATDS) or artificial/pre-recorded messages. Agents must confirm leads have pre-opted-in for SMS, and we implement a double opt-in process to re-confirm consent. Messages are sent only during reasonable hours (9 AM–8 PM local time), and opt-out requests are honored immediately within 5 minutes, per TCPA’s “any reasonable means” rule effective April 11, 2025.</li>
-            <li><strong>National Do Not Call Registry (DNC)</strong>: Agents are solely responsible for ensuring uploaded leads are not listed on the federal DNC or state equivalents (e.g., Texas, Florida, Michigan). PrivacyQuote does not perform DNC scrubbing but requires agents to verify compliance and maintain records.</li>
-            <li><strong>CAN-SPAM Act</strong>: While primarily for emails, its principles guide our SMS communications, ensuring accurate message headers, a valid physical address, and clear opt-out mechanisms.</li>
-            <li><strong>CTIA Messaging Principles and Best Practices</strong>: We adhere to CTIA guidelines for ethical messaging, including content monitoring to prevent prohibited content (e.g., high-risk financial services, cannabis, spam), feedback loops with carriers, and best practices for message frequency and consumer experience.</li>
-            <li><strong>The Campaign Registry (TCR)</strong>: Our toll-free numbers are registered under the “Customer Care” use case, with business verification (e.g., EIN, DUNS for 2026 requirements), explicit opt-in workflows, message samples, and compliance with carrier pass-through fees and throughput limits (up to 75 messages per second).</li>
+            <li>Verify all leads have provided prior express written consent for SMS/MMS.</li>
+            <li>Ensure leads are not on federal or state Do Not Call (DNC) lists before uploading.</li>
+            <li>Comply with state mini-TCPAs, such as Florida’s FTSA and Texas Mini-TCPA.</li>
         </ul>
 
-        <h3>State-Specific Laws</h3>
-        <p>We comply with state-specific “mini-TCPAs” and analogous laws that regulate SMS messaging, many of which include private rights of action and stricter consent or registration requirements. These include:</p>
-        <ul>
-            <li><strong>Texas Mini-TCPA (Texas Business & Commerce Code Chapter 302, amended August 21, 2025)</strong>: Covers text messages as telemarketing, requiring registration and consent. Non-compliance risks $500–$5,000 per violation under the Texas Deceptive Trade Practices Act. We ensure double opt-in and require agents to verify leads are not on Texas DNC lists.</li>
-            <li><strong>Florida Telephone Solicitation Act (FTSA)</strong>: Prohibits unsolicited texts without prior express written consent, with penalties of $500–$1,500 per violation and private lawsuits. We mandate agent-verified pre-opt-in and double opt-in to prevent violations.</li>
-            <li><strong>Oklahoma Telephone Solicitation Act (OTSA)</strong>: Restricts autodialed texts, requiring consent, with $500 penalties and private actions. Agents must confirm leads are not on Oklahoma’s DNC list.</li>
-            <li><strong>Washington Commercial Electronic Mail Act (CEMA, RCW 19.190)</strong>: Regulates commercial electronic messages, including SMS, prohibiting unsolicited texts and requiring clear opt-out options. We ensure agent-verified consent and compliance with CEMA’s anti-spam rules, avoiding penalties up to $2,000 per violation.</li>
-            <li><strong>Michigan Home Solicitation Sales Act (MCL 445.111)</strong>: Requires consent for telemarketing texts, with penalties for violations. Agents must ensure leads are not on Michigan’s DNC list.</li>
-            <li><strong>Maryland Commercial Law (Stop Unsolicited Faxes and Calls Act)</strong>: Prohibits unsolicited commercial texts, with private rights of action. We rely on agent-verified pre-opt-in and double opt-in.</li>
-            <li><strong>Other States</strong>: We monitor emerging mini-TCPAs and privacy laws in states like New York (NY Telemarketer Registration Act), Illinois (Consumer Fraud Act), and California (CCPA/CPRA for data privacy in messaging). Agents are responsible for ensuring leads comply with state-specific DNC lists and consent requirements.</li>
-        </ul>
-        <p>We adapt to state-specific regulations by requiring agents to verify lead compliance with local DNC lists and consent rules before uploading, ensuring no unsolicited messages are sent.</p>
+        <h3>5. Data Protection</h3>
+        <p>We do not sell or share lead data beyond facilitating one-to-one agent connections. All data is encrypted and stored securely, with access limited to authorized personnel and service providers (e.g., Twilio) under strict agreements.</p>
 
-        <h3>Our Compliance Practices</h3>
-        <p>PrivacyQuote implements the following practices to ensure SMS compliance:</p>
-        <ul>
-            <li><strong>Agent Responsibility for DNC Compliance</strong>: Agents must verify that uploaded leads are not listed on the federal DNC or state-specific DNC lists (e.g., Texas, Florida, Michigan). PrivacyQuote does not perform DNC scrubbing but requires agents to provide documentation of compliance upon request.</li>
-            <li><strong>Prior Express Written Consent</strong>: Agents must confirm leads have provided prior SMS opt-in consent through third-party providers. We require agents to maintain consent records for at least 5 years for audits.</li>
-            <li><strong>Double Opt-In Process</strong>: Ainsley sends an initial text to re-confirm consent, e.g., “Reply YES to discuss insurance quotes with PrivacyQuote’s AI assistant, Ainsley. Msg&data rates apply. Reply STOP to opt out.” Messaging begins only after a “YES” response.</li>
-            <li><strong>Opt-Out and Support Mechanisms</strong>: Consumers can reply “STOP” to unsubscribe instantly (processed within 5 minutes) or “HELP” for support. Additional opt-out is available via email (support@privacyquote.com) or phone (1-800-PRIVACY).</li>
-            <li><strong>Message Content and Frequency</strong>: Messages are conversational, non-spammy, and limited to 10-15 per interaction (1M+ monthly total). Examples include:
-                <ul>
-                    <li>“Reply YES to discuss insurance quotes with Ainsley. STOP to opt out.”</li>
-                    <li>“What type of insurance? Auto, home, or life? (Discover discounts!)”</li>
-                    <li>“Click [link] to connect with your agent.”</li>
-                </ul>
-                No prohibited content (e.g., high-risk financial, spam) is sent, per CTIA guidelines.</li>
-            <li><strong>Message Timing</strong>: Sent between 9 AM–8 PM local time, unless part of an active consumer-initiated conversation.</li>
-            <li><strong>Data Rates Disclosure</strong>: All messages include “Msg&data rates may apply” where required.</li>
-            <li><strong>TCR Registration</strong>: Our toll-free numbers are registered with TCR under the “Customer Care” use case, including business verification (EIN, DUNS for 2026), opt-in screenshots, message samples, and compliance with carrier fees and throughput limits.</li>
-            <li><strong>Record Keeping</strong>: We maintain logs of double opt-in consents and opt-outs for 5 years to support TCPA, TCR, and state law audits.</li>
-        </ul>
+        <h3>6. TCR Compliance</h3>
+        <p>PrivacyQuote is registered with TCR under the “Customer Care” use case, ensuring all toll-free SMS communications meet carrier standards. We maintain records of consents and opt-outs for audits.</p>
 
-        <h3>Changes to This Policy</h3>
-        <p>We may update this policy to reflect changes in federal or state laws, with updates posted here and effective immediately. Material changes will be notified via email, SMS, or Site banner. Continued use of our services constitutes acceptance of the updated policy.</p>
-
-        <h3>Contact Us</h3>
-        <p>For questions, complaints, or to exercise your rights under TCPA, DNC, or state laws (e.g., CEMA, FTSA), contact: PrivacyQuote, 1225 N Willow Ave., Suite 100, Clovis, CA 93619, Email: support@privacyquote.com, Phone: 1-800-PRIVACY. Please include details for TCPA/DNC/TCR inquiries—we respond within 30 days.</p>
+        <h3>7. Contact Us</h3>
+        <p>For SMS compliance questions, contact us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552.</p>
     </section>
 
     <footer>
@@ -153,7 +180,7 @@
             <a href="sms-compliance.html">SMS Compliance</a> |
             <a href="contact.html">Contact</a>
         </div>
-        <p>Email: support@privacyquote.com | Phone: 1-800-PRIVACY | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
+        <p>Email: support@privacyquote.com | Phone: 866-580-7552 | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
 </body>
 </html>
