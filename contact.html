@@ -123,6 +123,35 @@
             background: #ccc;
             cursor: not-allowed;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #ffffff;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #007bff;
+        }
         footer {
             background-color: #343a40;
             color: white;
@@ -137,6 +166,12 @@
         }
         footer a:hover {
             text-decoration: underline;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -15px;
+            margin-bottom: 15px;
         }
         @media (max-width: 768px) {
             header .container {
@@ -184,21 +219,37 @@
         <form id="contactForm">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
+            <div id="nameError" class="error"></div>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
+            <div id="emailError" class="error"></div>
 
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
+            <div id="messageError" class="error"></div>
 
             <div class="age-verify">
                 <input type="checkbox" id="ageVerify" name="ageVerify" required>
                 <label for="ageVerify">I confirm I am 18 years of age or older. Our services are designed exclusively for licensed insurance agents, and we do not collect information from individuals under 13.</label>
             </div>
+            <div id="ageError" class="error"></div>
 
             <button type="submit" id="submitBtn" disabled>Send Message</button>
         </form>
     </section>
+
+    <!-- Verification Modal -->
+    <div id="verificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeVerificationModal()">&times;</span>
+            <h3>Verification Required</h3>
+            <p>We will send a verification code to your phone number to confirm your email. Please enter the code below to complete your submission.</p>
+            <input type="text" id="verificationCode" placeholder="Enter verification code" required>
+            <div id="codeError" class="error"></div>
+            <button onclick="verifyCode()">Verify</button>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2025 PrivacyQuote. All rights reserved.</p>
@@ -212,30 +263,88 @@
     </footer>
 
     <script>
-        // Form submission with age verification
+        // Form validation and submission
         const form = document.getElementById('contactForm');
-        const ageVerify = document.getElementById('ageVerify');
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
         const messageInput = document.getElementById('message');
+        const ageVerify = document.getElementById('ageVerify');
         const submitBtn = document.getElementById('submitBtn');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const messageError = document.getElementById('messageError');
+        const ageError = document.getElementById('ageError');
+        const verificationModal = document.getElementById('verificationModal');
+        const verificationCode = document.getElementById('verificationCode');
+        const codeError = document.getElementById('codeError');
+        let generatedCode = '';
 
-        function updateSubmitButton() {
-            submitBtn.disabled = !(ageVerify.checked && nameInput.value && emailInput.value && messageInput.value);
+        function validateForm() {
+            let valid = true;
+
+            if (nameInput.value.trim() === '') {
+                nameError.textContent = 'Name is required.';
+                valid = false;
+            } else {
+                nameError.textContent = '';
+            }
+
+            if (!/\S+@\S+\.\S+/.test(emailInput.value)) {
+                emailError.textContent = 'Valid email is required.';
+                valid = false;
+            } else {
+                emailError.textContent = '';
+            }
+
+            if (messageInput.value.trim() === '') {
+                messageError.textContent = 'Message is required.';
+                valid = false;
+            } else {
+                messageError.textContent = '';
+            }
+
+            if (!ageVerify.checked) {
+                ageError.textContent = 'You must confirm your age.';
+                valid = false;
+            } else {
+                ageError.textContent = '';
+            }
+
+            submitBtn.disabled = !valid;
         }
 
-        ageVerify.addEventListener('change', updateSubmitButton);
-        nameInput.addEventListener('input', updateSubmitButton);
-        emailInput.addEventListener('input', updateSubmitButton);
-        messageInput.addEventListener('input', updateSubmitButton);
+        nameInput.addEventListener('input', validateForm);
+        emailInput.addEventListener('input', validateForm);
+        messageInput.addEventListener('input', validateForm);
+        ageVerify.addEventListener('change', validateForm);
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            console.log('Contact form submitted:', new FormData(form));
-            alert('Thank you for your message! Our team will respond soon.');
-            form.reset();
-            submitBtn.disabled = true;
+            // Simulate sending SMS verification code
+            generatedCode = Math.floor(1000 + Math.random() * 9000).toString(); // Mock code
+            console.log('Generated verification code:', generatedCode); // In production, send via Twilio
+            verificationModal.style.display = 'block';
         });
+
+        function verifyCode() {
+            if (verificationCode.value === generatedCode) {
+                alert('Verification successful! Your message has been sent.');
+                form.reset();
+                verificationModal.style.display = 'none';
+                submitBtn.disabled = true;
+            } else {
+                codeError.textContent = 'Invalid verification code. Please try again.';
+            }
+        }
+
+        function closeVerificationModal() {
+            verificationModal.style.display = 'none';
+        }
+        window.onclick = (event) => {
+            if (event.target === verificationModal) {
+                closeVerificationModal();
+            }
+        };
     </script>
 </body>
 </html>
