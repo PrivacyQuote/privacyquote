@@ -81,7 +81,7 @@
             padding-left: 25px;
         }
         .section li::before {
-            content: '✔';
+            content: '•';
             color: #007bff;
             position: absolute;
             left: 0;
@@ -144,32 +144,56 @@
 
     <section class="section">
         <h2>SMS Compliance</h2>
-        <p>PrivacyQuote, Inc. is committed to ensuring all SMS/MMS communications comply with federal and state regulations, including the Telephone Consumer Protection Act (TCPA), CTIA Messaging Principles, and The Campaign Registry (TCR) requirements for toll-free messaging.</p>
+        <p>Last Updated: September 18, 2025</p>
+        <p>PrivacyQuote, Inc. ("we," "our," or "us") is committed to ensuring all SMS and MMS communications sent through our AI-powered lead nurturing platform comply with applicable federal and state laws, including the Telephone Consumer Protection Act (TCPA), CTIA Messaging Principles, CAN-SPAM Act, and state mini-TCPAs (e.g., Florida Telephone Solicitation Act, Texas Mini-TCPA, Oklahoma Telephone Solicitation Act, Washington’s Commercial Electronic Mail Act). This SMS Compliance page outlines our policies and responsibilities for agents and users to ensure ethical and legal messaging practices.</p>
 
         <h3>1. Consent Requirements</h3>
-        <p>All SMS/MMS messages sent by Ainsley, our AI assistant, require prior express written consent from recipients. Agents must ensure leads have opted in before uploading to our platform. Ainsley uses a double opt-in process (e.g., “Reply YES to continue”) to confirm consent.</p>
+        <p>All SMS/MMS messages require prior express written consent, obtained through a clear, non-pre-checked opt-in mechanism (e.g., a checkbox on our forms). Consent language is conspicuous, such as:</p>
+        <ul>
+            <li>“By checking this box and providing my mobile number, I expressly consent to receive automated SMS/MMS messages from PrivacyQuote’s AI assistant, Ainsley, about lead nurturing, insurance inquiries, or platform updates. Message and data rates may apply. Reply STOP to opt out, HELP for info.”</li>
+            <li>Double opt-in: Recipients must confirm consent (e.g., “Reply YES to continue”).</li>
+        </ul>
+        <p>Agents integrating leads via API must ensure each lead has provided prior express written consent compliant with TCPA and state regulations before delivery to our platform.</p>
 
         <h3>2. Opt-Out Options</h3>
-        <p>Recipients can opt out at any time by replying “STOP” to any message. PrivacyQuote immediately ceases communication upon receiving an opt-out request and maintains an internal suppression list to prevent further contact.</p>
-
-        <h3>3. Message Frequency and Content</h3>
-        <p>Messages are limited to 15 texts per interaction, with frequency varying but typically 10 - 15 messages. Standard message and data rates may apply. Content is restricted to insurance-related inquiries (e.g., discounts, vehicle details) and avoids prohibited topics per CTIA guidelines.</p>
-
-        <h3>4. Agent Responsibilities</h3>
+        <p>Users and leads can opt out immediately by replying “STOP” to any message. We maintain an internal suppression list to honor opt-out requests and prevent further messaging. Additional options include:</p>
         <ul>
-            <li>Verify all leads have provided prior express written consent for SMS/MMS.</li>
-            <li>Ensure leads are not on federal or state Do Not Call (DNC) lists before uploading.</li>
-            <li>Comply with state mini-TCPAs, such as Florida’s FTSA and Texas Mini-TCPA.</li>
+            <li>Reply “HELP” for support information.</li>
+            <li>Contact us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552 to opt out.</li>
         </ul>
 
-        <h3>5. Data Protection</h3>
-        <p>We do not sell or share lead data beyond facilitating one-to-one agent connections. All data is encrypted and stored securely, with access limited to authorized personnel and service providers (e.g., Twilio) under strict agreements.</p>
+        <h3>3. Message Frequency and Content</h3>
+        <p>Messages are limited to insurance-related inquiries (e.g., discounts, vehicle details) and platform updates for agents. Key details:</p>
+        <ul>
+            <li><strong>Frequency</strong>: Varies but typically 10-15 messages per interaction; standard message and data rates apply.</li>
+            <li><strong>Content</strong>: Complies with CTIA guidelines, prohibiting spam, high-risk content (e.g., illegal activities), or misleading information.</li>
+            <li><strong>Reasonable Hours</strong>: Sent between 9 AM and 8 PM local time, except in active, consumer-initiated conversations.</li>
+        </ul>
 
-        <h3>6. TCR Compliance</h3>
-        <p>PrivacyQuote is registered with TCR under the “Customer Care” use case, ensuring all toll-free SMS communications meet carrier standards. We maintain records of consents and opt-outs for audits.</p>
+        <h3>4. Agent Responsibilities</h3>
+        <p>Licensed insurance agents using our platform agree to:</p>
+        <ul>
+            <li>Verify that all leads integrated via API have prior express written consent for SMS/MMS communications.</li>
+            <li>Ensure leads are not on federal or state Do Not Call (DNC) lists before integration.</li>
+            <li>Comply with all applicable laws, including TCPA, CTIA principles, and state mini-TCPAs (e.g., Florida FTSA, Texas Mini-TCPA).</li>
+            <li>Provide accurate and lawful lead data, ensuring no fraudulent or unauthorized submissions.</li>
+        </ul>
+        <p>Agents are solely responsible for lead compliance. We are not liable for violations arising from agent-provided data.</p>
 
-        <h3>7. Contact Us</h3>
-        <p>For SMS compliance questions, contact us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552.</p>
+        <h3>5. Data Protection and Fraud Prevention</h3>
+        <p>We use encryption, access controls, and secure servers to protect lead data and communications. We implement feedback loops and monitoring to detect and prevent fraudulent activity (e.g., unauthorized messaging). Lead data is not sold or shared beyond facilitating one-to-one agent-lead connections.</p>
+
+        <h3>6. The Campaign Registry (TCR) Compliance</h3>
+        <p>PrivacyQuote is registered with TCR under the “Customer Care” use case. We maintain detailed consent records and audit logs for TCR compliance. Agents must ensure their lead sources align with TCR requirements, including proper documentation of consent.</p>
+
+        <h3>7. Indemnity</h3>
+        <p>Agents agree to indemnify and hold PrivacyQuote, its affiliates, officers, directors, employees, and agents harmless from any claims, losses, damages, liabilities, costs, and expenses (including reasonable attorneys' fees) arising from their violation of TCPA, CTIA, state mini-TCPAs, or other laws related to lead data or messaging.</p>
+
+        <h3>8. Dispute Resolution</h3>
+        <p>Any disputes arising from SMS communications or this policy shall be resolved through binding arbitration in Fresno County, California, under the American Arbitration Association’s rules. Users waive the right to class actions or jury trials. Governing law is California.</p>
+
+        <h3>9. Contact Us</h3>
+        <p>For questions about our SMS compliance, contact us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552.</p>
     </section>
 
     <footer>
