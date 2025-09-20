@@ -293,23 +293,15 @@
 
     <script>
         // Cookie Consent Functionality
-        function setCookie(name, value) {
-            document.cookie = name + "=" + value + "; path=/; SameSite=Lax; Secure";
-            console.log(`Session cookie set: ${name}=${value}`);
-            sessionStorage.setItem('cookie_consent_shown', 'true');
-            console.log("Session storage set: cookie_consent_shown=true");
+        function setConsent(value) {
+            localStorage.setItem('cookie_consent', value);
+            console.log(`Consent set: cookie_consent=${value}`);
         }
 
-        function getCookie(name) {
-            const value = "; " + document.cookie;
-            const parts = value.split("; " + name + "=");
-            if (parts.length === 2) {
-                const cookieValue = parts.pop().split(";").shift();
-                console.log(`Cookie found: ${name}=${cookieValue}`);
-                return cookieValue;
-            }
-            console.log(`Cookie not found: ${name}`);
-            return null;
+        function getConsent() {
+            const consent = localStorage.getItem('cookie_consent');
+            console.log(`Consent check: cookie_consent=${consent}`);
+            return consent;
         }
 
         function closeCookiePopup() {
@@ -323,20 +315,18 @@
         };
 
         window.onload = function() {
-            const consent = getCookie('cookie_consent');
-            const consentShown = sessionStorage.getItem('cookie_consent_shown');
-            console.log(`Session cookie check: consent=${consent}, consentShown=${consentShown}`);
-            if (!consent && !consentShown) {
+            const consent = getConsent();
+            if (!consent) {
                 document.getElementById('cookiePopup').style.display = 'block';
             }
 
             document.getElementById('acceptCookies').onclick = function() {
-                setCookie('cookie_consent', 'accepted');
+                setConsent('accepted');
                 closeCookiePopup();
             };
 
             document.getElementById('rejectCookies').onclick = function() {
-                setCookie('cookie_consent', 'rejected');
+                setConsent('rejected');
                 closeCookiePopup();
             };
         };
