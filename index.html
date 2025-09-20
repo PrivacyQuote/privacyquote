@@ -48,7 +48,7 @@
             color: #ffc107;
         }
         .hero, .ainsley-section, .services, .compliance {
-            padding: 60px 20px 60px 20px;
+            padding: 60px 20px;
             margin-top: 80px;
         }
         .hero {
@@ -124,7 +124,7 @@
             padding: 50px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 60px; /* Increased spacing before Services section */
+            margin-bottom: 60px;
         }
         .ainsley-section p {
             max-width: 800px;
@@ -194,7 +194,7 @@
         }
         .modal-content {
             background-color: #ffffff;
-            margin: 5% auto;
+            margin: 15% auto;
             padding: 30px;
             border-radius: 10px;
             width: 80%;
@@ -245,14 +245,14 @@
             font-weight: bold;
             font-size: 0.9em;
             color: white;
-            background: #007bff; /* Ainsley */
+            background: #007bff;
             padding: 5px 10px;
             border-radius: 12px;
             display: inline-block;
             margin-bottom: 5px;
         }
         .conversation .stephanie .sender {
-            background: #28a745; /* Stephanie */
+            background: #28a745;
         }
         .conversation .message-text {
             font-size: 1em;
@@ -273,7 +273,74 @@
             background: #0056b3;
         }
         .modal p.demo-info {
-            margin-bottom: 20px; /* Space before buttons */
+            margin-bottom: 20px;
+        }
+        .cookie-popup {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 2000;
+            width: 300px;
+            text-align: center;
+            animation: slideInUp 0.5s ease-out forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .cookie-popup p {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .cookie-popup a {
+            color: #ffc107;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cookie-popup a:hover {
+            text-decoration: underline;
+        }
+        .cookie-popup .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .cookie-popup button {
+            background: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+        .cookie-popup button:hover {
+            background: #0056b3;
+        }
+        .cookie-popup .reject-btn {
+            background: #6c757d;
+        }
+        .cookie-popup .reject-btn:hover {
+            background: #5a6268;
+        }
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
         footer {
             background-color: #343a40;
@@ -289,29 +356,6 @@
         }
         footer a:hover {
             text-decoration: underline;
-        }
-        #home, #ainsley, #services, #compliance {
-            display: block;
-            position: relative;
-        }
-        #home:before, #ainsley:before, #services:before, #compliance:before {
-            content: '';
-            display: block;
-            height: 80px;
-            margin-top: -80px;
-            visibility: hidden;
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
         }
         @media (max-width: 768px) {
             header .container {
@@ -334,6 +378,23 @@
                 margin-left: 5%;
                 margin-right: 5%;
             }
+            .cookie-popup {
+                width: 90%;
+                right: 10px;
+                bottom: 10px;
+                padding: 15px;
+            }
+            .cookie-popup p {
+                font-size: 0.8em;
+            }
+            .cookie-popup button {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+            footer a {
+                display: inline-block;
+                margin: 5px 10px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -343,10 +404,7 @@
         <div class="container">
             <h1>PrivacyQuote</h1>
             <nav>
-                <a href="#home">Home</a>
-                <a href="#ainsley">Meet Ainsley</a>
-                <a href="#services">Services</a>
-                <a href="#compliance">Compliance</a>
+                <a href="index.html">Home</a>
                 <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="terms-of-use.html">Terms of Use</a>
                 <a href="contact.html">Contact</a>
@@ -446,9 +504,18 @@
                     <div class="message-text">Sounds good! I'll click to call.</div>
                 </div>
             </div>
-            <p class="demo-info">This demo shows Ainsley’s nurturing style—confirming details casually while building trust and guiding to action. All conversations are TCPA-compliant with easy opt-outs.<br><br>Interested in seeing how I work with leads? Check out my demo below!</p>
+            <p class="demo-info">This demo shows Ainsley’s nurturing style—confirming details casually while building trust searching for discounts. All conversations are TCPA-compliant with easy opt-outs.<br><br>Interested in seeing how I work with leads? Check out my demo below!</p>
             <button class="modal-button" onclick="closeModal()">Close</button>
             <button class="modal-button" onclick="window.location.href='get-started.html'">Connect with Our Team</button>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Popup -->
+    <div id="cookiePopup" class="cookie-popup">
+        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <div class="button-container">
+            <button id="acceptCookies">Accept</button>
+            <button id="rejectCookies" class="reject-btn">Reject</button>
         </div>
     </div>
 
@@ -473,29 +540,55 @@
         closeBtn.onclick = () => modal.style.display = 'none';
         window.onclick = (event) => {
             if (event.target === modal) modal.style.display = 'none';
+            if (event.target === document.getElementById('cookiePopup')) closeCookiePopup();
         };
 
         function closeModal() {
             modal.style.display = 'none';
         }
 
-        // Smooth scrolling with offset for sticky header
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                    const offsetPosition = elementPosition - headerHeight - 20;
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+        // Cookie Consent Functionality
+        function setCookie(name, value) {
+            document.cookie = name + "=" + value + "; path=/; SameSite=Lax";
+            console.log(`Session cookie set: ${name}=${value}`);
+            sessionStorage.setItem('cookie_consent_shown', 'true');
+            console.log("Session storage set: cookie_consent_shown=true");
+        }
+
+        function getCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) {
+                const cookieValue = parts.pop().split(";").shift();
+                console.log(`Cookie found: ${name}=${cookieValue}`);
+                return cookieValue;
+            }
+            console.log(`Cookie not found: ${name}`);
+            return null;
+        }
+
+        function closeCookiePopup() {
+            document.getElementById('cookiePopup').style.display = 'none';
+        }
+
+        window.onload = function() {
+            const consent = getCookie('cookie_consent');
+            const consentShown = sessionStorage.getItem('cookie_consent_shown');
+            console.log(`Session cookie check: consent=${consent}, consentShown=${consentShown}`);
+            if (!consent && !consentShown) {
+                document.getElementById('cookiePopup').style.display = 'block';
+            }
+
+            document.getElementById('acceptCookies').onclick = function() {
+                setCookie('cookie_consent', 'accepted');
+                closeCookiePopup();
+            };
+
+            document.getElementById('rejectCookies').onclick = function() {
+                setCookie('cookie_consent', 'rejected');
+                closeCookiePopup();
+            };
+        };
     </script>
 </body>
 </html>
