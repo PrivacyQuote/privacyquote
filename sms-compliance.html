@@ -297,7 +297,7 @@
     <script>
         // Cookie Consent Functionality
         function setCookie(name, value) {
-            document.cookie = name + "=" + value + "; path=/; SameSite=Lax";
+            document.cookie = name + "=" + value + "; path=/; SameSite=Lax; Secure";
             console.log(`Session cookie set: ${name}=${value}`);
             sessionStorage.setItem('cookie_consent_shown', 'true');
             console.log("Session storage set: cookie_consent_shown=true");
