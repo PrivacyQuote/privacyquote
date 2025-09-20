@@ -234,8 +234,8 @@
         <p>We obtain prior express written consent before sending any SMS/MMS messages. Our consent process includes:</p>
         <ul>
             <li><strong>Clear Disclosure:</strong> Users are informed that by providing their phone number and opting in, they agree to receive automated SMS/MMS messages from Ainsley about insurance lead nurturing or partnership inquiries.</li>
-            <li><strong>Double Opt-In:</strong> After initial consent (e.g., via our Get Started form), Ainsley sends a confirmation message requiring a reply (e.g., “YES”) to verify participation.</li>
-            <li><strong>Opt-Out Option:</strong> Every message includes instructions to opt out by replying “STOP” and to seek help by replying “HELP.”</li>
+            <li><strong>Double Opt-In:</strong> After initial consent (e.g., via our Get Started form), Ainsley sends a confirmation message requiring a reply (e.g., "YES") to verify participation.</li>
+            <li><strong>Opt-Out Option:</strong> Every message includes instructions to opt out by replying "STOP" and to seek help by replying "HELP."</li>
             <li><strong>Record Keeping:</strong> We maintain records of consent, including timestamps and IP addresses, to ensure compliance with TCPA and CTIA requirements.</li>
         </ul>
 
@@ -250,7 +250,7 @@
         <h3>Opt-Out Process</h3>
         <p>Users can opt out of SMS communications at any time by:</p>
         <ul>
-            <li>Replying “STOP” to any message from Ainsley, which immediately unsubscribes the user.</li>
+            <li>Replying "STOP" to any message from Ainsley, which immediately unsubscribes the user.</li>
             <li>Contacting us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552 to request removal.</li>
         </ul>
         <p>We honor opt-out requests promptly and maintain a do-not-contact list to prevent further messages.</p>
@@ -296,23 +296,15 @@
 
     <script>
         // Cookie Consent Functionality
-        function setCookie(name, value) {
-            document.cookie = name + "=" + value + "; path=/; SameSite=Lax; Secure";
-            console.log(`Session cookie set: ${name}=${value}`);
-            sessionStorage.setItem('cookie_consent_shown', 'true');
-            console.log("Session storage set: cookie_consent_shown=true");
+        function setConsent(value) {
+            localStorage.setItem('cookie_consent', value);
+            console.log(`Consent set: cookie_consent=${value}`);
         }
 
-        function getCookie(name) {
-            const value = "; " + document.cookie;
-            const parts = value.split("; " + name + "=");
-            if (parts.length === 2) {
-                const cookieValue = parts.pop().split(";").shift();
-                console.log(`Cookie found: ${name}=${cookieValue}`);
-                return cookieValue;
-            }
-            console.log(`Cookie not found: ${name}`);
-            return null;
+        function getConsent() {
+            const consent = localStorage.getItem('cookie_consent');
+            console.log(`Consent check: cookie_consent=${consent}`);
+            return consent;
         }
 
         function closeCookiePopup() {
@@ -326,20 +318,18 @@
         };
 
         window.onload = function() {
-            const consent = getCookie('cookie_consent');
-            const consentShown = sessionStorage.getItem('cookie_consent_shown');
-            console.log(`Session cookie check: consent=${consent}, consentShown=${consentShown}`);
-            if (!consent && !consentShown) {
+            const consent = getConsent();
+            if (!consent) {
                 document.getElementById('cookiePopup').style.display = 'block';
             }
 
             document.getElementById('acceptCookies').onclick = function() {
-                setCookie('cookie_consent', 'accepted');
+                setConsent('accepted');
                 closeCookiePopup();
             };
 
             document.getElementById('rejectCookies').onclick = function() {
-                setCookie('cookie_consent', 'rejected');
+                setConsent('rejected');
                 closeCookiePopup();
             };
         };
