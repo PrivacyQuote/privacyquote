@@ -103,6 +103,10 @@
             width: auto;
             margin-right: 10px;
         }
+        .recaptcha-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
         button {
             background: #007bff;
             color: white;
@@ -152,26 +156,78 @@
         .close:hover {
             color: #007bff;
         }
-        footer {
-            background-color: #343a40;
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-        footer a {
-            color: #ffc107;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 600;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
         .error {
             color: red;
             font-size: 0.9em;
             margin-top: -15px;
             margin-bottom: 15px;
+        }
+        .cookie-popup {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 2000;
+            width: 300px;
+            text-align: center;
+            animation: slideInUp 0.5s ease-out forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .cookie-popup p {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .cookie-popup a {
+            color: #ffc107;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cookie-popup a:hover {
+            text-decoration: underline;
+        }
+        .cookie-popup .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .cookie-popup button {
+            background: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+        .cookie-popup button:hover {
+            background: #0056b3;
+        }
+        .cookie-popup .reject-btn {
+            background: #6c757d;
+        }
+        .cookie-popup .reject-btn:hover {
+            background: #5a6268;
+        }
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
         @media (max-width: 768px) {
             header .container {
@@ -191,9 +247,27 @@
             .age-verify {
                 align-items: flex-start;
             }
+            .cookie-popup {
+                width: 90%;
+                right: 10px;
+                bottom: 10px;
+                padding: 15px;
+            }
+            .cookie-popup p {
+                font-size: 0.8em;
+            }
+            .cookie-popup button {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+            footer a {
+                display: inline-block;
+                margin: 5px 10px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <header>
@@ -201,9 +275,6 @@
             <h1>PrivacyQuote</h1>
             <nav>
                 <a href="index.html">Home</a>
-                <a href="index.html#services">Services</a>
-                <a href="index.html#ainsley">Meet Ainsley</a>
-                <a href="index.html#compliance">Compliance</a>
                 <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="terms-of-use.html">Terms of Use</a>
                 <a href="contact.html">Contact</a>
@@ -225,6 +296,10 @@
             <input type="email" id="email" name="email" required>
             <div id="emailError" class="error"></div>
 
+            <label for="phone">Mobile Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" maxlength="12" required>
+            <div id="phoneError" class="error"></div>
+
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
             <div id="messageError" class="error"></div>
@@ -235,6 +310,11 @@
             </div>
             <div id="ageError" class="error"></div>
 
+            <div class="recaptcha-container">
+                <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY" data-callback="onRecaptchaSuccess"></div>
+                <div id="recaptchaError" class="error"></div>
+            </div>
+
             <button type="submit" id="submitBtn" disabled>Send Message</button>
         </form>
     </section>
@@ -244,10 +324,19 @@
         <div class="modal-content">
             <span class="close" onclick="closeVerificationModal()">&times;</span>
             <h3>Verification Required</h3>
-            <p>We will send a verification code to your phone number to confirm your email. Please enter the code below to complete your submission.</p>
+            <p id="verificationMessage">We will send a verification code to your phone number to confirm your email. Please enter the code below to complete your submission.</p>
             <input type="text" id="verificationCode" placeholder="Enter verification code" required>
             <div id="codeError" class="error"></div>
             <button onclick="verifyCode()">Verify</button>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Popup -->
+    <div id="cookiePopup" class="cookie-popup">
+        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <div class="button-container">
+            <button id="acceptCookies">Accept</button>
+            <button id="rejectCookies" class="reject-btn">Reject</button>
         </div>
     </div>
 
@@ -267,21 +356,47 @@
         const form = document.getElementById('contactForm');
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
         const messageInput = document.getElementById('message');
         const ageVerify = document.getElementById('ageVerify');
         const submitBtn = document.getElementById('submitBtn');
         const nameError = document.getElementById('nameError');
         const emailError = document.getElementById('emailError');
+        const phoneError = document.getElementById('phoneError');
         const messageError = document.getElementById('messageError');
         const ageError = document.getElementById('ageError');
+        const recaptchaError = document.getElementById('recaptchaError');
         const verificationModal = document.getElementById('verificationModal');
+        const verificationMessage = document.getElementById('verificationMessage');
         const verificationCode = document.getElementById('verificationCode');
         const codeError = document.getElementById('codeError');
         let generatedCode = '';
+        let recaptchaVerified = false;
+
+        // Auto-format phone number as 123-456-7890
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+            if (value.length > 3 && value.length <= 6) {
+                value = value.slice(0, 3) + '-' + value.slice(3);
+            } else if (value.length > 6) {
+                value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6, 10);
+            }
+            e.target.value = value;
+            validateForm();
+        });
+
+        // reCAPTCHA callback
+        function onRecaptchaSuccess(token) {
+            recaptchaVerified = true;
+            recaptchaError.textContent = '';
+            console.log('reCAPTCHA verified:', token); // In production, send to backend
+            validateForm();
+        }
 
         function validateForm() {
             let valid = true;
 
+            // Name validation
             if (nameInput.value.trim() === '') {
                 nameError.textContent = 'Name is required.';
                 valid = false;
@@ -289,6 +404,7 @@
                 nameError.textContent = '';
             }
 
+            // Email validation
             if (!/\S+@\S+\.\S+/.test(emailInput.value)) {
                 emailError.textContent = 'Valid email is required.';
                 valid = false;
@@ -296,6 +412,15 @@
                 emailError.textContent = '';
             }
 
+            // Phone validation (123-456-7890 format)
+            if (!/^\d{3}-\d{3}-\d{4}$/.test(phoneInput.value)) {
+                phoneError.textContent = 'Phone number is required.';
+                valid = false;
+            } else {
+                phoneError.textContent = '';
+            }
+
+            // Message validation
             if (messageInput.value.trim() === '') {
                 messageError.textContent = 'Message is required.';
                 valid = false;
@@ -303,6 +428,7 @@
                 messageError.textContent = '';
             }
 
+            // Age verification
             if (!ageVerify.checked) {
                 ageError.textContent = 'You must confirm your age.';
                 valid = false;
@@ -310,20 +436,37 @@
                 ageError.textContent = '';
             }
 
+            // reCAPTCHA validation
+            if (!recaptchaVerified) {
+                recaptchaError.textContent = 'Please complete the reCAPTCHA verification.';
+                valid = false;
+            } else {
+                recaptchaError.textContent = '';
+            }
+
             submitBtn.disabled = !valid;
+            return valid;
         }
+
+        // Initialize form validation on page load
+        validateForm();
 
         nameInput.addEventListener('input', validateForm);
         emailInput.addEventListener('input', validateForm);
+        phoneInput.addEventListener('input', validateForm);
         messageInput.addEventListener('input', validateForm);
         ageVerify.addEventListener('change', validateForm);
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Simulate sending SMS verification code
-            generatedCode = Math.floor(1000 + Math.random() * 9000).toString(); // Mock code
-            console.log('Generated verification code:', generatedCode); // In production, send via Twilio
-            verificationModal.style.display = 'block';
+            if (validateForm()) {
+                // Update verification modal with formatted phone number
+                verificationMessage.textContent = `We will send a verification code to ${phoneInput.value} to confirm your email. Please enter the code below to complete your submission.`;
+                // Simulate sending SMS verification code
+                generatedCode = Math.floor(1000 + Math.random() * 9000).toString(); // Mock 4-digit code
+                console.log('Generated verification code:', generatedCode); // In production, send via Twilio
+                verificationModal.style.display = 'block';
+            }
         });
 
         function verifyCode() {
@@ -332,6 +475,8 @@
                 form.reset();
                 verificationModal.style.display = 'none';
                 submitBtn.disabled = true;
+                recaptchaVerified = false; // Reset reCAPTCHA
+                grecaptcha.reset(); // Reset reCAPTCHA widget
             } else {
                 codeError.textContent = 'Invalid verification code. Please try again.';
             }
@@ -340,10 +485,57 @@
         function closeVerificationModal() {
             verificationModal.style.display = 'none';
         }
+
+        // Cookie Consent Functionality
+        function setCookie(name, value) {
+            document.cookie = name + "=" + value + "; path=/; SameSite=Lax";
+            console.log(`Session cookie set: ${name}=${value}`);
+            sessionStorage.setItem('cookie_consent_shown', 'true');
+            console.log("Session storage set: cookie_consent_shown=true");
+        }
+
+        function getCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) {
+                const cookieValue = parts.pop().split(";").shift();
+                console.log(`Cookie found: ${name}=${cookieValue}`);
+                return cookieValue;
+            }
+            console.log(`Cookie not found: ${name}`);
+            return null;
+        }
+
+        function closeCookiePopup() {
+            document.getElementById('cookiePopup').style.display = 'none';
+        }
+
         window.onclick = (event) => {
             if (event.target === verificationModal) {
                 closeVerificationModal();
             }
+            if (event.target === document.getElementById('cookiePopup')) {
+                closeCookiePopup();
+            }
+        };
+
+        window.onload = function() {
+            const consent = getCookie('cookie_consent');
+            const consentShown = sessionStorage.getItem('cookie_consent_shown');
+            console.log(`Session cookie check: consent=${consent}, consentShown=${consentShown}`);
+            if (!consent && !consentShown) {
+                document.getElementById('cookiePopup').style.display = 'block';
+            }
+
+            document.getElementById('acceptCookies').onclick = function() {
+                setCookie('cookie_consent', 'accepted');
+                closeCookiePopup();
+            };
+
+            document.getElementById('rejectCookies').onclick = function() {
+                setCookie('cookie_consent', 'rejected');
+                closeCookiePopup();
+            };
         };
     </script>
 </body>
