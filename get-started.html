@@ -100,6 +100,10 @@
             width: auto; 
             margin-right: 10px; 
         }
+        .recaptcha-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
         button { 
             background: #007bff; 
             color: white; 
@@ -183,14 +187,14 @@
             font-weight: bold;
             font-size: 0.9em;
             color: white;
-            background: #007bff; /* Ainsley */
+            background: #007bff;
             padding: 5px 10px;
             border-radius: 12px;
             display: inline-block;
             margin-bottom: 5px;
         }
         .conversation .agent .sender {
-            background: #28a745; /* Agent */
+            background: #28a745;
         }
         .conversation .message-text {
             font-size: 1em;
@@ -226,14 +230,14 @@
         footer { 
             background-color: #343a40; 
             color: white; 
-            padding: 20px; 
+            padding: 30px 20px; 
             text-align: center; 
         }
         footer a { 
             color: #ffc107; 
             text-decoration: none; 
-            margin: 0 10px; 
-            font-weight: bold; 
+            margin: 0 15px; 
+            font-weight: 600; 
         }
         footer a:hover { 
             text-decoration: underline; 
@@ -243,6 +247,73 @@
             font-size: 0.9em; 
             margin-top: -15px; 
             margin-bottom: 15px; 
+        }
+        .cookie-popup {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 2000;
+            width: 300px;
+            text-align: center;
+            animation: slideInUp 0.5s ease-out forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .cookie-popup p {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .cookie-popup a {
+            color: #ffc107;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cookie-popup a:hover {
+            text-decoration: underline;
+        }
+        .cookie-popup .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .cookie-popup button {
+            background: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+        .cookie-popup button:hover {
+            background: #0056b3;
+        }
+        .cookie-popup .reject-btn {
+            background: #6c757d;
+        }
+        .cookie-popup .reject-btn:hover {
+            background: #5a6268;
+        }
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
         @media (max-width: 768px) { 
             header .container {
@@ -263,9 +334,27 @@
                 margin-right: 5%;
             }
             .opt-in, .age-verify { align-items: flex-start; }
+            .cookie-popup {
+                width: 90%;
+                right: 10px;
+                bottom: 10px;
+                padding: 15px;
+            }
+            .cookie-popup p {
+                font-size: 0.8em;
+            }
+            .cookie-popup button {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+            footer a {
+                display: inline-block;
+                margin: 5px 10px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <header>
@@ -273,9 +362,6 @@
             <h1>PrivacyQuote</h1>
             <nav>
                 <a href="index.html">Home</a>
-                <a href="index.html#services">Services</a>
-                <a href="index.html#ainsley">Meet Ainsley</a>
-                <a href="index.html#compliance">Compliance</a>
                 <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="terms-of-use.html">Terms of Use</a>
                 <a href="contact.html">Contact</a>
@@ -298,7 +384,7 @@
             <div id="emailError" class="error"></div>
 
             <label for="phone">Mobile Phone Number:</label>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890" required>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" maxlength="12" required>
             <div id="phoneError" class="error"></div>
 
             <label for="state">State of Operation:</label>
@@ -369,6 +455,11 @@
             </div>
             <div id="optInError" class="error"></div>
 
+            <div class="recaptcha-container">
+                <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY" data-callback="onRecaptchaSuccess"></div>
+                <div id="recaptchaError" class="error"></div>
+            </div>
+
             <button type="submit" id="submitBtn" disabled>Start Texting with Ainsley</button>
         </form>
         <button class="secondary-button" id="sampleBtn">View Sample Conversation</button>
@@ -409,7 +500,7 @@
                 </div>
                 <div class="message ainsley">
                     <span class="sender">Ainsley</span>
-                    <div class="message-text">Super simple! We integrate directly with your lead vendors via API connectivity, so as you buy leads in real time, they're automatically uploaded to PrivacyQuote for me to communicate with Ainsley. That means no manual uploads—leads drop in seamlessly with API hooks for instant engagement. I handle the rest—engaging leads in conversations where frequency varies but typically 10 - 15 messages, all TCPA-compliant with double opt-in. For example, I might text: “Hi [Lead], got a 2024 BMW X5? Reply YES to explore discounts.” Want to see a demo of that?</div>
+                    <div class="message-text">So easy! We integrate directly with your lead vendors via API, so as you purchase leads in real time, they’re automatically sent to our platform for me to engage. I nurture leads with friendly SMS conversations—typically 10 to 15 messages, always TCPA-compliant with double opt-in. For example, I might text: “Hi Stephanie, got a 2024 BMW X5? Reply YES to explore discounts!” Want to see how I chat with leads? Check out my demo on the homepage!</div>
                 </div>
                 <div class="message agent">
                     <span class="sender">Agent</span>
@@ -430,6 +521,27 @@
             </div>
             <p>This demo shows Ainsley’s nurturing style for agents—explaining our services and guiding you to a callback, all while staying TCPA-compliant.</p>
             <button class="modal-button" onclick="closeDemoModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Verification Modal -->
+    <div id="verificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeVerificationModal()">&times;</span>
+            <h3>Verification Required</h3>
+            <p id="verificationMessage">We will send a verification code to your phone number to confirm your email. Please enter the code below to complete your submission.</p>
+            <input type="text" id="verificationCode" placeholder="Enter verification code" required>
+            <div id="codeError" class="error"></div>
+            <button onclick="verifyCode()">Verify</button>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Popup -->
+    <div id="cookiePopup" class="cookie-popup">
+        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <div class="button-container">
+            <button id="acceptCookies">Accept</button>
+            <button id="rejectCookies" class="reject-btn">Reject</button>
         </div>
     </div>
 
@@ -456,11 +568,24 @@
         const submitBtn = document.getElementById('submitBtn');
         const confirmModal = document.getElementById('confirmModal');
         const demoModal = document.getElementById('demoModal');
+        const verificationModal = document.getElementById('verificationModal');
+        const verificationMessage = document.getElementById('verificationMessage');
+        const verificationCode = document.getElementById('verificationCode');
+        const codeError = document.getElementById('codeError');
         const sampleBtn = document.getElementById('sampleBtn');
         const optInLabel = document.getElementById('optInLabel');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const phoneError = document.getElementById('phoneError');
+        const stateError = document.getElementById('stateError');
+        const ageError = document.getElementById('ageError');
+        const optInError = document.getElementById('optInError');
+        const recaptchaError = document.getElementById('recaptchaError');
         const closeConfirm = document.querySelector('#confirmModal .close');
         const closeDemo = document.querySelector('#demoModal .close');
         const viewSampleFromConfirm = document.getElementById('viewSampleFromConfirm');
+        let generatedCode = '';
+        let recaptchaVerified = false;
 
         // State-specific opt-in text
         const stateSpecificText = {
@@ -476,42 +601,130 @@
             const state = stateSelect.value;
             const defaultText = 'I consent to receive automated SMS/MMS messages from PrivacyQuote’s AI assistant, Ainsley, about partnering and lead integration. Message and data rates may apply. Reply STOP to opt out, HELP for info. This is not a condition of purchase. View our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-of-use.html">Terms of Use</a>.';
             optInLabel.innerHTML = defaultText + (stateSpecificText[state] || '');
+            validateForm();
         });
 
-        function updateSubmitButton() {
-            submitBtn.disabled = !(optIn.checked && ageVerify.checked && nameInput.value && emailInput.value && phoneInput.value && stateSelect.value);
+        // Auto-format phone number as 123-456-7890
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+            if (value.length > 3 && value.length <= 6) {
+                value = value.slice(0, 3) + '-' + value.slice(3);
+            } else if (value.length > 6) {
+                value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6, 10);
+            }
+            e.target.value = value;
+            validateForm();
+        });
+
+        // reCAPTCHA callback
+        function onRecaptchaSuccess(token) {
+            recaptchaVerified = true;
+            recaptchaError.textContent = '';
+            console.log('reCAPTCHA verified:', token); // In production, send to backend
+            validateForm();
         }
 
-        optIn.addEventListener('change', updateSubmitButton);
-        ageVerify.addEventListener('change', updateSubmitButton);
-        nameInput.addEventListener('input', updateSubmitButton);
-        emailInput.addEventListener('input', updateSubmitButton);
-        phoneInput.addEventListener('input', updateSubmitButton);
-        stateSelect.addEventListener('change', updateSubmitButton);
+        function validateForm() {
+            let valid = true;
+
+            // Name validation
+            if (nameInput.value.trim() === '') {
+                nameError.textContent = 'Name is required.';
+                valid = false;
+            } else {
+                nameError.textContent = '';
+            }
+
+            // Email validation
+            if (!/\S+@\S+\.\S+/.test(emailInput.value)) {
+                emailError.textContent = 'Valid email is required.';
+                valid = false;
+            } else {
+                emailError.textContent = '';
+            }
+
+            // Phone validation (123-456-7890 format)
+            if (!/^\d{3}-\d{3}-\d{4}$/.test(phoneInput.value)) {
+                phoneError.textContent = 'Phone number is required.';
+                valid = false;
+            } else {
+                phoneError.textContent = '';
+            }
+
+            // State validation
+            if (stateSelect.value === '') {
+                stateError.textContent = 'State is required.';
+                valid = false;
+            } else {
+                stateError.textContent = '';
+            }
+
+            // Age verification
+            if (!ageVerify.checked) {
+                ageError.textContent = 'You must confirm your age.';
+                valid = false;
+            } else {
+                ageError.textContent = '';
+            }
+
+            // Opt-in validation
+            if (!optIn.checked) {
+                optInError.textContent = 'You must consent to receive SMS messages.';
+                valid = false;
+            } else {
+                optInError.textContent = '';
+            }
+
+            // reCAPTCHA validation
+            if (!recaptchaVerified) {
+                recaptchaError.textContent = 'Please complete the reCAPTCHA verification.';
+                valid = false;
+            } else {
+                recaptchaError.textContent = '';
+            }
+
+            submitBtn.disabled = !valid;
+            return valid;
+        }
+
+        // Initialize form validation on page load
+        validateForm();
+
+        nameInput.addEventListener('input', validateForm);
+        emailInput.addEventListener('input', validateForm);
+        phoneInput.addEventListener('input', validateForm);
+        stateSelect.addEventListener('change', validateForm);
+        ageVerify.addEventListener('change', validateForm);
+        optIn.addEventListener('change', validateForm);
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const phone = document.getElementById('phone').value;
-            if (!/^\d{10}$/.test(phone)) {
-                alert('Please enter a valid 10-digit US phone number.');
-                return;
+            if (validateForm()) {
+                // Update verification modal with formatted phone number
+                verificationMessage.textContent = `We will send a verification code to ${phoneInput.value} to confirm your email. Please enter the code below to complete your submission.`;
+                // Simulate sending SMS verification code
+                generatedCode = Math.floor(1000 + Math.random() * 9000).toString(); // Mock 4-digit code
+                console.log('Generated verification code:', generatedCode); // In production, send via Twilio
+                verificationModal.style.display = 'block';
             }
-            confirmModal.style.display = 'block';
-            console.log('Form submitted:', new FormData(form)); // Replace with backend API call
         });
 
-        sampleBtn.onclick = () => demoModal.style.display = 'block';
-        viewSampleFromConfirm.onclick = () => {
-            confirmModal.style.display = 'none';
-            demoModal.style.display = 'block';
-        };
+        function verifyCode() {
+            if (verificationCode.value === generatedCode) {
+                confirmModal.style.display = 'block';
+                verificationModal.style.display = 'none';
+                form.reset();
+                submitBtn.disabled = true;
+                recaptchaVerified = false; // Reset reCAPTCHA
+                grecaptcha.reset(); // Reset reCAPTCHA widget
+            } else {
+                codeError.textContent = 'Invalid verification code. Please try again.';
+            }
+        }
 
-        closeConfirm.onclick = () => confirmModal.style.display = 'none';
-        closeDemo.onclick = () => demoModal.style.display = 'none';
-        window.onclick = (event) => {
-            if (event.target === confirmModal) confirmModal.style.display = 'none';
-            if (event.target === demoModal) demoModal.style.display = 'none';
-        };
+        function closeVerificationModal() {
+            verificationModal.style.display = 'none';
+        }
 
         function closeConfirmModal() {
             confirmModal.style.display = 'none';
@@ -520,6 +733,96 @@
         function closeDemoModal() {
             demoModal.style.display = 'none';
         }
+
+        sampleBtn.onclick = () => {
+            demoModal.style.display = 'block';
+        };
+
+        viewSampleFromConfirm.onclick = () => {
+            confirmModal.style.display = 'none';
+            demoModal.style.display = 'block';
+        };
+
+        closeConfirm.onclick = () => {
+            confirmModal.style.display = 'none';
+        };
+
+        closeDemo.onclick = () => {
+            demoModal.style.display = 'none';
+        };
+
+        window.onclick = (event) => {
+            if (event.target === confirmModal) {
+                confirmModal.style.display = 'none';
+            }
+            if (event.target === demoModal) {
+                demoModal.style.display = 'none';
+            }
+            if (event.target === verificationModal) {
+                closeVerificationModal();
+            }
+            if (event.target === document.getElementById('cookiePopup')) {
+                closeCookiePopup();
+            }
+        };
+
+        // Cookie Consent Functionality
+        function setCookie(name, value) {
+            document.cookie = name + "=" + value + "; path=/; SameSite=Lax";
+            console.log(`Session cookie set: ${name}=${value}`);
+            sessionStorage.setItem('cookie_consent_shown', 'true');
+            console.log("Session storage set: cookie_consent_shown=true");
+        }
+
+        function getCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) {
+                const cookieValue = parts.pop().split(";").shift();
+                console.log(`Cookie found: ${name}=${cookieValue}`);
+                return cookieValue;
+            }
+            console.log(`Cookie not found: ${name}`);
+            return null;
+        }
+
+        function closeCookiePopup() {
+            document.getElementById('cookiePopup').style.display = 'none';
+        }
+
+        window.onclick = (event) => {
+            if (event.target === confirmModal) {
+                confirmModal.style.display = 'none';
+            }
+            if (event.target === demoModal) {
+                demoModal.style.display = 'none';
+            }
+            if (event.target === verificationModal) {
+                closeVerificationModal();
+            }
+            if (event.target === document.getElementById('cookiePopup')) {
+                closeCookiePopup();
+            }
+        };
+
+        window.onload = function() {
+            const consent = getCookie('cookie_consent');
+            const consentShown = sessionStorage.getItem('cookie_consent_shown');
+            console.log(`Session cookie check: consent=${consent}, consentShown=${consentShown}`);
+            if (!consent && !consentShown) {
+                document.getElementById('cookiePopup').style.display = 'block';
+            }
+
+            document.getElementById('acceptCookies').onclick = function() {
+                setCookie('cookie_consent', 'accepted');
+                closeCookiePopup();
+            };
+
+            document.getElementById('rejectCookies').onclick = function() {
+                setCookie('cookie_consent', 'rejected');
+                closeCookiePopup();
+            };
+        };
     </script>
 </body>
 </html>
