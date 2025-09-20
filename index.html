@@ -130,8 +130,8 @@
             max-width: 800px;
             margin: 0 auto 20px;
             font-size: 1.1em;
-            opacity: 0;
-            animation: fadeIn 1s ease-in forwards;
+            opacity: 1; /* Ensure text is visible by default */
+            animation: fadeIn 1s ease-in; /* Optional animation */
         }
         .ainsley-section p:nth-child(2) { animation-delay: 0.2s; }
         .ainsley-section p:nth-child(3) { animation-delay: 0.4s; }
@@ -342,6 +342,19 @@
                 opacity: 1;
             }
         }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         footer {
             background-color: #343a40;
             color: white;
@@ -415,14 +428,14 @@
     <section id="home" class="hero">
         <div class="container">
             <h1>Engage Your Leads with Secure, AI-Powered SMS Solutions</h1>
-            <p>PrivacyQuote empowers insurance agents to integrate their lead vendors and let Ainsley, our conversational AI, nurture leads through personalized texting. Ainsley helps discover discounts, qualifies interests, and encourages Click-to-Call connections to you—the agent who provided the lead.</p>
+            <p>PrivacyQuote empowers insurance agents to upload their own SMS-opted-in leads and let Ainsley, our conversational AI, nurture them through personalized texting. Ainsley helps discover discounts, qualifies interests, and encourages Click-to-Call connections to you—the agent who provided the lead.</p>
             <button onclick="window.location.href='get-started.html'">Get Started with Ainsley</button>
         </div>
     </section>
 
     <section id="ainsley" class="section ainsley-section">
         <h2>Ainsley: Your Trusted Partner for Lead Success</h2>
-        <p>Meet Ainsley, the AI assistant that transforms how you connect with your insurance leads. Designed for agents, Ainsley seamlessly engages your pre-opted-in leads with friendly, tailored SMS conversations to uncover discounts and drive conversions.</p>
+        <p>Meet Ainsley, the AI assistant that transforms how you connect with your insurance leads. Designed for agents, Ainsley seamlessly takes your pre-opted-in leads and engages them with friendly, tailored SMS conversations to uncover discounts and drive conversions.</p>
         <p>With Ainsley, your leads feel valued as she guides them to Click-to-Call connections with you, all while ensuring every text meets strict TCPA and CTIA compliance standards. Ready to elevate your lead game? Let Ainsley do the heavy lifting.</p>
         <button id="demoBtn">See Ainsley's SMS Conversation Example</button>
     </section>
@@ -432,11 +445,11 @@
         <div class="services">
             <div class="service-card">
                 <h3>Agent-Provided Leads</h3>
-                <p>We integrate directly with your lead vendors via API, so as you purchase leads in real time, they're automatically sent to our platform for Ainsley to engage.</p>
+                <p>Upload your purchased, SMS-opted-in leads securely. Ainsley takes it from there, ensuring compliant engagement without us selling or generating leads.</p>
             </div>
             <div class="service-card">
                 <h3>Ainsley's Conversational AI</h3>
-                <p>Ainsley engages leads in natural SMS conversations (frequency varies but typically 10 - 15 messages), discovering discounts they qualify for and nurturing them toward action.</p>
+                <p>Ainsley engages leads in natural SMS conversations (10-15 messages per session), discovering discounts they qualify for and nurturing them toward action.</p>
             </div>
             <div class="service-card">
                 <h3>Double Opt-In & Click-to-Call</h3>
@@ -504,7 +517,7 @@
                     <div class="message-text">Sounds good! I'll click to call.</div>
                 </div>
             </div>
-            <p class="demo-info">This demo shows Ainsley’s nurturing style—confirming details casually while building trust searching for discounts. All conversations are TCPA-compliant with easy opt-outs.<br><br>Interested in seeing how I work with leads? Check out my demo below!</p>
+            <p class="demo-info">This demo shows Ainsley’s nurturing style—confirming details casually while building trust and guiding to action. All conversations are TCPA-compliant with easy opt-outs.<br><br>Interested in seeing how I work with leads? Check out my demo below!</p>
             <button class="modal-button" onclick="closeModal()">Close</button>
             <button class="modal-button" onclick="window.location.href='get-started.html'">Connect with Our Team</button>
         </div>
@@ -549,7 +562,7 @@
 
         // Cookie Consent Functionality
         function setCookie(name, value) {
-            document.cookie = name + "=" + value + "; path=/; SameSite=Lax";
+            document.cookie = name + "=" + value + "; path=/; SameSite=Lax; Secure";
             console.log(`Session cookie set: ${name}=${value}`);
             sessionStorage.setItem('cookie_consent_shown', 'true');
             console.log("Session storage set: cookie_consent_shown=true");
