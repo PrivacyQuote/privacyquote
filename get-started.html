@@ -227,21 +227,6 @@
         .secondary-button:hover { 
             background: #5a6268; 
         }
-        footer { 
-            background-color: #343a40; 
-            color: white; 
-            padding: 30px 20px; 
-            text-align: center; 
-        }
-        footer a { 
-            color: #ffc107; 
-            text-decoration: none; 
-            margin: 0 15px; 
-            font-weight: 600; 
-        }
-        footer a:hover { 
-            text-decoration: underline; 
-        }
         .error { 
             color: red; 
             font-size: 0.9em; 
@@ -768,7 +753,7 @@
 
         // Cookie Consent Functionality
         function setCookie(name, value) {
-            document.cookie = name + "=" + value + "; path=/; SameSite=Lax";
+            document.cookie = name + "=" + value + "; path=/; SameSite=Lax; Secure";
             console.log(`Session cookie set: ${name}=${value}`);
             sessionStorage.setItem('cookie_consent_shown', 'true');
             console.log("Session storage set: cookie_consent_shown=true");
