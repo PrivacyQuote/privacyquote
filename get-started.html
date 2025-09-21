@@ -282,12 +282,12 @@
         .cookie-popup button {
             background: #007bff;
             color: white;
-            padding: 8px 16px;
+            padding: 6px 12px; /* Match index.html mobile size */
+            font-size: 0.8em; /* Match index.html mobile size */
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9em;
-            margin: 0 5px;
+            margin: 0 3px; /* Consistent with index.html mobile */
             display: inline-block; /* Fallback for non-flex support */
             transition: background 0.3s;
         }
@@ -319,16 +319,15 @@
                 display: block; 
                 margin: 5px 0; 
             }
-            .section { padding: 20px; } 
-            form { padding: 15px; } 
-            .modal-content { width: 95%; margin: 10% auto; padding: 20px; } 
-            .conversation { font-size: 0.9em; }
-            .conversation .message {
-                max-width: 90%;
-                margin-left: 5%;
-                margin-right: 5%;
+            .section {
+                padding: 30px 20px;
             }
-            .opt-in, .age-verify { align-items: flex-start; }
+            form {
+                padding: 15px;
+            }
+            .age-verify {
+                align-items: flex-start;
+            }
             .cookie-popup {
                 width: 90%;
                 right: 10px;
@@ -343,8 +342,8 @@
                 justify-content: center;
             }
             .cookie-popup button {
-                padding: 6px 12px;
-                font-size: 0.8em;
+                padding: 6px 12px; /* Consistent with desktop */
+                font-size: 0.8em; /* Consistent with desktop */
                 margin: 0 3px;
             }
         }
