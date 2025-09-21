@@ -130,8 +130,8 @@
             max-width: 800px;
             margin: 0 auto 20px;
             font-size: 1.1em;
-            opacity: 1; /* Ensure text is visible by default */
-            animation: fadeIn 1s ease-in forwards; /* Optional animation */
+            opacity: 1;
+            animation: fadeIn 1s ease-in forwards;
         }
         .ainsley-section p:nth-child(2) { animation-delay: 0.2s; }
         .ainsley-section p:nth-child(3) { animation-delay: 0.4s; }
@@ -289,7 +289,6 @@
             width: 300px;
             text-align: center;
             animation: slideInUp 0.5s ease-out forwards;
-            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -524,7 +523,7 @@
     </div>
 
     <!-- Cookie Consent Popup -->
-    <div id="cookiePopup" class="cookie-popup">
+    <div id="cookiePopup" class="cookie-popup" style="display: none">
         <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>.</p>
         <div class="button-container">
             <button id="acceptCookies">Accept</button>
@@ -547,7 +546,7 @@
         // Cookie Consent Functionality
         function setCookie(name, value, days) {
             const expires = days ? `; expires=${new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString()}` : '';
-            document.cookie = `${name}=${value}${expires}; path=/; Secure; SameSite=Strict`;
+            document.cookie = `${name}=${value}${expires}; path=/privacyquote; Secure; SameSite=Strict`;
             console.log(`Cookie set: ${name}=${value}, expires=${expires}, location=${window.location.href}`);
         }
 
@@ -564,8 +563,13 @@
         }
 
         function closeCookiePopup() {
-            document.getElementById('cookiePopup').style.display = 'none';
-            console.log(`Popup closed: location=${window.location.href}`);
+            const popup = document.getElementById('cookiePopup');
+            if (popup) {
+                popup.style.display = 'none';
+                console.log(`Popup closed: location=${window.location.href}`);
+            } else {
+                console.log(`Popup element not found: location=${window.location.href}`);
+            }
         }
 
         // Modal Functionality
@@ -581,12 +585,14 @@
             modal.style.display = 'none';
             console.log(`Demo modal closed: location=${window.location.href}`);
         };
+
         window.onclick = (event) => {
             if (event.target === modal) {
                 modal.style.display = 'none';
                 console.log(`Modal closed via click outside: location=${window.location.href}`);
             }
-            if (event.target === document.getElementById('cookiePopup')) {
+            const popup = document.getElementById('cookiePopup');
+            if (event.target === popup) {
                 closeCookiePopup();
             }
         };
@@ -600,38 +606,52 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log(`DOM loaded: Checking consent for ${window.location.href}`);
             const consent = getCookie('cookie_consent');
-            if (consent) {
-                console.log(`Consent found: Hiding popup for ${window.location.href}`);
-                document.getElementById('cookiePopup').style.display = 'none';
+            if (!consent || (consent !== 'accepted' && consent !== 'rejected')) {
+                console.log(`No valid consent found: Showing popup for ${window.location.href}`);
+                const popup = document.getElementById('cookiePopup');
+                if (popup) {
+                    popup.style.display = 'block';
+                } else {
+                    console.log(`Popup element not found: location=${window.location.href}`);
+                }
             } else {
-                console.log(`No consent found: Showing popup for ${window.location.href}`);
-                document.getElementById('cookiePopup').style.display = 'block';
+                console.log(`Valid consent found (${consent}): Hiding popup for ${window.location.href}`);
+                closeCookiePopup();
             }
 
-            document.getElementById('acceptCookies').onclick = function() {
-                setCookie('cookie_consent', 'accepted', 365);
-                closeCookiePopup();
-            };
-
-            document.getElementById('rejectCookies').onclick = function() {
-                setCookie('cookie_consent', 'rejected', 365);
-                closeCookiePopup();
-            };
+            const acceptButton = document.getElementById('acceptCookies');
+            const rejectButton = document.getElementById('rejectCookies');
+            if (acceptButton) {
+                acceptButton.onclick = function() {
+                    setCookie('cookie_consent', 'accepted', 365);
+                    closeCookiePopup();
+                };
+            } else {
+                console.log(`Accept button not found: location=${window.location.href}`);
+            }
+            if (rejectButton) {
+                rejectButton.onclick = function() {
+                    setCookie('cookie_consent', 'rejected', 365);
+                    closeCookiePopup();
+                };
+            } else {
+                console.log(`Reject button not found: location=${window.location.href}`);
+            }
         });
 
         // Fallback check to ensure popup doesn't show if consent exists
         window.addEventListener('load', function() {
             const consent = getCookie('cookie_consent');
-            if (consent) {
+            if (consent && (consent === 'accepted' || consent === 'rejected')) {
                 console.log(`Fallback check: Hiding popup for ${window.location.href}`);
-                document.getElementById('cookiePopup').style.display = 'none';
+                closeCookiePopup();
             }
             // Periodic check for late-loaded consent
             setTimeout(() => {
                 const lateConsent = getCookie('cookie_consent');
-                if (lateConsent) {
+                if (lateConsent && (lateConsent === 'accepted' || lateConsent === 'rejected')) {
                     console.log(`Late check: Hiding popup for ${window.location.href}`);
-                    document.getElementById('cookiePopup').style.display = 'none';
+                    closeCookiePopup();
                 }
             }, 1000);
         });
