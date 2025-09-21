@@ -60,34 +60,25 @@
             font-size: 2em;
             color: #007bff;
             margin-bottom: 20px;
-            text-align: center;
         }
         .section h3 {
             font-size: 1.5em;
             color: #007bff;
-            margin: 30px 0 15px;
+            margin-top: 30px;
+            margin-bottom: 15px;
         }
         .section p {
             font-size: 1.1em;
             margin-bottom: 20px;
         }
         .section ul {
-            list-style: none;
+            list-style: disc;
+            margin-left: 20px;
             margin-bottom: 20px;
-            padding-left: 20px;
         }
-        .section ul li {
-            position: relative;
-            margin-bottom: 10px;
+        .section li {
             font-size: 1.1em;
-            padding-left: 25px;
-        }
-        .section ul li::before {
-            content: '•';
-            color: #007bff;
-            position: absolute;
-            left: 0;
-            font-size: 1.2em;
+            margin-bottom: 10px;
         }
         .section a {
             color: #ffc107;
@@ -100,13 +91,13 @@
         footer {
             background-color: #343a40;
             color: white;
-            padding: 30px 20px;
+            padding: 20px;
             text-align: center;
         }
         footer a {
             color: #ffc107;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 10px;
             font-weight: 600;
         }
         footer a:hover {
@@ -126,9 +117,6 @@
             width: 300px;
             text-align: center;
             animation: slideInUp 0.5s ease-out forwards;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
         .cookie-popup p {
             font-size: 0.9em;
@@ -142,12 +130,6 @@
         .cookie-popup a:hover {
             text-decoration: underline;
         }
-        .cookie-popup .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
         .cookie-popup button {
             background: #007bff;
             color: white;
@@ -156,8 +138,8 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 0.9em;
+            margin: 0 5px;
             transition: background 0.3s;
-            display: inline-block;
         }
         .cookie-popup button:hover {
             background: #0056b3;
@@ -203,10 +185,6 @@
                 padding: 6px 12px;
                 font-size: 0.8em;
             }
-            footer a {
-                display: inline-block;
-                margin: 5px 10px;
-            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -216,86 +194,78 @@
         <div class="container">
             <h1>PrivacyQuote</h1>
             <nav>
-                <a href="https://privacyquote.github.io/privacyquote/index.html">Home</a>
-                <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>
-                <a href="https://privacyquote.github.io/privacyquote/terms-of-use.html">Terms of Use</a>
-                <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
+                <a href="index.html">Home</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-use.html">Terms of Use</a>
+                <a href="contact.html">Contact</a>
             </nav>
         </div>
     </header>
 
     <section class="section">
         <h2>Privacy Policy</h2>
-        <p>Effective Date: September 20, 2025</p>
-        <p>At PrivacyQuote, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
-
-        <h3>Information We Collect</h3>
-        <p>We may collect the following types of information:</p>
+        <p>Effective Date: September 21, 2025</p>
+        <p>At PrivacyQuote, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you use our website, services, or interact with Ainsley, our AI-powered assistant for insurance lead nurturing.</p>
+        
+        <h3>1. Information We Collect</h3>
+        <p>We collect information to provide and improve our services, including:</p>
         <ul>
-            <li><strong>Personal Information:</strong> When you fill out forms (e.g., Contact Us or Get Started), we collect your name, email address, phone number, and state of operation.</li>
-            <li><strong>Lead Information:</strong> For insurance agents, we collect data about leads you provide, such as names, contact details, and vehicle information, to facilitate SMS nurturing by our AI, Ainsley.</li>
-            <li><strong>Usage Data:</strong> We collect information about how you interact with our website, such as IP address, browser type, pages visited, and time spent, using cookies and similar technologies.</li>
-            <li><strong>SMS Consent Data:</strong> When you opt in to receive SMS messages from Ainsley, we collect your consent records, including timestamps and IP addresses, to comply with TCPA and CTIA regulations.</li>
+            <li><strong>Personal Information</strong>: Name, email address, phone number, and state of operation provided through our forms (e.g., Contact or Get Started pages).</li>
+            <li><strong>Lead Data</strong>: Information from insurance lead vendors (with prior consent) to enable Ainsley’s SMS conversations.</li>
+            <li><strong>Usage Data</strong>: Information about how you interact with our website, such as IP address, browser type, and pages visited, collected via cookies and analytics tools.</li>
+            <li><strong>Communication Data</strong>: SMS interactions with Ainsley, including consent records (e.g., “YES” replies) and opt-out requests (e.g., “STOP”).</li>
         </ul>
 
-        <h3>How We Use Your Information</h3>
-        <p>We use the collected information to:</p>
+        <h3>2. How We Use Your Information</h3>
+        <p>Your information is used to:</p>
         <ul>
-            <li>Provide and improve our services, including lead nurturing and personalized SMS communications.</li>
-            <li>Respond to your inquiries via our Contact Us form or support channels.</li>
-            <li>Comply with legal requirements, such as TCPA, CTIA, GDPR, and CCPA.</li>
-            <li>Analyze website usage to enhance functionality and user experience.</li>
-            <li>Facilitate Click-to-Call connections between leads and agents.</li>
+            <li>Facilitate Ainsley’s SMS lead nurturing and Click-to-Call connections.</li>
+            <li>Respond to inquiries submitted via our Contact or Get Started forms.</li>
+            <li>Ensure compliance with TCPA, CTIA, GDPR, and CCPA regulations.</li>
+            <li>Improve our website and services through analytics (e.g., Google Analytics).</li>
         </ul>
 
-        <h3>Cookies and Tracking Technologies</h3>
-        <p>We use cookies to enhance functionality and analyze trends. You can manage cookie preferences via our consent popup. Essential cookies are always active to ensure site functionality, while analytics cookies are optional and require your consent.</p>
+        <h3>3. Cookies and Tracking</h3>
+        <p>We use cookies to enhance your experience and analyze usage. You can accept or reject cookies via our consent popup. Essential cookies are always active; non-essential cookies (e.g., analytics) require consent.</p>
 
-        <h3>Sharing Your Information</h3>
-        <p>We do not sell or share your personal information with third parties, except:</p>
+        <h3>4. Data Sharing and Disclosure</h3>
+        <p>We do not sell or share your data except:</p>
         <ul>
-            <li>With your explicit consent (e.g., sharing lead data with the providing agent).</li>
-            <li>To comply with legal obligations or protect our rights.</li>
-            <li>With service providers (e.g., Twilio for SMS) under strict confidentiality agreements.</li>
+            <li>With your assigned insurance agent for lead nurturing.</li>
+            <li>With service providers (e.g., Twilio for SMS) under strict confidentiality.</li>
+            <li>As required by law or to protect our rights.</li>
         </ul>
 
-        <h3>Your Rights</h3>
-        <p>You have the right to:</p>
+        <h3>5. Your Rights</h3>
+        <p>Under GDPR/CCPA, you may:</p>
         <ul>
-            <li>Access, correct, or delete your personal information.</li>
-            <li>Opt out of SMS communications by replying "STOP" or contacting us.</li>
-            <li>Request information about data collection and usage.</li>
-            <li>Disable non-essential cookies via our consent popup.</li>
+            <li>Access, correct, or delete your personal data.</li>
+            <li>Opt out of SMS by replying “STOP” or emailing <a href="mailto:support@privacyquote.com">support@privacyquote.com</a>.</li>
+            <li>Manage cookie preferences via our website.</li>
         </ul>
-        <p>To exercise these rights, contact us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a>.</p>
 
-        <h3>Data Security</h3>
-        <p>We implement industry-standard security measures, including encryption and secure servers, to protect your data. However, no method is 100% secure, and we cannot guarantee absolute security.</p>
+        <h3>6. Security</h3>
+        <p>We use industry-standard measures (e.g., encryption, secure servers) to protect your data, but no method is 100% secure.</p>
 
-        <h3>Changes to This Policy</h3>
-        <p>We may update this Privacy Policy periodically. Changes will be posted on this page with an updated effective date. Your continued use of our services constitutes acceptance of the updated policy.</p>
-
-        <h3>Contact Us</h3>
-        <p>If you have questions about this Privacy Policy, contact us:</p>
+        <h3>7. Contact Us</h3>
+        <p>For questions or to exercise your rights, contact us at:</p>
         <p>Email: <a href="mailto:support@privacyquote.com">support@privacyquote.com</a><br>Phone: 866-580-7552<br>Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </section>
 
     <!-- Cookie Consent Popup -->
-    <div id="cookiePopup" class="cookie-popup" style="display: none">
-        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>.</p>
-        <div class="button-container">
-            <button id="acceptCookies">Accept</button>
-            <button id="rejectCookies" class="reject-btn">Reject</button>
-        </div>
+    <div id="cookiePopup" class="cookie-popup">
+        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <button id="acceptCookies">Accept</button>
+        <button id="rejectCookies" class="reject-btn">Reject</button>
     </div>
 
     <footer>
         <p>&copy; 2025 PrivacyQuote. All rights reserved.</p>
         <div>
-            <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a> |
-            <a href="https://privacyquote.github.io/privacyquote/terms-of-use.html">Terms of Use</a> |
-            <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance</a> |
-            <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a> |
+            <a href="terms-of-use.html">Terms of Use</a> |
+            <a href="sms-compliance.html">SMS Compliance</a> |
+            <a href="contact.html">Contact</a>
         </div>
         <p>Email: support@privacyquote.com | Phone: 866-580-7552 | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
@@ -303,92 +273,48 @@
     <script>
         // Cookie Consent Functionality
         function setCookie(name, value, days) {
-            const expires = days ? `; expires=${new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString()}` : '';
-            document.cookie = `${name}=${value}${expires}; path=/privacyquote; Secure; SameSite=Strict`;
-            console.log(`Cookie set: ${name}=${value}, expires=${expires}, location=${window.location.href}`);
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
         }
 
         function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) {
-                const cookieValue = parts.pop().split(';').shift();
-                console.log(`Cookie found: ${name}=${cookieValue}, location=${window.location.href}`);
-                return cookieValue;
-            }
-            console.log(`Cookie not found: ${name}, location=${window.location.href}`);
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
             return null;
         }
 
         function closeCookiePopup() {
-            const popup = document.getElementById('cookiePopup');
-            if (popup) {
-                popup.style.display = 'none';
-                console.log(`Popup closed: location=${window.location.href}`);
-            } else {
-                console.log(`Popup element not found: location=${window.location.href}`);
-            }
+            document.getElementById('cookiePopup').style.display = 'none';
         }
 
-        // Check consent as soon as DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log(`DOM loaded: Checking consent for ${window.location.href}`);
-            const consent = getCookie('cookie_consent');
-            if (!consent || (consent !== 'accepted' && consent !== 'rejected')) {
-                console.log(`No valid consent found: Showing popup for ${window.location.href}`);
-                const popup = document.getElementById('cookiePopup');
-                if (popup) {
-                    popup.style.display = 'block';
-                } else {
-                    console.log(`Popup element not found: location=${window.location.href}`);
-                }
-            } else {
-                console.log(`Valid consent found (${consent}): Hiding popup for ${window.location.href}`);
-                closeCookiePopup();
-            }
-
-            const acceptButton = document.getElementById('acceptCookies');
-            const rejectButton = document.getElementById('rejectCookies');
-            if (acceptButton) {
-                acceptButton.onclick = function() {
-                    setCookie('cookie_consent', 'accepted', 365);
-                    closeCookiePopup();
-                };
-            } else {
-                console.log(`Accept button not found: location=${window.location.href}`);
-            }
-            if (rejectButton) {
-                rejectButton.onclick = function() {
-                    setCookie('cookie_consent', 'rejected', 365);
-                    closeCookiePopup();
-                };
-            } else {
-                console.log(`Reject button not found: location=${window.location.href}`);
-            }
-        });
-
-        // Fallback check to ensure popup doesn't show if consent exists
-        window.addEventListener('load', function() {
-            const consent = getCookie('cookie_consent');
-            if (consent && (consent === 'accepted' || consent === 'rejected')) {
-                console.log(`Fallback check: Hiding popup for ${window.location.href}`);
-                closeCookiePopup();
-            }
-            // Periodic check for late-loaded consent
-            setTimeout(() => {
-                const lateConsent = getCookie('cookie_consent');
-                if (lateConsent && (lateConsent === 'accepted' || lateConsent === 'rejected')) {
-                    console.log(`Late check: Hiding popup for ${window.location.href}`);
-                    closeCookiePopup();
-                }
-            }, 1000);
-        });
-
         window.onclick = (event) => {
-            const popup = document.getElementById('cookiePopup');
-            if (event.target === popup) {
+            if (event.target === document.getElementById('cookiePopup')) {
                 closeCookiePopup();
             }
+        };
+
+        window.onload = function() {
+            if (!getCookie('cookie_consent')) {
+                document.getElementById('cookiePopup').style.display = 'block';
+            }
+
+            document.getElementById('acceptCookies').onclick = function() {
+                setCookie('cookie_consent', 'accepted', 365);
+                closeCookiePopup();
+                console.log('Cookies accepted'); // In production, enable non-essential cookies
+            };
+
+            document.getElementById('rejectCookies').onclick = function() {
+                setCookie('cookie_consent', 'rejected', 365);
+                closeCookiePopup();
+                console.log('Cookies rejected'); // In production, block non-essential cookies
+            };
         };
     </script>
 </body>
