@@ -5,168 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Use - PrivacyQuote</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            color: #333;
-            background-color: #f9f9f9;
-            line-height: 1.6;
-        }
-        header {
-            background: linear-gradient(90deg, #007bff, #0056b3);
-            color: white;
-            padding: 15px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        header .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            font-size: 1.8em;
-            font-weight: 700;
-        }
-        nav {
-            display: flex;
-            align-items: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1em;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #ffc107;
-        }
-        .section {
-            padding: 60px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .section h2 {
-            font-size: 2em;
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-        .section p {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
-        footer {
-            background-color: #343a40;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        footer a {
-            color: #ffc107;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: 600;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        .cookie-popup {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #343a40;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            z-index: 2000;
-            width: 300px;
-            text-align: center;
-            animation: slideInUp 0.5s ease-out forwards;
-        }
-        .cookie-popup p {
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
-        .cookie-popup a {
-            color: #ffc107;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .cookie-popup a:hover {
-            text-decoration: underline;
-        }
-        .cookie-popup button {
-            background: #007bff;
-            color: white;
-            padding: 8px 16px;
-            font-size: 0.9em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 0 5px;
-            display: inline-block;
-            transition: background 0.3s;
-        }
-        .cookie-popup button:hover {
-            background: #0056b3;
-        }
-        .cookie-popup .reject-btn {
-            background: #6c757d;
-        }
-        .cookie-popup .reject-btn:hover {
-            background: #5a6268;
-        }
-        @keyframes slideInUp {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        /* Mobile responsiveness to match index.html */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', Arial, sans-serif; color: #333; background-color: #f9f9f9; line-height: 1.6; }
+        header { background: linear-gradient(90deg, #007bff, #0056b3); color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        header .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 1.8em; font-weight: 700; }
+        nav { display: flex; align-items: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-size: 1em; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #ffc107; }
+        .section { padding: 60px 20px; max-width: 800px; margin: 0 auto; }
+        .section h2 { font-size: 2em; color: #007bff; margin-bottom: 20px; }
+        .section p { font-size: 1.1em; margin-bottom: 15px; }
+        footer { background-color: #343a40; color: white; padding: 20px; text-align: center; }
+        footer a { color: #ffc107; text-decoration: none; margin: 0 10px; font-weight: 600; }
+        footer a:hover { text-decoration: underline; }
+        .cookie-popup { display: none; position: fixed; bottom: 20px; right: 20px; background: #343a40; color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 2000; width: 300px; text-align: center; animation: slideInUp 0.5s ease-out forwards; }
+        .cookie-popup p { font-size: 0.9em; margin-bottom: 15px; }
+        .cookie-popup a { color: #ffc107; text-decoration: none; font-weight: 600; }
+        .cookie-popup a:hover { text-decoration: underline; }
+        .cookie-popup .button-container { display: flex; justify-content: center; }
+        .cookie-popup button { background: #007bff; color: white; padding: 8px 16px; font-size: 0.9em; border: none; border-radius: 5px; cursor: pointer; margin: 0 5px; display: inline-block; transition: background 0.3s; }
+        .cookie-popup button:hover { background: #0056b3; }
+        .cookie-popup .reject-btn { background: #6c757d; }
+        .cookie-popup .reject-btn:hover { background: #5a6268; }
+        @keyframes slideInUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                gap: 10px;
-            }
-            nav {
-                display: block; /* Reset to block to override flex */
-                width: 100%; /* Ensure full width */
-            }
-            nav a {
-                display: block; /* Stack vertically */
-                margin: 5px 0; /* Match index.html spacing */
-                text-align: center; /* Center align for consistency */
-            }
-            .cookie-popup {
-                width: 90%;
-                right: 10px;
-                bottom: 10px;
-                padding: 15px;
-            }
-            .cookie-popup p {
-                font-size: 0.8em;
-            }
-            .cookie-popup button {
-                padding: 6px 12px;
-                font-size: 0.8em;
-                margin: 0 3px;
-            }
+            header .container { flex-direction: column; gap: 10px; }
+            nav { display: block; width: 100%; }
+            nav a { display: block; margin: 5px 0; text-align: center; }
+            .cookie-popup { width: 90%; right: 10px; bottom: 10px; padding: 15px; }
+            .cookie-popup p { font-size: 0.8em; }
+            .cookie-popup .button-container { display: flex; justify-content: center; }
+            .cookie-popup button { padding: 6px 12px; font-size: 0.8em; margin: 0 3px; display: inline-block; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -187,14 +57,52 @@
 
     <section class="section">
         <h2>Terms of Use</h2>
-        <p>Welcome to PrivacyQuote. By accessing or using our website and services, you agree to be bound by these Terms of Use. Please read them carefully.</p>
-        <p><strong>Acceptance of Terms:</strong> By using our services, you agree to comply with these Terms and all applicable laws.</p>
-        <p><strong>Use of Services:</strong> Our services are intended for licensed insurance agents. You may not use our platform for illegal purposes or to harass others.</p>
-        <p><strong>Intellectual Property:</strong> All content on this website, including text, logos, and design, is the property of PrivacyQuote and protected by copyright law.</p>
-        <p><strong>Limitation of Liability:</strong> PrivacyQuote is not liable for any indirect damages arising from the use of our services.</p>
-        <p><strong>Termination:</strong> We reserve the right to terminate your access to our services at our discretion.</p>
-        <p><strong>Changes to Terms:</strong> We may update these Terms periodically. The latest version will be posted here.</p>
-        <p>For questions, contact us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552.</p>
+        <p>Welcome to PrivacyQuote. By accessing, using, or integrating with our website, SaaS platform, or services, you irrevocably agree to be bound by these Terms of Use, which are engineered to provide the most robust legal protections and compliance with the Telephone Consumer Protection Act (TCPA), state mini-TCPA laws (e.g., Florida FTSA, Texas Mini-TCPA), the National Do Not Call Registry (DNC), and CTIA guidelines for toll-free texting. These Terms constitute a legally binding, non-negotiable contract. Please read them carefully and in their entirety.</p>
+
+        <h3>Acceptance of Terms</h3>
+        <p><strong>For Agent Partners:</strong> By submitting forms, integrating with our platform, or receiving SMS messages, you unconditionally accept these Terms and all applicable federal, state, and industry regulations. Acceptance is binding upon electronic signature in our partnership agreement, initial use, or continued use following any updates, with explicit acknowledgment required via a signed addendum within 5 business days. Failure to comply or acknowledge constitutes a material breach subject to termination.</p>
+        <p><strong>For Consumers:</strong> By providing your contact information through third-party vendors to request a quote, you irrevocably agree to these Terms as integrated into the vendor’s consent process, subject to PrivacyQuote’s mandatory second opt-in verification, forming a legally enforceable contract. Non-compliance by vendors or agents does not relieve you of these obligations, and you waive any right to challenge enforcement.</p>
+
+        <h3>Use of Services</h3>
+        <p><strong>For Agent Partners:</strong> Our SaaS platform is exclusively for licensed insurance agents to nurture leads purchased from integrated vendors using our AI assistant, Ainsley. You are strictly prohibited from using the platform for illegal purposes, harassment, unauthorized messaging, or any activity violating TCPA, mini-TCPA, DNC, or CTIA standards. You are contractually and legally obligated to provide leads that are prescreened for DNC compliance and opted in for SMS by vendors, with lead data supplied directly by vendors. You must ensure vendor compliance with prior express written consent (PEWC) requirements for the initial opt-in, and PrivacyQuote will conduct a second opt-in verification via Ainsley. You are solely liable for any non-compliance, including but not limited to fines ($500–$1,500 per TCPA violation), carrier penalties, legal actions, or blacklisting, and you agree to indemnify PrivacyQuote against all related claims. Proper use of the click-to-call feature is mandatory, with misuse (e.g., unsolicited calls) resulting in immediate termination, forfeiture of fees, and legal pursuit. You waive any defense based on vendor actions.</p>
+        <p><strong>For Consumers:</strong> Your data is processed by PrivacyQuote solely to facilitate nurturing by your assigned agent via Ainsley, based on your consumer-initiated first opt-in and our mandatory second opt-in verification. We do not retain or share your data beyond minimal compliance records, ensuring your privacy and compliance with applicable laws. You acknowledge that all communications are governed by your consent and these Terms, and you agree to indemnify PrivacyQuote against claims arising from inaccurate vendor-supplied information.</p>
+
+        <h3>Intellectual Property</h3>
+        <p>All content, including text, logos, software code, algorithms, user interfaces, and design on this website and platform, is the sole and exclusive property of PrivacyQuote, protected by U.S. and international copyright, patent, and trade secret laws. Unauthorized use, reproduction, distribution, reverse engineering, modification, or circumvention of security measures is strictly prohibited and may result in legal action, including temporary and permanent injunctive relief, statutory damages up to $150,000 per infringement, and recovery of all attorney fees, costs, and expenses. Any violation will be prosecuted to the fullest extent of the law, with no statute of limitations waiver.</p>
+
+        <h3>Limitation of Liability</h3>
+        <p>PrivacyQuote shall not be liable for any indirect, incidental, consequential, special, punitive, exemplary, or remote damages arising from the use of our services, including but not limited to third-party non-compliance by vendors or agents, data breaches, service interruptions, or loss of profits, even if advised of the possibility. Our total liability is capped at the greater of the amount paid by you for the service in the preceding 12 months or $100. All partners, including vendors and agents, are contractually bound to TCPA and CTIA standards, and agents assume full and unlimited responsibility for lead misuse, non-compliance, or violations resulting in fines, penalties, lawsuits, or carrier actions, indemnifying PrivacyQuote against all claims, losses, costs, and expenses (including legal fees) without limitation or cap. This limitation survives termination and is non-negotiable.</p>
+
+        <h3>Termination</h3>
+        <p><strong>For Agent Partners:</strong> We reserve the unconditional and irrevocable right to terminate your access to our services immediately, without prior notice, if you violate these Terms, applicable laws, or partner agreements, including but not limited to DNC non-compliance, unauthorized messaging, failure to indemnify, or breach of PEWC requirements. Termination includes disabling your account, revoking toll-free number access, pursuing legal remedies (e.g., damages up to $1,500 per violation, injunctions), and retaining all fees paid as liquidated damages. Post-termination notice will be provided via email or SMS within 24 hours, with a 10-day appeal period subject to PrivacyQuote’s sole and absolute discretion. You waive any right to challenge termination in court absent arbitration and forfeit all claims to service reinstatement.</p>
+        <p><strong>For Consumers:</strong> Your data will be removed from our system instantly if your second opt-in is not confirmed or if you opt out, with immediate notification to the vendor and agent, ensuring no further contact. You have no right to reinstatement or compensation, and any attempt to re-engage will be treated as a new opt-in process.</p>
+
+        <h3>Changes to Terms</h3>
+        <p>We may update these Terms periodically to reflect changes in law, technology, or business practices. Updates will be posted here with a 30-day advance notice via email to registered users (agents), requiring electronic acknowledgment of acceptance within 7 calendar days. Continued use after the effective date constitutes binding agreement to the revised Terms. Non-acceptance, failure to acknowledge, or rejection will result in immediate service termination, forfeiture of all access rights, retention of all fees as liquidated damages, and potential legal action for breach of contract. This clause is non-negotiable and survives termination.</p>
+
+        <h3>Compliance and SMS Use</h3>
+        <p>Our SMS services are engineered to comply fully with TCPA, mini-TCPA, DNC, and CTIA guidelines, prioritizing consumer protection, legal defensibility, and carrier approval for toll-free texting. <strong>For Agent Partners:</strong> You consent to receive automated SMS messages as per the Privacy Policy, with misuse (e.g., toll-free number abuse, exceeding consented frequency, contacting DNC-listed numbers) resulting in immediate termination, legal action, and unlimited indemnification obligations. You must ensure vendor leads’ initial opt-in complies with PEWC, and PrivacyQuote will conduct a mandatory second opt-in verification via Ainsley to complete the double opt-in process, for which you are liable if vendor data is non-compliant. Our AI, Ainsley, adheres rigorously to TCPA/DNC hours (8 AM–9 PM local time) unless a response from you or a consumer outside those hours is received, treating it as a continuation of a prior consumer-initiated or agent-supported conversation, with all timing and interactions logged for audit. <strong>For Consumers:</strong> Your SMS interactions with Ainsley are based on your consumer-initiated first opt-in via a vendor and our mandatory second opt-in confirmation, with opt-out available by replying "STOP." We verify vendor compliance through documented consent proofs (e.g., forms, timestamps) and reserve the unilateral right to suspend messaging, terminate vendor integrations, or pursue legal remedies if compliance is compromised, with no liability to you for such actions.</p>
+
+        <h3>Dispute Resolution</h3>
+        <p>Any disputes arising from these Terms shall be resolved exclusively through binding arbitration under the American Arbitration Association (AAA) Commercial Arbitration Rules, conducted in Clovis, California, before a single arbitrator with expertise in telecommunications law. Class actions, consolidated arbitrations, joinder of parties, or appeals are expressly prohibited and waived. The prevailing party shall be entitled to recover all reasonable attorney fees, costs, and expenses, including pre- and post-judgment interest at the maximum legal rate. Arbitration decisions are final, conclusive, and enforceable in any court of competent jurisdiction. This clause survives termination and is governed by the Federal Arbitration Act, with no exceptions.</p>
+
+        <h3>Governing Law</h3>
+        <p>These Terms are governed exclusively by the laws of the State of California, without regard to conflict of law principles. Any legal action or enforcement outside arbitration must be brought exclusively in the state or federal courts located in Fresno County, California, to which you consent to personal jurisdiction and waive any objection to venue or inconvenient forum. This choice of law and forum is irrevocable and binding on all parties, including successors and assigns.</p>
+
+        <h3>Indemnification</h3>
+        <p><strong>For Agent Partners:</strong> You agree to indemnify, defend, and hold harmless PrivacyQuote, its affiliates, officers, directors, employees, agents, successors, and assigns from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable attorney fees, expert witness fees, and court costs) arising out of or related to your use of the platform, your agents’ actions, vendor non-compliance, lead misuse, any violation of these Terms or applicable laws, or any third-party claims (e.g., TCPA lawsuits, carrier penalties). This obligation is unlimited, joint and several, and survives termination indefinitely.</p>
+        <p><strong>For Consumers:</strong> You agree to indemnify PrivacyQuote against any claims arising from your provision of inaccurate information to vendors or failure to opt out, subject to your rights under applicable privacy laws, with liability limited to direct damages caused by your actions.</p>
+
+        <h3>Force Majeure</h3>
+        <p>PrivacyQuote shall not be liable for any delay or failure to perform due to causes beyond its reasonable control, including but not limited to acts of God, natural disasters, government actions, carrier outages, cyberattacks, or third-party failures. You waive any right to compensation, damages, or service credits for such events, and PrivacyQuote may suspend services without liability during such periods.</p>
+
+        <h3>Severability</h3>
+        <p>If any provision of these Terms is found to be unenforceable or invalid by a court or arbitrator of competent jurisdiction, that provision shall be severed, and the remaining provisions shall remain in full force and effect. The parties intend that any invalid provision be reformed to the maximum extent permissible to uphold the original intent, and no waiver of severability shall be implied.</p>
+
+        <h3>Entire Agreement</h3>
+        <p>These Terms, together with the Privacy Policy and any executed partnership agreements, constitute the entire agreement between you and PrivacyQuote, superseding all prior or contemporaneous communications. Any amendments must be in writing and signed by an authorized PrivacyQuote officer. Oral modifications are void and unenforceable.</p>
+
+        <p>For questions, to report issues, or to exercise rights, contact us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552, located at 1225 N Willow Ave., Suite 100, Clovis, CA 93619. All communications are subject to monitoring and these Terms.</p>
     </section>
 
     <div id="cookiePopup" class="cookie-popup">
