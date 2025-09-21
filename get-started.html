@@ -11,7 +11,6 @@
             padding: 0;
         }
         body { 
-            Google's free, easy-to-use CAPTCHA service verifies users are not bots, protecting your website from spam and abuse. Get started with reCAPTCHA in minutes with our developer guides and APIs for web, mobile apps, and more.
             font-family: 'Roboto', Arial, sans-serif; 
             color: #333; 
             background-color: #f9f9f9; 
@@ -443,7 +442,7 @@
             <div id="optInError" class="error"></div>
 
             <div class="recaptcha-container">
-                <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY" data-callback="onRecaptchaSuccess"></div>
+                <div class="g-recaptcha" data-sitekey="6LetX9ArAAAAANqDnjHGc_CDWaSywNWfsznaKrd7" data-callback="onRecaptchaSuccess"></div>
                 <div id="recaptchaError" class="error"></div>
             </div>
 
@@ -736,6 +735,21 @@
             demoModal.style.display = 'none';
         };
 
+        window.onclick = (event) => {
+            if (event.target === confirmModal) {
+                confirmModal.style.display = 'none';
+            }
+            if (event.target === demoModal) {
+                demoModal.style.display = 'none';
+            }
+            if (event.target === verificationModal) {
+                closeVerificationModal();
+            }
+            if (event.target === document.getElementById('cookiePopup')) {
+                closeCookiePopup();
+            }
+        };
+
         // Cookie Consent Functionality
         function setCookie(name, value, days) {
             let expires = "";
@@ -757,21 +771,6 @@
         function closeCookiePopup() {
             document.getElementById('cookiePopup').style.display = 'none';
         }
-
-        window.onclick = (event) => {
-            if (event.target === confirmModal) {
-                confirmModal.style.display = 'none';
-            }
-            if (event.target === demoModal) {
-                demoModal.style.display = 'none';
-            }
-            if (event.target === verificationModal) {
-                closeVerificationModal();
-            }
-            if (event.target === document.getElementById('cookiePopup')) {
-                closeCookiePopup();
-            }
-        };
 
         window.onload = function() {
             if (!getCookie('cookie_consent')) {
