@@ -156,6 +156,21 @@
         .close:hover {
             color: #007bff;
         }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
         .error {
             color: red;
             font-size: 0.9em;
@@ -176,10 +191,6 @@
             width: 300px;
             text-align: center;
             animation: slideInUp 0.5s ease-out forwards;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
         .cookie-popup p {
             font-size: 0.9em;
@@ -193,12 +204,6 @@
         .cookie-popup a:hover {
             text-decoration: underline;
         }
-        .cookie-popup .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
         .cookie-popup button {
             background: #007bff;
             color: white;
@@ -207,8 +212,8 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 0.9em;
+            margin: 0 5px;
             transition: background 0.3s;
-            display: inline-block;
         }
         .cookie-popup button:hover {
             background: #0056b3;
@@ -260,10 +265,6 @@
                 padding: 6px 12px;
                 font-size: 0.8em;
             }
-            footer a {
-                display: inline-block;
-                margin: 5px 10px;
-            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -274,10 +275,10 @@
         <div class="container">
             <h1>PrivacyQuote</h1>
             <nav>
-                <a href="https://privacyquote.github.io/privacyquote/index.html">Home</a>
-                <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>
-                <a href="https://privacyquote.github.io/privacyquote/terms-of-use.html">Terms of Use</a>
-                <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
+                <a href="index.html">Home</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-use.html">Terms of Use</a>
+                <a href="contact.html">Contact</a>
             </nav>
         </div>
     </header>
@@ -332,55 +333,24 @@
     </div>
 
     <!-- Cookie Consent Popup -->
-    <div id="cookiePopup" class="cookie-popup" style="display: none">
-        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>.</p>
-        <div class="button-container">
-            <button id="acceptCookies">Accept</button>
-            <button id="rejectCookies" class="reject-btn">Reject</button>
-        </div>
+    <div id="cookiePopup" class="cookie-popup">
+        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <button id="acceptCookies">Accept</button>
+        <button id="rejectCookies" class="reject-btn">Reject</button>
     </div>
 
     <footer>
         <p>&copy; 2025 PrivacyQuote. All rights reserved.</p>
         <div>
-            <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a> |
-            <a href="https://privacyquote.github.io/privacyquote/terms-of-use.html">Terms of Use</a> |
-            <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance</a> |
-            <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a> |
+            <a href="terms-of-use.html">Terms of Use</a> |
+            <a href="sms-compliance.html">SMS Compliance</a> |
+            <a href="contact.html">Contact</a>
         </div>
         <p>Email: support@privacyquote.com | Phone: 866-580-7552 | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
 
     <script>
-        // Cookie Consent Functionality
-        function setCookie(name, value, days) {
-            const expires = days ? `; expires=${new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString()}` : '';
-            document.cookie = `${name}=${value}${expires}; path=/privacyquote; Secure; SameSite=Strict`;
-            console.log(`Cookie set: ${name}=${value}, expires=${expires}, location=${window.location.href}`);
-        }
-
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) {
-                const cookieValue = parts.pop().split(';').shift();
-                console.log(`Cookie found: ${name}=${cookieValue}, location=${window.location.href}`);
-                return cookieValue;
-            }
-            console.log(`Cookie not found: ${name}, location=${window.location.href}`);
-            return null;
-        }
-
-        function closeCookiePopup() {
-            const popup = document.getElementById('cookiePopup');
-            if (popup) {
-                popup.style.display = 'none';
-                console.log(`Popup closed: location=${window.location.href}`);
-            } else {
-                console.log(`Popup element not found: location=${window.location.href}`);
-            }
-        }
-
         // Form validation and submission
         const form = document.getElementById('contactForm');
         const nameInput = document.getElementById('name');
@@ -513,71 +483,55 @@
 
         function closeVerificationModal() {
             verificationModal.style.display = 'none';
-            console.log(`Verification modal closed: location=${window.location.href}`);
         }
 
-        // Check consent as soon as DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log(`DOM loaded: Checking consent for ${window.location.href}`);
-            const consent = getCookie('cookie_consent');
-            if (consent) {
-                console.log(`Consent found: Hiding popup for ${window.location.href}`);
-                closeCookiePopup();
-            } else {
-                console.log(`No consent found: Showing popup for ${window.location.href}`);
-                const popup = document.getElementById('cookiePopup');
-                if (popup) {
-                    popup.style.display = 'block';
-                } else {
-                    console.log(`Popup element not found: location=${window.location.href}`);
-                }
+        // Cookie Consent Functionality
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
             }
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
 
-            const acceptButton = document.getElementById('acceptCookies');
-            const rejectButton = document.getElementById('rejectCookies');
-            if (acceptButton) {
-                acceptButton.onclick = function() {
-                    setCookie('cookie_consent', 'accepted', 365);
-                    closeCookiePopup();
-                };
-            } else {
-                console.log(`Accept button not found: location=${window.location.href}`);
-            }
-            if (rejectButton) {
-                rejectButton.onclick = function() {
-                    setCookie('cookie_consent', 'rejected', 365);
-                    closeCookiePopup();
-                };
-            } else {
-                console.log(`Reject button not found: location=${window.location.href}`);
-            }
-        });
+        function getCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+            return null;
+        }
 
-        // Fallback check to ensure popup doesn't show if consent exists
-        window.addEventListener('load', function() {
-            const consent = getCookie('cookie_consent');
-            if (consent) {
-                console.log(`Fallback check: Hiding popup for ${window.location.href}`);
-                closeCookiePopup();
-            }
-            // Periodic check for late-loaded consent
-            setTimeout(() => {
-                const lateConsent = getCookie('cookie_consent');
-                if (lateConsent) {
-                    console.log(`Late check: Hiding popup for ${window.location.href}`);
-                    closeCookiePopup();
-                }
-            }, 1000);
-        });
+        function closeCookiePopup() {
+            document.getElementById('cookiePopup').style.display = 'none';
+        }
 
         window.onclick = (event) => {
             if (event.target === verificationModal) {
                 closeVerificationModal();
             }
-            const popup = document.getElementById('cookiePopup');
-            if (event.target === popup) {
+            if (event.target === document.getElementById('cookiePopup')) {
                 closeCookiePopup();
             }
+        };
+
+        window.onload = function() {
+            if (!getCookie('cookie_consent')) {
+                document.getElementById('cookiePopup').style.display = 'block';
+            }
+
+            document.getElementById('acceptCookies').onclick = function() {
+                setCookie('cookie_consent', 'accepted', 365);
+                closeCookiePopup();
+                console.log('Cookies accepted'); // In production, enable non-essential cookies
+            };
+
+            document.getElementById('rejectCookies').onclick = function() {
+                setCookie('cookie_consent', 'rejected', 365);
+                closeCookiePopup();
+                console.log('Cookies rejected'); // In production, block non-essential cookies
+            };
         };
     </script>
 </body>
