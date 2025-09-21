@@ -60,34 +60,25 @@
             font-size: 2em;
             color: #007bff;
             margin-bottom: 20px;
-            text-align: center;
         }
         .section h3 {
             font-size: 1.5em;
             color: #007bff;
-            margin: 30px 0 15px;
+            margin-top: 30px;
+            margin-bottom: 15px;
         }
         .section p {
             font-size: 1.1em;
             margin-bottom: 20px;
         }
         .section ul {
-            list-style: none;
+            list-style: disc;
+            margin-left: 20px;
             margin-bottom: 20px;
-            padding-left: 20px;
         }
-        .section ul li {
-            position: relative;
-            margin-bottom: 10px;
+        .section li {
             font-size: 1.1em;
-            padding-left: 25px;
-        }
-        .section ul li::before {
-            content: '•';
-            color: #007bff;
-            position: absolute;
-            left: 0;
-            font-size: 1.2em;
+            margin-bottom: 10px;
         }
         .section a {
             color: #ffc107;
@@ -100,13 +91,13 @@
         footer {
             background-color: #343a40;
             color: white;
-            padding: 30px 20px;
+            padding: 20px;
             text-align: center;
         }
         footer a {
             color: #ffc107;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 10px;
             font-weight: 600;
         }
         footer a:hover {
@@ -126,10 +117,6 @@
             width: 300px;
             text-align: center;
             animation: slideInUp 0.5s ease-out forwards;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
         .cookie-popup p {
             font-size: 0.9em;
@@ -143,12 +130,6 @@
         .cookie-popup a:hover {
             text-decoration: underline;
         }
-        .cookie-popup .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
         .cookie-popup button {
             background: #007bff;
             color: white;
@@ -157,8 +138,8 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 0.9em;
+            margin: 0 5px;
             transition: background 0.3s;
-            display: inline-block;
         }
         .cookie-popup button:hover {
             background: #0056b3;
@@ -204,10 +185,6 @@
                 padding: 6px 12px;
                 font-size: 0.8em;
             }
-            footer a {
-                display: inline-block;
-                margin: 5px 10px;
-            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -217,79 +194,67 @@
         <div class="container">
             <h1>PrivacyQuote</h1>
             <nav>
-                <a href="https://privacyquote.github.io/privacyquote/index.html">Home</a>
-                <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>
-                <a href="https://privacyquote.github.io/privacyquote/terms-of-use.html">Terms of Use</a>
-                <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
+                <a href="index.html">Home</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-use.html">Terms of Use</a>
+                <a href="contact.html">Contact</a>
             </nav>
         </div>
     </header>
 
     <section class="section">
         <h2>SMS Compliance</h2>
-        <p>Effective Date: September 20, 2025</p>
-        <p>At PrivacyQuote, we are committed to ensuring all SMS communications comply with applicable laws and regulations, including the Telephone Consumer Protection Act (TCPA), CTIA guidelines, and state-specific telemarketing laws. This SMS Compliance page outlines our practices for sending SMS/MMS messages through our AI assistant, Ainsley.</p>
-
-        <h3>Consent Requirements</h3>
-        <p>We obtain prior express written consent before sending any SMS/MMS messages. Our consent process includes:</p>
+        <p>PrivacyQuote is committed to adhering to all applicable SMS and telemarketing regulations, including the Telephone Consumer Protection Act (TCPA) and CTIA Messaging Principles. Below is an overview of our compliance practices for SMS communications with Ainsley, our AI-powered assistant.</p>
+        
+        <h3>1. Consent</h3>
+        <p>All SMS communications require prior express written consent, obtained through:</p>
         <ul>
-            <li><strong>Clear Disclosure:</strong> Users are informed that by providing their phone number and opting in, they agree to receive automated SMS/MMS messages from Ainsley about insurance lead nurturing or partnership inquiries.</li>
-            <li><strong>Double Opt-In:</strong> After initial consent (e.g., via our Get Started form), Ainsley sends a confirmation message requiring a reply (e.g., "YES") to verify participation.</li>
-            <li><strong>Opt-Out Option:</strong> Every message includes instructions to opt out by replying "STOP" and to seek help by replying "HELP."</li>
-            <li><strong>Record Keeping:</strong> We maintain records of consent, including timestamps and IP addresses, to ensure compliance with TCPA and CTIA requirements.</li>
+            <li>Double opt-in: Users reply “YES” to confirm participation with Ainsley.</li>
+            <li>Clear disclosure in forms (e.g., Get Started page) about message frequency and purpose.</li>
+            <li>Integration with lead vendors ensuring prior consent for leads.</li>
         </ul>
 
-        <h3>Message Frequency and Content</h3>
-        <p>Our SMS communications are designed to be clear, relevant, and compliant:</p>
+        <h3>2. Opt-Out</h3>
+        <p>Users can opt out at any time by:</p>
         <ul>
-            <li><strong>Frequency:</strong> Message frequency varies but typically includes up to 15 messages per interaction for lead nurturing or agent onboarding.</li>
-            <li><strong>Content:</strong> Messages focus on lead engagement (e.g., confirming vehicle details, offering discounts) or agent support (e.g., discussing lead integration). No unsolicited marketing messages are sent.</li>
-            <li><strong>Message and Data Rates:</strong> Standard message and data rates may apply, as disclosed in our opt-in forms.</li>
+            <li>Replying “STOP” to any SMS from Ainsley, immediately ceasing communications.</li>
+            <li>Contacting us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a>.</li>
         </ul>
 
-        <h3>Opt-Out Process</h3>
-        <p>Users can opt out of SMS communications at any time by:</p>
-        <ul>
-            <li>Replying "STOP" to any message from Ainsley, which immediately unsubscribes the user.</li>
-            <li>Contacting us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552 to request removal.</li>
-        </ul>
-        <p>We honor opt-out requests promptly and maintain a do-not-contact list to prevent further messages.</p>
+        <h3>3. Message Frequency and Rates</h3>
+        <p>Message frequency varies but typically includes 10-15 messages per interaction. Standard message and data rates may apply, as disclosed in our opt-in process.</p>
 
-        <h3>State-Specific Compliance</h3>
-        <p>We adhere to state-specific telemarketing laws, including but not limited to:</p>
+        <h3>4. Data Protection</h3>
+        <p>We do not sell or share SMS data beyond one-to-one agent connections. All data is handled per our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+
+        <h3>5. State-Specific Compliance</h3>
+        <p>We comply with state laws, including:</p>
         <ul>
-            <li><strong>Florida (FTSA):</strong> Consent ensures no unsolicited texts, with opt-out available to avoid penalties.</li>
-            <li><strong>Texas (Mini-TCPA):</strong> Compliance with registration and consent rules to protect against $500-$5,000 per violation penalties.</li>
-            <li><strong>Washington (CEMA):</strong> Anti-spam compliance with opt-out options to avoid up to $2,000 per violation penalties.</li>
-            <li><strong>Oklahoma (OTSA):</strong> No unsolicited texts, with opt-out to avoid $500 penalties.</li>
-            <li><strong>Maryland:</strong> Compliance with the Stop Unsolicited Faxes and Calls Act.</li>
-            <li><strong>Michigan:</strong> Adherence to the Home Solicitation Sales Act for opt-in and opt-out processes.</li>
+            <li>Florida (FTSA): No unsolicited texts; revocable consent.</li>
+            <li>Texas (Mini-TCPA): Adherence to consent and registration rules.</li>
+            <li>Washington (CEMA): Anti-spam compliance with opt-out.</li>
+            <li>Oklahoma (OTSA), Maryland, Michigan: State-specific telemarketing rules.</li>
         </ul>
 
-        <h3>Data Protection</h3>
-        <p>We protect your phone number and related data with industry-standard security measures, including encryption. We do not sell or share your data beyond facilitating one-to-one connections between leads and their providing agents. For more details, see our <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>.</p>
-
-        <h3>Contact Us</h3>
-        <p>If you have questions about our SMS compliance practices, contact us:</p>
+        <h3>6. Contact Us</h3>
+        <p>For questions about SMS compliance, contact us at:</p>
         <p>Email: <a href="mailto:support@privacyquote.com">support@privacyquote.com</a><br>Phone: 866-580-7552<br>Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </section>
 
     <!-- Cookie Consent Popup -->
-    <div id="cookiePopup" class="cookie-popup" style="display: none">
-        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>.</p>
-        <div class="button-container">
-            <button id="acceptCookies">Accept</button>
-            <button id="rejectCookies" class="reject-btn">Reject</button>
-        </div>
+    <div id="cookiePopup" class="cookie-popup">
+        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <button id="acceptCookies">Accept</button>
+        <button id="rejectCookies" class="reject-btn">Reject</button>
     </div>
 
     <footer>
         <p>&copy; 2025 PrivacyQuote. All rights reserved.</p>
         <div>
-            <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a> |
-            <a href="https://privacyquote.github.io/privacyquote/terms-of-use.html">Terms of Use</a> |
-            <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance</a> |
-            <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a> |
+            <a href="terms-of-use.html">Terms of Use</a> |
+            <a href="sms-compliance.html">SMS Compliance</a> |
+            <a href="contact.html">Contact</a>
         </div>
         <p>Email: support@privacyquote.com | Phone: 866-580-7552 | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
@@ -297,72 +262,48 @@
     <script>
         // Cookie Consent Functionality
         function setCookie(name, value, days) {
-            const expires = days ? `; expires=${new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString()}` : '';
-            document.cookie = `${name}=${value}${expires}; path=/privacyquote; Secure; SameSite=Strict`;
-            console.log(`Cookie set: ${name}=${value}, expires=${expires}, location=${window.location.href}`);
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
         }
 
         function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) {
-                const cookieValue = parts.pop().split(';').shift();
-                console.log(`Cookie found: ${name}=${cookieValue}, location=${window.location.href}`);
-                return cookieValue;
-            }
-            console.log(`Cookie not found: ${name}, location=${window.location.href}`);
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
             return null;
         }
 
         function closeCookiePopup() {
             document.getElementById('cookiePopup').style.display = 'none';
-            console.log(`Popup closed: location=${window.location.href}`);
         }
 
-        // Check consent as soon as DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log(`DOM loaded: Checking consent for ${window.location.href}`);
-            const consent = getCookie('cookie_consent');
-            if (consent) {
-                console.log(`Consent found: Hiding popup for ${window.location.href}`);
-                document.getElementById('cookiePopup').style.display = 'none';
-            } else {
-                console.log(`No consent found: Showing popup for ${window.location.href}`);
+        window.onclick = (event) => {
+            if (event.target === document.getElementById('cookiePopup')) {
+                closeCookiePopup();
+            }
+        };
+
+        window.onload = function() {
+            if (!getCookie('cookie_consent')) {
                 document.getElementById('cookiePopup').style.display = 'block';
             }
 
             document.getElementById('acceptCookies').onclick = function() {
                 setCookie('cookie_consent', 'accepted', 365);
                 closeCookiePopup();
+                console.log('Cookies accepted'); // In production, enable non-essential cookies
             };
 
             document.getElementById('rejectCookies').onclick = function() {
                 setCookie('cookie_consent', 'rejected', 365);
                 closeCookiePopup();
+                console.log('Cookies rejected'); // In production, block non-essential cookies
             };
-        });
-
-        // Fallback check to ensure popup doesn't show if consent exists
-        window.addEventListener('load', function() {
-            const consent = getCookie('cookie_consent');
-            if (consent) {
-                console.log(`Fallback check: Hiding popup for ${window.location.href}`);
-                document.getElementById('cookiePopup').style.display = 'none';
-            }
-            // Periodic check for late-loaded consent
-            setTimeout(() => {
-                const lateConsent = getCookie('cookie_consent');
-                if (lateConsent) {
-                    console.log(`Late check: Hiding popup for ${window.location.href}`);
-                    document.getElementById('cookiePopup').style.display = 'none';
-                }
-            }, 1000);
-        });
-
-        window.onclick = (event) => {
-            if (event.target === document.getElementById('cookiePopup')) {
-                closeCookiePopup();
-            }
         };
     </script>
 </body>
