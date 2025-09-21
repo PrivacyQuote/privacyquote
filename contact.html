@@ -188,7 +188,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             z-index: 2000;
-            width: 320px;
+            width: 300px;
             text-align: center;
             animation: slideInUp 0.5s ease-out forwards;
         }
@@ -204,19 +204,15 @@
         .cookie-popup a:hover {
             text-decoration: underline;
         }
-        .cookie-popup .button-container {
-            display: flex;
-            justify-content: center;
-        }
         .cookie-popup button {
             background: #007bff;
             color: white;
-            padding: 6px 12px;
-            font-size: 0.8em;
+            padding: 8px 16px;
+            font-size: 0.9em;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin: 0 3px;
+            margin: 0 5px;
             display: inline-block;
             transition: background 0.3s;
         }
@@ -239,18 +235,34 @@
                 opacity: 1;
             }
         }
+        /* Mobile responsiveness to match index.html */
         @media (max-width: 768px) {
             header .container {
                 flex-direction: column;
                 gap: 10px;
             }
             nav {
-                width: 100%;
+                display: block; /* Reset to block to override flex */
+                width: 100%; /* Ensure full width */
             }
             nav a {
-                display: block;
-                margin: 5px 0;
-                text-align: center;
+                display: block; /* Stack vertically */
+                margin: 5px 0; /* Match index.html spacing */
+                text-align: center; /* Center align for consistency */
+            }
+            .cookie-popup {
+                width: 90%;
+                right: 10px;
+                bottom: 10px;
+                padding: 15px;
+            }
+            .cookie-popup p {
+                font-size: 0.8em;
+            }
+            .cookie-popup button {
+                padding: 6px 12px;
+                font-size: 0.8em;
+                margin: 0 3px;
             }
         }
     </style>
