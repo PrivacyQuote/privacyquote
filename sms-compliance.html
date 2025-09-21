@@ -133,49 +133,17 @@
             background: #5a6268;
         }
         @keyframes slideInUp {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
-        /* Mobile responsiveness to match index.html */
         @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                gap: 10px;
-            }
-            nav {
-                display: block; /* Reset to block to override flex */
-                width: 100%; /* Ensure full width */
-            }
-            nav a {
-                display: block; /* Stack vertically */
-                margin: 5px 0; /* Match index.html spacing */
-                text-align: center; /* Center align for consistency */
-            }
-            .cookie-popup {
-                width: 90%;
-                right: 10px;
-                bottom: 10px;
-                padding: 15px;
-            }
-            .cookie-popup p {
-                font-size: 0.8em;
-            }
-            .cookie-popup .button-container {
-                display: flex;
-                justify-content: center;
-            }
-            .cookie-popup button {
-                padding: 6px 12px;
-                font-size: 0.8em;
-                margin: 0 3px;
-                display: inline-block;
-            }
+            header .container { flex-direction: column; gap: 10px; }
+            nav { display: block; width: 100%; }
+            nav a { display: block; margin: 5px 0; text-align: center; }
+            .cookie-popup { width: 90%; right: 10px; bottom: 10px; padding: 15px; }
+            .cookie-popup p { font-size: 0.8em; }
+            .cookie-popup .button-container { display: flex; justify-content: center; }
+            .cookie-popup button { padding: 6px 12px; font-size: 0.8em; margin: 0 3px; display: inline-block; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -196,13 +164,34 @@
 
     <section class="section">
         <h2>SMS Compliance</h2>
-        <p>At PrivacyQuote, we are committed to ensuring full compliance with SMS regulations, including the Telephone Consumer Protection Act (TCPA), the Telephone Solicitation Protection Act (TSPA), and industry standards set by the CTIA and The Campaign Registry (TCR).</p>
-        <p><strong>Consent Requirements:</strong> We obtain explicit consent from users before sending SMS messages, including double opt-in where required. Users can opt out at any time by replying STOP.</p>
-        <p><strong>Message Frequency:</strong> We adhere to reasonable message frequency limits and provide clear disclosure of expected message volume during opt-in.</p>
-        <p><strong>Do Not Call Compliance:</strong> Our systems integrate with the National Do Not Call Registry to prevent unauthorized messaging.</p>
-        <p><strong>TCR Registration:</strong> PrivacyQuote is registered with TCR, ensuring our 10DLC campaigns meet carrier requirements for authentication and compliance.</p>
-        <p><strong>Opt-Out Process:</strong> Users can opt out by replying STOP, and we honor opt-out requests within 10 minutes, as mandated by TCPA.</p>
-        <p>For compliance questions, contact us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552.</p>
+        <p>At PrivacyQuote, we are unwaveringly committed to ensuring full compliance with the Telephone Consumer Protection Act (TCPA), state mini-TCPA laws (e.g., Florida FTSA, Texas Mini-TCPA), the National Do Not Call Registry (DNC), and CTIA guidelines for toll-free texting. This SMS Compliance Policy outlines our rigorous standards to protect consumers, uphold legal obligations, and secure carrier approval.</p>
+
+        <h3>Consent Requirements</h3>
+        <p><strong>For Agent Partners:</strong> You must ensure that third-party lead vendors obtain prior express written consent (PEWC) from consumers when they request a quote online, initiating the first opt-in. PrivacyQuote conducts a mandatory second opt-in verification via an initial SMS from our AI assistant, Ainsley (e.g., "Reply YES to confirm SMS for quote assistance"), to complete the double opt-in process. This double opt-in is required for all SMS communications, and you are liable for any vendor non-compliance with the initial PEWC.</p>
+        <p><strong>For Consumers:</strong> Your consent is consumer-initiated, obtained when you provide your information to a lead vendor’s website to request a quote, constituting the first opt-in. PrivacyQuote’s second opt-in confirmation via Ainsley ensures your willingness to receive SMS. All messaging is based on this verified double opt-in, protecting your rights under applicable laws.</p>
+
+        <h3>Message Frequency and Content</h3>
+        <p><strong>For Agent Partners:</strong> You consent to receive automated SMS/MMS messages for onboarding, support, and marketing, typically involving 5-10 messages per interaction, with an estimated total of up to 20 messages per month, subject to variation based on support needs.</p>
+        <p><strong>For Consumers:</strong> Each nurturing conversation with Ainsley typically involves less than 15 inbound and outbound messages combined, depending on your questions, and ends with your "STOP" request, a click-to-call to your assigned agent, or a single final message (e.g., "We’re here if you want to restart") if you stop responding. No further messages are sent after a conversation concludes, and each interaction is treated separately with no aggregate limit.</p>
+
+        <h3>Opt-Out Process</h3>
+        <p><strong>For Agent Partners:</strong> You may opt out of receiving communications at any time by replying "STOP" to any SMS message, emailing support@privacyquote.com, or calling 866-580-7552. Opt-out requests are processed immediately, and we retain records for 5 years to comply with TCPA § 64.1200.</p>
+        <p><strong>For Consumers:</strong> You may opt out by replying "STOP" to any SMS message from Ainsley, and we honor requests immediately, retaining minimal records (e.g., phone number and opt-out status) for 5 years to ensure compliance with TCPA and DNC regulations.</p>
+
+        <h3>Do Not Call Compliance</h3>
+        <p><strong>For Agent Partners:</strong> You are contractually required to provide leads that are prescreened for DNC compliance by vendors, ensuring all leads are free from DNC restrictions prior to integration. PrivacyQuote does not currently scrub against the DNC but may implement an optional internal prescreen via API integration to reject DNC-listed leads, enhancing compliance at our discretion.</p>
+        <p><strong>For Consumers:</strong> Your inclusion in our system is contingent on vendor and agent compliance with DNC prescreening. We verify this compliance and maintain an internal DNC list based on your opt-out requests, processed immediately.</p>
+
+        <h3>Messaging Hours and Timing</h3>
+        <p><strong>For Agent Partners and Consumers:</strong> Our AI, Ainsley, adheres strictly to TCPA/DNC-compliant hours (8 AM–9 PM local time) for initiating SMS communications. However, if you (agent or consumer) respond outside these hours, Ainsley may continue the conversation as a continuation of your prior initiation, with all interactions timestamped and logged for audit. <strong>For Agent Partners:</strong> Be aware that leads purchased off-hours (e.g., overnight) will be queued and not messaged until the next compliant period (8 AM local time) to ensure legal adherence, reflecting our business practice to optimize cost efficiency while maintaining compliance.</p>
+
+        <h3>Security and Data Handling</h3>
+        <p>We employ AES-256 encryption for data transmission and secure storage, conducting regular audits to prevent unauthorized access. In case of a data breach, we will notify affected parties within 72 hours as required by applicable laws (e.g., CCPA, GDPR). We retain only minimal data (e.g., phone number and opt-out status) for 5 years to meet TCPA/DNC obligations, deleting all other data upon opt-out or conclusion of a conversation.</p>
+
+        <h3>Enforcement and Verification</h3>
+        <p>PrivacyQuote reserves the unilateral right to suspend messaging, terminate vendor integrations, or pursue legal remedies if compliance is compromised. We verify vendor compliance through documented consent proofs (e.g., forms, timestamps) and may conduct random audits of agent-provided leads. Non-compliance by agents or vendors may result in immediate termination and legal action, with all costs borne by the responsible party.</p>
+
+        <p>For compliance questions or to report issues, contact us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552, located at 1225 N Willow Ave., Suite 100, Clovis, CA 93619.</p>
     </section>
 
     <div id="cookiePopup" class="cookie-popup">
