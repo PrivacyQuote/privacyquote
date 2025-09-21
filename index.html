@@ -417,10 +417,10 @@
         <div class="container">
             <h1>PrivacyQuote</h1>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-of-use.html">Terms of Use</a>
-                <a href="contact.html">Contact</a>
+                <a href="https://privacyquote.github.io/privacyquote/index.html">Home</a>
+                <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>
+                <a href="https://privacyquote.github.io/privacyquote/terms-of-use.html">Terms of Use</a>
+                <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
             </nav>
         </div>
     </header>
@@ -429,7 +429,7 @@
         <div class="container">
             <h1>Engage Your Leads with Secure, AI-Powered SMS Solutions</h1>
             <p>PrivacyQuote empowers insurance agents to upload their own SMS-opted-in leads and let Ainsley, our conversational AI, nurture them through personalized texting. Ainsley helps discover discounts, qualifies interests, and encourages Click-to-Call connections to you—the agent who provided the lead.</p>
-            <button onclick="window.location.href='get-started.html'">Get Started with Ainsley</button>
+            <button onclick="window.location.href='https://privacyquote.github.io/privacyquote/get-started.html'">Get Started with Ainsley</button>
         </div>
     </section>
 
@@ -468,7 +468,7 @@
             <li>Message frequency: Up to 15 texts per interaction; standard rates apply.</li>
             <li>No data selling or sharing beyond one-to-one agent connections.</li>
         </ul>
-        <p>For full details, review our <a href="privacy-policy.html">Privacy Policy</a> and <a href="sms-compliance.html">SMS Compliance Page</a>.</p>
+        <p>For full details, review our <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a> and <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance Page</a>.</p>
     </section>
 
     <div id="demoModal" class="modal">
@@ -519,13 +519,13 @@
             </div>
             <p class="demo-info">This demo shows Ainsley’s nurturing style—confirming details casually while building trust and guiding to action. All conversations are TCPA-compliant with easy opt-outs.<br><br>Interested in seeing how I work with leads? Check out my demo below!</p>
             <button class="modal-button" onclick="closeModal()">Close</button>
-            <button class="modal-button" onclick="window.location.href='get-started.html'">Connect with Our Team</button>
+            <button class="modal-button" onclick="window.location.href='https://privacyquote.github.io/privacyquote/get-started.html'">Connect with Our Team</button>
         </div>
-    </div>
+    </section>
 
     <!-- Cookie Consent Popup -->
     <div id="cookiePopup" class="cookie-popup">
-        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>.</p>
         <div class="button-container">
             <button id="acceptCookies">Accept</button>
             <button id="rejectCookies" class="reject-btn">Reject</button>
@@ -535,10 +535,10 @@
     <footer>
         <p>&copy; 2025 PrivacyQuote. All rights reserved.</p>
         <div>
-            <a href="privacy-policy.html">Privacy Policy</a> |
-            <a href="terms-of-use.html">Terms of Use</a> |
-            <a href="sms-compliance.html">SMS Compliance</a> |
-            <a href="contact.html">Contact</a>
+            <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a> |
+            <a href="https://privacyquote.github.io/privacyquote/terms-of-use.html">Terms of Use</a> |
+            <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance</a> |
+            <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
         </div>
         <p>Email: support@privacyquote.com | Phone: 866-580-7552 | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
@@ -563,35 +563,50 @@
         // Cookie Consent Functionality
         function setConsent(value) {
             localStorage.setItem('cookie_consent', value);
-            console.log(`Consent set: cookie_consent=${value}`);
+            console.log(`Consent set: cookie_consent=${value}, location=${window.location.href}`);
+            document.getElementById('cookiePopup').style.display = 'none';
         }
 
         function getConsent() {
             const consent = localStorage.getItem('cookie_consent');
-            console.log(`Consent check: cookie_consent=${consent}`);
+            console.log(`Consent check: cookie_consent=${consent}, location=${window.location.href}`);
             return consent;
         }
 
         function closeCookiePopup() {
             document.getElementById('cookiePopup').style.display = 'none';
+            console.log(`Popup closed: location=${window.location.href}`);
         }
 
-        window.onload = function() {
+        // Check consent as soon as DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log(`DOM loaded: Checking consent for ${window.location.href}`);
             const consent = getConsent();
-            if (!consent) {
+            if (consent) {
+                console.log(`Consent found: Hiding popup for ${window.location.href}`);
+                document.getElementById('cookiePopup').style.display = 'none';
+            } else {
+                console.log(`No consent found: Showing popup for ${window.location.href}`);
                 document.getElementById('cookiePopup').style.display = 'block';
             }
 
             document.getElementById('acceptCookies').onclick = function() {
                 setConsent('accepted');
-                closeCookiePopup();
             };
 
             document.getElementById('rejectCookies').onclick = function() {
                 setConsent('rejected');
-                closeCookiePopup();
             };
-        };
+        });
+
+        // Fallback check to ensure popup doesn't show if consent exists
+        window.addEventListener('load', function() {
+            const consent = getConsent();
+            if (consent) {
+                console.log(`Fallback check: Hiding popup for ${window.location.href}`);
+                document.getElementById('cookiePopup').style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
