@@ -259,7 +259,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             z-index: 2000;
-            width: 320px; /* Increased to ensure space for side-by-side buttons */
+            width: 320px; /* Ensures space for buttons */
             text-align: center;
             animation: slideInUp 0.5s ease-out forwards;
         }
@@ -276,19 +276,19 @@
             text-decoration: underline;
         }
         .cookie-popup .button-container {
-            display: flex; /* Use flexbox to enforce side-by-side layout */
-            justify-content: center; /* Center the buttons */
+            display: flex;
+            justify-content: center;
         }
         .cookie-popup button {
             background: #007bff;
             color: white;
-            padding: 6px 12px; /* Match index.html mobile size */
-            font-size: 0.8em; /* Match index.html mobile size */
+            padding: 6px 12px; /* Match index.html size */
+            font-size: 0.8em; /* Match index.html size */
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin: 0 3px; /* Consistent with index.html mobile */
-            display: inline-block; /* Fallback for non-flex support */
+            margin: 0 3px; /* Match index.html mobile margin */
+            display: inline-block;
             transition: background 0.3s;
         }
         .cookie-popup button:hover {
@@ -310,14 +310,14 @@
                 opacity: 1;
             }
         }
-        @media (max-width: 768px) { 
+        @media (max-width: 768px) {
             header .container {
                 flex-direction: column;
                 gap: 10px;
             }
-            nav a { 
-                display: block; 
-                margin: 5px 0; 
+            nav a {
+                display: block;
+                margin: 5px 0;
             }
             .section {
                 padding: 30px 20px;
@@ -338,7 +338,7 @@
                 font-size: 0.8em;
             }
             .cookie-popup .button-container {
-                flex-wrap: wrap; /* Allow wrapping on very small screens */
+                flex-wrap: wrap;
                 justify-content: center;
             }
             .cookie-popup button {
