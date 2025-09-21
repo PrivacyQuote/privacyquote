@@ -284,6 +284,7 @@
             cursor: pointer;
             font-size: 0.9em;
             margin: 0 5px;
+            display: inline-block; /* Ensure side by side */
             transition: background 0.3s;
         }
         .cookie-popup button:hover {
@@ -336,6 +337,8 @@
             .cookie-popup button {
                 padding: 6px 12px;
                 font-size: 0.8em;
+                display: inline-block; /* Maintain side by side on mobile */
+                margin: 0 3px; /* Tighter spacing for mobile */
             }
         }
     </style>
