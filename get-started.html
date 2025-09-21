@@ -36,20 +36,20 @@
             font-size: 1.8em; 
             font-weight: 700;
         }
-        nav { 
+        nav {
             display: flex;
             align-items: center;
         }
-        nav a { 
-            color: white; 
-            text-decoration: none; 
-            margin: 0 15px; 
-            font-size: 1em; 
-            font-weight: 500; 
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1em;
+            font-weight: 500;
             transition: color 0.3s;
         }
-        nav a:hover { 
-            color: #ffc107; 
+        nav a:hover {
+            color: #ffc107;
         }
         .section { 
             padding: 40px 20px; 
@@ -259,7 +259,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             z-index: 2000;
-            width: 320px; /* Ensures space for buttons */
+            width: 320px;
             text-align: center;
             animation: slideInUp 0.5s ease-out forwards;
         }
@@ -282,12 +282,12 @@
         .cookie-popup button {
             background: #007bff;
             color: white;
-            padding: 6px 12px; /* Match index.html size */
-            font-size: 0.8em; /* Match index.html size */
+            padding: 6px 12px;
+            font-size: 0.8em;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin: 0 3px; /* Match index.html mobile margin */
+            margin: 0 3px;
             display: inline-block;
             transition: background 0.3s;
         }
@@ -315,36 +315,13 @@
                 flex-direction: column;
                 gap: 10px;
             }
+            nav {
+                width: 100%;
+            }
             nav a {
                 display: block;
                 margin: 5px 0;
-            }
-            .section {
-                padding: 30px 20px;
-            }
-            form {
-                padding: 15px;
-            }
-            .age-verify {
-                align-items: flex-start;
-            }
-            .cookie-popup {
-                width: 90%;
-                right: 10px;
-                bottom: 10px;
-                padding: 15px;
-            }
-            .cookie-popup p {
-                font-size: 0.8em;
-            }
-            .cookie-popup .button-container {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .cookie-popup button {
-                padding: 6px 12px; /* Consistent with desktop */
-                font-size: 0.8em; /* Consistent with desktop */
-                margin: 0 3px;
+                text-align: center;
             }
         }
     </style>
