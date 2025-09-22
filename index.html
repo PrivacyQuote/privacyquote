@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -216,46 +217,57 @@
             line-height: 1.4;
             max-height: 400px;
             overflow-y: auto;
-            border: 1px solid #ddd;
+            border: 2px solid #ccc;
+            border-radius: 15px;
             padding: 15px;
-            border-radius: 5px;
-            background: #f9f9f9;
+            background: #ffffff;
             margin-bottom: 20px;
+            width: 90%;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-image: linear-gradient(#f0f0f0, #ffffff);
         }
         .conversation .message {
-            margin-bottom: 15px;
-            max-width: 80%;
-            padding: 10px;
-            border-radius: 10px;
+            margin-bottom: 10px;
+            max-width: 75%;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            line-height: 1.3;
             position: relative;
         }
         .conversation .ainsley {
             background: #e3f2fd;
             color: #333;
-            margin-left: 10%;
-            text-align: left;
+            margin-right: 10%;
+            margin-left: 5%;
+            border-top-left-radius: 5px;
         }
         .conversation .stephanie {
             background: #d4edda;
             color: #333;
             margin-left: 20%;
-            text-align: right;
+            margin-right: 5%;
+            border-top-right-radius: 5px;
+            text-align: left;
         }
         .conversation .sender {
             font-weight: bold;
-            font-size: 0.9em;
+            font-size: 0.8em;
             color: white;
             background: #007bff;
-            padding: 5px 10px;
-            border-radius: 12px;
+            padding: 4px 8px;
+            border-radius: 10px;
             display: inline-block;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
         .conversation .stephanie .sender {
             background: #28a745;
         }
         .conversation .message-text {
-            font-size: 1em;
+            font-size: 0.9em;
             color: #333;
         }
         .modal-button {
@@ -385,8 +397,12 @@
             .ainsley-section { padding: 30px; }
             .compliance { padding: 30px; }
             .modal-content { width: 90%; padding: 20px; }
+            .conversation {
+                width: 95%;
+                max-width: 300px;
+            }
             .conversation .message {
-                max-width: 90%;
+                max-width: 85%;
                 margin-left: 5%;
                 margin-right: 5%;
             }
@@ -423,7 +439,6 @@
             </nav>
         </div>
     </header>
-
     <section id="home" class="hero">
         <div class="container">
             <h1>Engage Your Leads with Secure, AI-Powered SMS Solutions</h1>
@@ -431,14 +446,12 @@
             <button onclick="window.location.href='https://privacyquote.github.io/privacyquote/get-started.html'">Get Started with Ainsley</button>
         </div>
     </section>
-
     <section id="ainsley" class="section ainsley-section">
         <h2>Ainsley: Your Trusted Partner for Lead Success</h2>
         <p>Meet Ainsley, the AI assistant that transforms how you connect with your insurance leads. Designed for agents, Ainsley seamlessly takes your pre-opted-in leads and engages them with friendly, tailored SMS conversations to uncover discounts and drive conversions.</p>
         <p>With Ainsley, your leads feel valued as she guides them to Click-to-Call connections with you, all while ensuring every text meets strict TCPA and CTIA compliance standards. Ready to elevate your lead game? Let Ainsley do the heavy lifting.</p>
         <button id="demoBtn">See Ainsley's SMS Conversation Example</button>
     </section>
-
     <section id="services" class="section">
         <h2>Discover Ainsley's Capabilities</h2>
         <div class="services">
@@ -456,20 +469,18 @@
             </div>
         </div>
     </section>
-
     <section id="compliance" class="section compliance">
         <h2>Our Commitment to Compliance</h2>
-        <p>PrivacyQuote and Ainsley prioritize privacy and regulatory compliance. All SMS communications adhere to TCPA and CTIA guidelines, including:</p>
+        <p>Typically 10 to 15 tests per interaction; standard rates apply.</p>
+        <p style="margin-bottom: 30px;">PrivacyQuote and Ainsley prioritize privacy and regulatory compliance. All SMS communications adhere to TCPA and CTIA guidelines, including:</p>
         <ul>
             <li>Prior express written consent for all texts.</li>
             <li>Double opt-in: Consumers reply "YES" to confirm participation with Ainsley.</li>
             <li>Easy opt-out: Reply "STOP" to unsubscribe anytime.</li>
-            <li>Message frequency: Up to 15 texts per interaction; standard rates apply.</li>
             <li>No data selling or sharing beyond one-to-one agent connections.</li>
         </ul>
-        <p>For full details, review our <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a> and <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance Page</a>.</p>
+        <p style="text-align: center;">For full details, review our <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a> and <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance Page</a>.</p>
     </section>
-
     <div id="demoModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -521,8 +532,6 @@
             <button class="modal-button" onclick="window.location.href='https://privacyquote.github.io/privacyquote/get-started.html'">Connect with Our Team</button>
         </div>
     </div>
-
-    <!-- Cookie Consent Popup -->
     <div id="cookiePopup" class="cookie-popup" style="display: none">
         <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>.</p>
         <div class="button-container">
@@ -530,7 +539,6 @@
             <button id="rejectCookies" class="reject-btn">Reject</button>
         </div>
     </div>
-
     <footer>
         <p>&copy; 2025 PrivacyQuote. All rights reserved.</p>
         <div>
@@ -541,15 +549,12 @@
         </div>
         <p>Email: support@privacyquote.com | Phone: 866-580-7552 | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
-
     <script>
-        // Cookie Consent Functionality
         function setCookie(name, value, days) {
             const expires = days ? `; expires=${new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString()}` : '';
             document.cookie = `${name}=${value}${expires}; path=/privacyquote; Secure; SameSite=Strict`;
             console.log(`Cookie set: ${name}=${value}, expires=${expires}, location=${window.location.href}`);
         }
-
         function getCookie(name) {
             const value = `; ${document.cookie}`;
             const parts = value.split(`; ${name}=`);
@@ -561,7 +566,6 @@
             console.log(`Cookie not found: ${name}, location=${window.location.href}`);
             return null;
         }
-
         function closeCookiePopup() {
             const popup = document.getElementById('cookiePopup');
             if (popup) {
@@ -571,12 +575,9 @@
                 console.log(`Popup element not found: location=${window.location.href}`);
             }
         }
-
-        // Modal Functionality
         const modal = document.getElementById('demoModal');
         const demoBtn = document.getElementById('demoBtn');
         const closeBtn = document.querySelector('.close');
-
         demoBtn.onclick = () => {
             modal.style.display = 'block';
             console.log(`Demo modal opened: location=${window.location.href}`);
@@ -585,7 +586,6 @@
             modal.style.display = 'none';
             console.log(`Demo modal closed: location=${window.location.href}`);
         };
-
         window.onclick = (event) => {
             if (event.target === modal) {
                 modal.style.display = 'none';
@@ -596,13 +596,10 @@
                 closeCookiePopup();
             }
         };
-
         function closeModal() {
             modal.style.display = 'none';
             console.log(`Modal closed via function: location=${window.location.href}`);
         }
-
-        // Check consent as soon as DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
             console.log(`DOM loaded: Checking consent for ${window.location.href}`);
             const consent = getCookie('cookie_consent');
@@ -618,7 +615,6 @@
                 console.log(`Valid consent found (${consent}): Hiding popup for ${window.location.href}`);
                 closeCookiePopup();
             }
-
             const acceptButton = document.getElementById('acceptCookies');
             const rejectButton = document.getElementById('rejectCookies');
             if (acceptButton) {
@@ -638,15 +634,12 @@
                 console.log(`Reject button not found: location=${window.location.href}`);
             }
         });
-
-        // Fallback check to ensure popup doesn't show if consent exists
         window.addEventListener('load', function() {
             const consent = getCookie('cookie_consent');
             if (consent && (consent === 'accepted' || consent === 'rejected')) {
                 console.log(`Fallback check: Hiding popup for ${window.location.href}`);
                 closeCookiePopup();
             }
-            // Periodic check for late-loaded consent
             setTimeout(() => {
                 const lateConsent = getCookie('cookie_consent');
                 if (lateConsent && (lateConsent === 'accepted' || lateConsent === 'rejected')) {
@@ -658,3 +651,4 @@
     </script>
 </body>
 </html>
+```
