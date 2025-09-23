@@ -140,6 +140,9 @@
         #stateCompliance {
             display: none;
         }
+        .state-compliance-checkbox {
+            display: none;
+        }
         .modal {
             display: none;
             position: fixed;
@@ -322,7 +325,7 @@
             <span id="ageConfirmError" class="error">Age confirmation is required.</span>
             <div class="state-compliance-checkbox">
                 <label class="checkbox-label">
-                    <input type="checkbox" id="stateConsent" name="stateConsent" required>
+                    <input type="checkbox" id="stateConsent" name="stateConsent">
                     I acknowledge the state-specific requirements and consent to automated calls and SMS under my state's law.
                 </label>
                 <span id="stateConsentError" class="error">State-specific consent is required.</span>
@@ -389,15 +392,18 @@
                 stateCompliance.textContent = miniTcpaStates[state];
                 stateCompliance.style.display = 'block';
                 stateComplianceCheckbox.style.display = 'block';
+                stateConsentCheckbox.required = true;
             } else {
                 stateCompliance.textContent = '';
                 stateCompliance.style.display = 'none';
                 stateComplianceCheckbox.style.display = 'none';
+                stateConsentCheckbox.required = false;
                 stateConsentCheckbox.checked = false;
             }
         }
         stateSelect.addEventListener('input', updateStateCompliance);
         stateSelect.addEventListener('change', updateStateCompliance);
+        updateStateCompliance(); // Initialize on load
         // Form validation
         function validateGetStartedForm(event) {
             event.preventDefault();
