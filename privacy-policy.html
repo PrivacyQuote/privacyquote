@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,159 +6,202 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - PrivacyQuote</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Roboto', Arial, sans-serif; color: #333; background-color: #f9f9f9; line-height: 1.6; }
-        header { background: linear-gradient(90deg, #007bff, #0056b3); color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        header .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        header h1 { font-size: 1.8em; font-weight: 700; }
-        nav { display: flex; align-items: center; }
-        nav a { color: white; text-decoration: none; margin: 0 15px; font-size: 1em; font-weight: 500; transition: color 0.3s; }
-        nav a:hover { color: #ffc107; }
-        .section { padding: 60px 20px; max-width: 800px; margin: 0 auto; }
-        .section h2 { font-size: 2em; color: #007bff; margin-bottom: 20px; }
-        .section p { font-size: 1.1em; margin-bottom: 15px; }
-        footer { background-color: #343a40; color: white; padding: 20px; text-align: center; }
-        footer a { color: #ffc107; text-decoration: none; margin: 0 10px; font-weight: 600; }
-        footer a:hover { text-decoration: underline; }
-        .cookie-popup { display: none; position: fixed; bottom: 20px; right: 20px; background: #343a40; color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 2000; width: 300px; text-align: center; animation: slideInUp 0.5s ease-out forwards; }
-        .cookie-popup p { font-size: 0.9em; margin-bottom: 15px; }
-        .cookie-popup a { color: #ffc107; text-decoration: none; font-weight: 600; }
-        .cookie-popup a:hover { text-decoration: underline; }
-        .cookie-popup .button-container { display: flex; justify-content: center; }
-        .cookie-popup button { background: #007bff; color: white; padding: 8px 16px; font-size: 0.9em; border: none; border-radius: 5px; cursor: pointer; margin: 0 5px; display: inline-block; transition: background 0.3s; }
-        .cookie-popup button:hover { background: #0056b3; }
-        .cookie-popup .reject-btn { background: #6c757d; }
-        .cookie-popup .reject-btn:hover { background: #5a6268; }
-        @keyframes slideInUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffc107;
+        }
+        .section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-family: 'Open Sans', Helvetica, sans-serif;
+        }
+        .section h2 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        .section h3 {
+            font-size: 1.5em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .section p, .section ul {
+            margin-bottom: 15px;
+            font-size: 1em;
+            color: #555;
+        }
+        .section ul {
+            padding-left: 20px;
+        }
+        .section a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .section a:hover {
+            color: #ffc107;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
         @media (max-width: 768px) {
-            header .container { flex-direction: column; gap: 10px; }
-            nav { display: block; width: 100%; }
-            nav a { display: block; margin: 5px 0; text-align: center; }
-            .cookie-popup { width: 90%; right: 10px; bottom: 10px; padding: 15px; }
-            .cookie-popup p { font-size: 0.8em; }
-            .cookie-popup .button-container { display: flex; justify-content: center; }
-            .cookie-popup button { padding: 6px 12px; font-size: 0.8em; margin: 0 3px; display: inline-block; }
+            header .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+            .section h2 {
+                font-size: 2em;
+            }
+            .section {
+                width: 90%;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="container">
             <h1>PrivacyQuote</h1>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-of-use.html">Terms of Use</a>
-                <a href="contact.html">Contact</a>
+                <a href="https://privacyquote.github.io/privacyquote/index.html">Home</a>
+                <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a>
+                <a href="https://privacyquote.github.io/privacyquote/terms-of-use.html">Terms of Use</a>
+                <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
             </nav>
         </div>
     </header>
-
     <section class="section">
         <h2>Privacy Policy</h2>
-        <p>At PrivacyQuote, we are committed to protecting your privacy and ensuring compliance with the Telephone Consumer Protection Act (TCPA), state mini-TCPA laws, the National Do Not Call Registry (DNC), and CTIA guidelines. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website or services, distinguishing between our agent partners and their prescreened, DNC-opted-in leads.</p>
+        <p>Last Updated: September 22, 2025</p>
+        <p>At PrivacyQuote, we are committed to protecting your privacy and ensuring compliance with the Telephone Consumer Protection Act (TCPA), state mini-TCPA laws, the National Do Not Call Registry (DNC), CTIA guidelines, and other applicable regulations. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you use our website, SaaS platform, or AI-powered SMS lead nurturing services, including interactions with our AI assistant, Ainsley. We distinguish between agent partners (licensed insurance agents) and consumers (individuals requesting quotes via vendors).</p>
 
-        <h3>Information We Collect</h3>
-        <p><strong>For Agent Partners:</strong> We collect personal information such as your name, email address, phone number, and state of operation when you submit forms (e.g., the "Get Started" page) or interact with our AI assistant, Ainsley, for onboarding or support.</p>
-        <p><strong>For Leads:</strong> We do not collect lead data directly or maintain a lead database. We receive prescreened, DNC-opted-in lead information (e.g., name, phone number) from third-party lead vendors on behalf of our agent partners, which we verify for accuracy and consent before processing. We retain only minimal data (e.g., phone number and opt-out status) for 5 years to comply with TCPA and DNC regulations, without sharing or storing full lead profiles.</p>
+        <h3>1. Information We Collect</h3>
+        <p><strong>For Agent Partners</strong>: We collect personal information such as:</p>
+        <ul>
+            <li>Name, email address, phone number, and state of operation from forms (e.g., Contact Us, Get Started).</li>
+            <li>Usage data (e.g., IP address, browser type, form submission timestamps) for compliance and analytics.</li>
+        </ul>
+        <p><strong>For Consumers</strong>: We do not collect or maintain a consumer database. We receive minimal, prescreened, DNC-opted-in data (e.g., name, phone number) from third-party vendors, with verified Prior Express Written Consent (PEWC). We retain only phone number and opt-out status for compliance.</p>
 
-        <h3>How We Use Your Information</h3>
-        <p><strong>For Agent Partners:</strong> We use your information to provide and improve our SaaS platform, communicate about partnership opportunities, and ensure compliance with TCPA and related regulations.</p>
-        <p><strong>For Leads:</strong> We use your verified data to facilitate nurturing via Ainsley, delivering consumer-friendly SMS messages to explore discounts, savings, and data verification, culminating in a click-to-call option to connect with your assigned agent, always with your prior consent from the vendor.</p>
-        <p>Marketing messages are sent only with prior express written consent (PEWC), with frequency disclosed per the relevant consent section.</p>
+        <h3>2. How We Use Your Information</h3>
+        <p><strong>For Agent Partners</strong>: We use your information to:</p>
+        <ul>
+            <li>Provide and improve our SaaS platform for lead nurturing.</li>
+            <li>Communicate via SMS (5-10 messages per interaction, up to 20/month) for onboarding, support, and marketing.</li>
+            <li>Ensure compliance with TCPA, CTIA, and mini-TCPA laws in Arizona, Connecticut, Florida, Georgia, Maryland, Mississippi, New Jersey, New York, Oklahoma, Tennessee, Texas, Utah, Virginia, Washington, and Wisconsin.</li>
+        </ul>
+        <p><strong>For Consumers</strong>: We use your verified data to facilitate nurturing via Ainsley, delivering conversational SMS (<15 messages per session) to explore discounts and connect with agents via Click-to-Call, based on your consent.</p>
 
-        <h3>Consent for Communications</h3>
-        <p><strong>For Agent Partners:</strong> By providing your phone number via our forms (e.g., the "Get Started" page), you provide PEWC to receive automated SMS/MMS messages from PrivacyQuote, including onboarding, support, and marketing content. These messages typically involve 5-10 messages per interaction, with an estimated total of up to 20 messages per month under normal usage, though this may vary based on support needs. Message and data rates may apply. This consent is optional and not a condition of purchase. We use a double opt-in process (initial form submission followed by a confirmation text) to verify consent, especially for toll-free numbers. You may revoke consent at any time by replying "STOP."</p>
-        <p><strong>For Leads:</strong> Your consent is consumer-initiated, obtained when you provided your information on a lead vendor’s website to request a quote, constituting the first opt-in. PrivacyQuote requires a second opt-in via an initial SMS from Ainsley (e.g., "Reply YES to confirm SMS for quote assistance") to verify your willingness to receive messages. Each nurturing conversation typically involves less than 15 inbound and outbound messages combined, depending on your questions, and ends with your "STOP" request, a click-to-call, or a single final message (e.g., "We’re here if you want to restart") if you stop responding. Conversations are treated as separate interactions, with no further messages after conclusion. Vendors must provide proof of your initial consent (e.g., form data, timestamps), which we verify, and message purpose (e.g., discount exploration), frequency, and opt-out rights are disclosed.</p>
+        <h3>3. Consent for Communications</h3>
+        <p><strong>For Agent Partners</strong>: By submitting forms (e.g., Contact Us, Get Started), you provide PEWC to receive automated SMS/MMS messages (5-10 per interaction, up to 20/month). Consent is verified via a 6-digit SMS code. Message and data rates may apply. Consent is optional and not a condition of purchase. Reply STOP to opt out.</p>
+        <p><strong>For Consumers</strong>: Your consent is consumer-initiated via a vendor’s quote request form (first opt-in). PrivacyQuote requires a second opt-in via SMS (e.g., “Reply YES to confirm”). Conversations involve <15 messages per session, ending with opt-out, Click-to-Call, or a final message. Reply STOP to opt out.</p>
 
-        <h3>Opt-Out and Do Not Call Compliance</h3>
-        <p><strong>For Agent Partners:</strong> You may opt out of receiving communications at any time by replying "STOP" to any SMS message, emailing support@privacyquote.com, or calling 866-580-7552. Opt-out requests are processed immediately, and we retain opt-out records for 5 years to comply with TCPA § 64.1200.</p>
-        <p><strong>For Leads:</strong> You may opt out by replying "STOP" to any SMS message from Ainsley, and we honor requests immediately, retaining records for 5 years. Agents are contractually required to provide leads that are prescreened for DNC compliance by vendors. We do not currently scrub against the DNC but may implement an optional internal prescreen via API integration to enhance compliance by rejecting DNC-listed leads.</p>
+        <h3>4. Opt-Out and Do Not Call Compliance</h3>
+        <p><strong>For Agent Partners and Consumers</strong>: Reply STOP to any SMS to opt out immediately. Opt-out records are retained for 5 years per TCPA § 64.1200. Consumers are prescreened for DNC compliance by vendors; we may implement internal DNC scrubbing via API to reject non-compliant numbers. Contact <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552 to opt out.</p>
 
-        <h3>Security</h3>
-        <p>Your data is encrypted using AES-256 during transmission and stored securely in compliance with industry standards. In the event of a data breach, we will notify affected individuals (agents or leads) within 72 hours as required by applicable laws (e.g., CCPA, GDPR). Our security measures are regularly audited to protect against unauthorized access.</p>
+        <h3>5. State-Specific Compliance</h3>
+        <p>We comply with mini-TCPA laws in Arizona, Connecticut, Florida, Georgia, Maryland, Mississippi, New Jersey, New York, Oklahoma, Tennessee, Texas, Utah, Virginia, Washington, and Wisconsin, requiring PEWC, time limits (e.g., 8 a.m. to 8 p.m., except Texas: 9 a.m. to 9 p.m. weekdays, no texts after 12 p.m. Sundays), call frequency limits (3 attempts in 24 hours), and opt-out options. California’s CCPA grants additional data rights (e.g., opt-out of data sharing).</p>
 
-        <h3>Data Retention and Deletion</h3>
-        <p>We retain personal data for 5 years or until you opt out, whichever occurs first, to meet legal and operational needs. For agents, this includes full profile data; for leads, we retain only minimal data (e.g., phone number and opt-out status) for TCPA/DNC compliance. Agents and leads may request data deletion by contacting us at support@privacyquote.com, and we will comply within 30 days, except where retention is required by law.</p>
+        <h3>6. Data Sharing</h3>
+        <p>We do not sell or share personal information with third parties. Data is shared only with:</p>
+        <ul>
+            <li>Vendors for real-time integrations, with verified PEWC.</li>
+            <li>Service providers (e.g., Twilio) under strict confidentiality agreements.</li>
+            <li>Legal authorities as required by law.</li>
+        </ul>
 
-        <h3>Disclosure of Information</h3>
-        <p>We do not share your personal information with third parties. <strong>For Agent Partners:</strong> We may use your data with service providers (e.g., Twilio for SMS delivery) under confidentiality agreements mandating TCPA and CTIA compliance, but we do not redistribute it. <strong>For Leads:</strong> Your data is provided directly to your assigned agent by the lead vendor; we facilitate nurturing via Ainsley without retaining or sharing full profiles, ensuring compliance with TCPA, mini-TCPA, and DNC regulations through vendor verification.</p>
+        <h3>7. Data Security</h3>
+        <p>We use AES-256 encryption for data transmission and storage. In case of a data breach, we will notify affected parties within 72 hours per CCPA and GDPR. Security measures are audited regularly.</p>
 
-        <h3>Cookies and Tracking</h3>
-        <p>Our website uses cookies to enhance your experience and analyze usage. You can manage your cookie preferences through the consent popup below. For more details, see this Privacy Policy.</p>
+        <h3>8. Data Retention and Deletion</h3>
+        <p>We retain agent data for 5 years or until opt-out, and consumer data (phone, opt-out status) for 5 years for TCR audits. Request deletion via <a href="mailto:support@privacyquote.com">support@privacyquote.com</a>; we comply within 30 days unless required by law.</p>
 
-        <h3>Changes to This Policy</h3>
-        <p>We may update this policy periodically. Changes will be posted here with a 30-day notice via email to registered users (agents), and the latest version will be effective upon posting.</p>
+        <h3>9. Cookies and Tracking</h3>
+        <p>Our website uses cookies to enhance user experience and analyze usage. You can manage preferences via our consent popup. Cookies do not collect personal information without consent.</p>
 
-        <p>For questions or to exercise your rights, contact us at <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552, located at 1225 N Willow Ave., Suite 100, Clovis, CA 93619.</p>
+        <h3>10. Limitation of Liability</h3>
+        <p>PrivacyQuote is not liable for indirect, incidental, consequential, or punitive damages arising from data use, breaches, or third-party actions, with liability capped at fees paid in the prior 12 months or $100. Agents and consumers indemnify PrivacyQuote against claims from inaccurate data or non-compliance.</p>
+
+        <h3>11. Changes to This Policy</h3>
+        <p>We may update this policy, with 30-day notice via email to agents and posting on this page for all users. Continued use constitutes acceptance.</p>
+
+        <h3>12. Contact Us</h3>
+        <p>For questions, data requests, or to opt out, contact:</p>
+        <p>Email: <a href="mailto:support@privacyquote.com">support@privacyquote.com</a><br>
+        Phone: 866-580-7552<br>
+        Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </section>
-
-    <div id="cookiePopup" class="cookie-popup">
-        <p>This website uses cookies to enhance your experience and analyze usage. By continuing to browse, you consent to our use of cookies. For more details, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
-        <div class="button-container">
-            <button id="acceptCookies">Accept</button>
-            <button id="rejectCookies" class="reject-btn">Reject</button>
-        </div>
-    </div>
-
     <footer>
         <p>&copy; 2025 PrivacyQuote. All rights reserved.</p>
         <div>
-            <a href="privacy-policy.html">Privacy Policy</a> |
-            <a href="terms-of-use.html">Terms of Use</a> |
-            <a href="sms-compliance.html">SMS Compliance</a> |
-            <a href="contact.html">Contact</a>
+            <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a> |
+            <a href="https://privacyquote.github.io/privacyquote/terms-of-use.html">Terms of Use</a> |
+            <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance</a> |
+            <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
         </div>
         <p>Email: support@privacyquote.com | Phone: 866-580-7552 | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
-
-    <script>
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + value + expires + "; path=/";
-        }
-
-        function getCookie(name) {
-            const value = "; " + document.cookie;
-            const parts = value.split("; " + name + "=");
-            if (parts.length === 2) return parts.pop().split(";").shift();
-            return null;
-        }
-
-        function closeCookiePopup() {
-            document.getElementById('cookiePopup').style.display = 'none';
-        }
-
-        window.onload = function() {
-            if (!getCookie('cookie_consent')) {
-                document.getElementById('cookiePopup').style.display = 'block';
-            }
-
-            document.getElementById('acceptCookies').onclick = function() {
-                setCookie('cookie_consent', 'accepted', 365);
-                closeCookiePopup();
-                console.log('Cookies accepted');
-            };
-
-            document.getElementById('rejectCookies').onclick = function() {
-                setCookie('cookie_consent', 'rejected', 365);
-                closeCookiePopup();
-                console.log('Cookies rejected');
-            };
-        };
-
-        window.onclick = function(event) {
-            if (event.target === document.getElementById('cookiePopup')) {
-                closeCookiePopup();
-            }
-        };
-    </script>
 </body>
 </html>
+```
