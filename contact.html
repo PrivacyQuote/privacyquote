@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -328,8 +327,10 @@
                 messageField.classList.remove('highlight');
             }
         }
+        questionSelect.addEventListener('click', highlightMessageField);
         questionSelect.addEventListener('input', highlightMessageField);
         questionSelect.addEventListener('change', highlightMessageField);
+        highlightMessageField(); // Run on page load
 
         // Form validation
         function validateContactForm(event) {
@@ -364,12 +365,21 @@
             const message = document.getElementById('message').value;
             const questionError = document.getElementById('questionError');
             const messageError = document.getElementById('messageError');
-            if (question.trim() === '' && message.trim() === '') {
+            if (question === 'Custom question (use Message field below)' && message.trim() === '') {
                 questionError.style.display = 'block';
+                messageError.textContent = 'Please enter your custom question in the Message field.';
                 messageError.style.display = 'block';
                 valid = false;
                 if (!firstInvalidField) {
-                    firstInvalidField = document.getElementById('question');
+                    firstInvalidField = messageField;
+                }
+            } else if (question.trim() === '' && message.trim() === '') {
+                questionError.style.display = 'block';
+                messageError.textContent = 'A question or message is required.';
+                messageError.style.display = 'block';
+                valid = false;
+                if (!firstInvalidField) {
+                    firstInvalidField = questionSelect;
                 }
             } else {
                 questionError.style.display = 'none';
@@ -381,7 +391,6 @@
             } else if (valid) {
                 // Show SMS verification modal
                 const phone = document.getElementById('phone').value;
-                const question = document.getElementById('question').value;
                 console.log('Selected question:', question || message); // For future backend integration
                 document.getElementById('smsInstructions').textContent = `We’ve sent a 6-digit verification code to ${phone}. Enter it below to continue.`;
                 document.getElementById('smsModal').style.display = 'block';
@@ -420,4 +429,3 @@
     </script>
 </body>
 </html>
-```
