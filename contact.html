@@ -105,6 +105,9 @@
             margin-right: 10px;
             font-family: 'Roboto', Arial, sans-serif;
         }
+        .state-compliance-checkbox {
+            display: none;
+        }
         button {
             background: #007bff;
             color: white;
@@ -250,6 +253,62 @@
             <input type="tel" id="phone" name="phone" placeholder="___-___-____" required aria-describedby="phoneError">
             <span id="phoneError" class="error">Phone must be in 123-456-7890 format.</span>
 
+            <label for="state">State (optional):</label>
+            <select id="state" name="state" aria-describedby="stateError">
+                <option value="">Select State</option>
+                <option value="AL">AL</option>
+                <option value="AK">AK</option>
+                <option value="AZ">AZ</option>
+                <option value="AR">AR</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DE">DE</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="IA">IA</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="ME">ME</option>
+                <option value="MD">MD</option>
+                <option value="MA">MA</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MS">MS</option>
+                <option value="MO">MO</option>
+                <option value="MT">MT</option>
+                <option value="NE">NE</option>
+                <option value="NV">NV</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NY">NY</option>
+                <option value="NC">NC</option>
+                <option value="ND">ND</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="WA">WA</option>
+                <option value="WV">WV</option>
+                <option value="WI">WI</option>
+                <option value="WY">WY</option>
+            </select>
+            <span id="stateError" class="error">State is required if selected.</span>
+
             <label for="question">Frequently Asked Questions (Optional):</label>
             <select id="question" name="question" aria-describedby="questionError">
                 <option value="">None</option>
@@ -280,6 +339,14 @@
                 I confirm I am 18 years of age or older. Our services are designed exclusively for licensed insurance agents, and we do not collect information from individuals under 13.
             </label>
             <span id="ageConfirmError" class="error">Age confirmation is required.</span>
+
+            <div class="state-compliance-checkbox">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="stateConsent" name="stateConsent" required aria-describedby="stateConsentError">
+                    I acknowledge the state-specific requirements and consent to automated calls and SMS under my state's law.
+                </label>
+                <span id="stateConsentError" class="error">State-specific consent is required.</span>
+            </div>
 
             <button type="submit">Submit</button>
         </form>
@@ -332,20 +399,58 @@
         questionSelect.addEventListener('change', highlightMessageField);
         highlightMessageField(); // Run on page load
 
+        // State-specific compliance text and checkbox
+        const stateSelect = document.getElementById('state');
+        const stateCompliance = document.getElementById('stateCompliance');
+        const stateComplianceCheckbox = document.querySelector('.state-compliance-checkbox');
+        const stateConsentCheckbox = document.getElementById('stateConsent');
+        function updateStateCompliance() {
+            const state = stateSelect.value;
+            const miniTcpaStates = {
+                'AZ': 'In compliance with Arizona\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out).',
+                'CT': 'In compliance with Connecticut\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out). Fines up to $20,000 per violation.',
+                'FL': 'In compliance with Florida\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out within 15 days).',
+                'GA': 'In compliance with Georgia\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out).',
+                'MD': 'In compliance with Maryland\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out).',
+                'MS': 'In compliance with Mississippi\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out).',
+                'NJ': 'In compliance with New Jersey\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out).',
+                'NY': 'In compliance with New York\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out).',
+                'OK': 'In compliance with Oklahoma\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out).',
+                'TN': 'In compliance with Tennessee\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out).',
+                'TX': 'In compliance with Texas\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (9 a.m. to 9 p.m. weekdays, no texts after 12 p.m. Sundays), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out). Registration and bond required for telemarketing.',
+                'UT': 'In compliance with Utah\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out).',
+                'VA': 'In compliance with Virginia\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out). Unsolicited texts treated as telephone solicitations under DNC rules.',
+                'WA': 'In compliance with Washington\'s Commercial Electronic Message Act (CEMA), your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out).',
+                'WI': 'In compliance with Wisconsin\'s mini-TCPA laws, your consent is required for automated calls and SMS. SMS restrictions include time limits (8 a.m. to 8 p.m.), consent for automated calls, call frequency limits (no more than 3 attempts in 24 hours), and opt-out requirements (reply STOP to opt out).'
+            };
+            if (miniTcpaStates[state]) {
+                stateCompliance.textContent = miniTcpaStates[state];
+                stateCompliance.style.display = 'block';
+                stateComplianceCheckbox.style.display = 'block';
+            } else {
+                stateCompliance.textContent = '';
+                stateCompliance.style.display = 'none';
+                stateComplianceCheckbox.style.display = 'none';
+                stateConsentCheckbox.checked = false; // Reset checkbox
+            }
+        }
+        stateSelect.addEventListener('input', updateStateCompliance);
+        stateSelect.addEventListener('change', updateStateCompliance);
+
         // Form validation
-        function validateContactForm(event) {
+        function validateGetStartedForm(event) {
             event.preventDefault();
             let valid = true;
             const fields = [
                 { id: 'name', errorId: 'nameError', check: value => value.trim() !== '', msg: 'Name is required.' },
                 { id: 'email', errorId: 'emailError', check: value => /\S+@\S+\.\S+/.test(value), msg: 'Valid email is required.' },
                 { id: 'phone', errorId: 'phoneError', check: value => /\d{3}-\d{3}-\d{4}/.test(value), msg: 'Phone must be in 123-456-7890 format.' },
+                { id: 'state', errorId: 'stateError', check: value => value.trim() !== '', msg: 'State is required.' },
+                { id: 'message', errorId: 'messageError', check: value => value.trim() === '' || value.trim().length > 0, msg: 'Message cannot be empty if provided.' },
                 { id: 'consent', errorId: 'consentError', check: () => document.getElementById('consent').checked, msg: 'Consent is required.' },
                 { id: 'ageConfirm', errorId: 'ageConfirmError', check: () => document.getElementById('ageConfirm').checked, msg: 'Age confirmation is required.' }
             ];
             let firstInvalidField = null;
-
-            // Validate required fields
             fields.forEach(field => {
                 const value = document.getElementById(field.id).value;
                 const error = document.getElementById(field.errorId);
@@ -359,39 +464,23 @@
                     error.style.display = 'none';
                 }
             });
-
-            // Validate question or message
-            const question = document.getElementById('question').value;
-            const message = document.getElementById('message').value;
-            const questionError = document.getElementById('questionError');
-            const messageError = document.getElementById('messageError');
-            if (question === 'Custom question (use Message field below)' && message.trim() === '') {
-                questionError.style.display = 'block';
-                messageError.textContent = 'Please enter your custom question in the Message field.';
-                messageError.style.display = 'block';
+            // Validate state-specific consent if visible
+            if (stateComplianceCheckbox.style.display === 'block' && !stateConsentCheckbox.checked) {
+                const error = document.getElementById('stateConsentError');
+                error.style.display = 'block';
                 valid = false;
                 if (!firstInvalidField) {
-                    firstInvalidField = messageField;
-                }
-            } else if (question.trim() === '' && message.trim() === '') {
-                questionError.style.display = 'block';
-                messageError.textContent = 'A question or message is required.';
-                messageError.style.display = 'block';
-                valid = false;
-                if (!firstInvalidField) {
-                    firstInvalidField = questionSelect;
+                    firstInvalidField = stateConsentCheckbox;
                 }
             } else {
-                questionError.style.display = 'none';
-                messageError.style.display = 'none';
+                const error = document.getElementById('stateConsentError');
+                error.style.display = 'none';
             }
-
             if (!valid && firstInvalidField) {
                 firstInvalidField.focus();
             } else if (valid) {
                 // Show SMS verification modal
                 const phone = document.getElementById('phone').value;
-                console.log('Selected question:', question || message); // For future backend integration
                 document.getElementById('smsInstructions').textContent = `We’ve sent a 6-digit verification code to ${phone}. Enter it below to continue.`;
                 document.getElementById('smsModal').style.display = 'block';
             }
@@ -405,8 +494,8 @@
             if (/^\d{6}$/.test(code)) {
                 error.style.display = 'none';
                 console.log('SMS code valid, ready to submit to backend.');
-                // In production, send code and question/message to backend for Twilio/Ainsley
-                // Example: fetch('/verify', { method: 'POST', body: JSON.stringify({ code, phone, question, message }) });
+                // In production, send code to backend for Twilio verification
+                // Example: fetch('/verify', { method: 'POST', body: JSON.stringify({ code, phone }) });
                 document.getElementById('smsModal').style.display = 'none';
             } else {
                 error.style.display = 'block';
@@ -426,6 +515,16 @@
                 closeSMSModal();
             }
         };
+
+        // Prefill form from URL query parameters
+        function prefillForm() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('name')) document.getElementById('name').value = decodeURIComponent(params.get('name'));
+            if (params.has('email')) document.getElementById('email').value = decodeURIComponent(params.get('email'));
+            if (params.has('phone')) document.getElementById('phone').value = decodeURIComponent(params.get('phone'));
+        }
+        window.onload = prefillForm;
     </script>
 </body>
 </html>
+```
