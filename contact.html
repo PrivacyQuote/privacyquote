@@ -140,6 +140,9 @@
         .compliance-note a:hover {
             text-decoration: underline;
         }
+        #stateCompliance {
+            display: none;
+        }
         .modal {
             display: none;
             position: fixed;
@@ -323,6 +326,7 @@
             </select>
             <span id="questionError" class="error">A question or message is required.</span>
             <p class="compliance-note">By submitting this form, you consent to receive SMS replies from Ainsley. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out, HELP for info. See our <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance Page</a>.</p>
+            <p id="stateCompliance" class="compliance-note"></p>
 
             <label for="message">Message:</label>
             <textarea id="message" name="message" aria-describedby="messageError"></textarea>
@@ -438,19 +442,19 @@
         stateSelect.addEventListener('change', updateStateCompliance);
 
         // Form validation
-        function validateGetStartedForm(event) {
+        function validateContactForm(event) {
             event.preventDefault();
             let valid = true;
             const fields = [
                 { id: 'name', errorId: 'nameError', check: value => value.trim() !== '', msg: 'Name is required.' },
                 { id: 'email', errorId: 'emailError', check: value => /\S+@\S+\.\S+/.test(value), msg: 'Valid email is required.' },
                 { id: 'phone', errorId: 'phoneError', check: value => /\d{3}-\d{3}-\d{4}/.test(value), msg: 'Phone must be in 123-456-7890 format.' },
-                { id: 'state', errorId: 'stateError', check: value => value.trim() !== '', msg: 'State is required.' },
-                { id: 'message', errorId: 'messageError', check: value => value.trim() === '' || value.trim().length > 0, msg: 'Message cannot be empty if provided.' },
                 { id: 'consent', errorId: 'consentError', check: () => document.getElementById('consent').checked, msg: 'Consent is required.' },
                 { id: 'ageConfirm', errorId: 'ageConfirmError', check: () => document.getElementById('ageConfirm').checked, msg: 'Age confirmation is required.' }
             ];
             let firstInvalidField = null;
+
+            // Validate required fields
             fields.forEach(field => {
                 const value = document.getElementById(field.id).value;
                 const error = document.getElementById(field.errorId);
@@ -464,6 +468,20 @@
                     error.style.display = 'none';
                 }
             });
+
+            // Validate state if provided
+            const state = document.getElementById('state').value;
+            const stateError = document.getElementById('stateError');
+            if (state.trim() !== '' && !/^[A-Z]{2}$/.test(state)) {
+                stateError.style.display = 'block';
+                valid = false;
+                if (!firstInvalidField) {
+                    firstInvalidField = document.getElementById('state');
+                }
+            } else {
+                stateError.style.display = 'none';
+            }
+
             // Validate state-specific consent if visible
             if (stateComplianceCheckbox.style.display === 'block' && !stateConsentCheckbox.checked) {
                 const error = document.getElementById('stateConsentError');
@@ -476,11 +494,39 @@
                 const error = document.getElementById('stateConsentError');
                 error.style.display = 'none';
             }
+
+            // Validate question or message
+            const question = document.getElementById('question').value;
+            const message = document.getElementById('message').value;
+            const questionError = document.getElementById('questionError');
+            const messageError = document.getElementById('messageError');
+            if (question === 'Custom question (use Message field below)' && message.trim() === '') {
+                questionError.style.display = 'block';
+                messageError.textContent = 'Please enter your custom question in the Message field.';
+                messageError.style.display = 'block';
+                valid = false;
+                if (!firstInvalidField) {
+                    firstInvalidField = messageField;
+                }
+            } else if (question.trim() === '' && message.trim() === '') {
+                questionError.style.display = 'block';
+                messageError.textContent = 'A question or message is required.';
+                messageError.style.display = 'block';
+                valid = false;
+                if (!firstInvalidField) {
+                    firstInvalidField = questionSelect;
+                }
+            } else {
+                questionError.style.display = 'none';
+                messageError.style.display = 'none';
+            }
+
             if (!valid && firstInvalidField) {
                 firstInvalidField.focus();
             } else if (valid) {
                 // Show SMS verification modal
                 const phone = document.getElementById('phone').value;
+                console.log('Selected question:', question || message); // For future backend integration
                 document.getElementById('smsInstructions').textContent = `We’ve sent a 6-digit verification code to ${phone}. Enter it below to continue.`;
                 document.getElementById('smsModal').style.display = 'block';
             }
@@ -494,8 +540,8 @@
             if (/^\d{6}$/.test(code)) {
                 error.style.display = 'none';
                 console.log('SMS code valid, ready to submit to backend.');
-                // In production, send code to backend for Twilio verification
-                // Example: fetch('/verify', { method: 'POST', body: JSON.stringify({ code, phone }) });
+                // In production, send code and question/message to backend for Twilio/Ainsley
+                // Example: fetch('/verify', { method: 'POST', body: JSON.stringify({ code, phone, question, message }) });
                 document.getElementById('smsModal').style.display = 'none';
             } else {
                 error.style.display = 'block';
@@ -515,15 +561,6 @@
                 closeSMSModal();
             }
         };
-
-        // Prefill form from URL query parameters
-        function prefillForm() {
-            const params = new URLSearchParams(window.location.search);
-            if (params.has('name')) document.getElementById('name').value = decodeURIComponent(params.get('name'));
-            if (params.has('email')) document.getElementById('email').value = decodeURIComponent(params.get('email'));
-            if (params.has('phone')) document.getElementById('phone').value = decodeURIComponent(params.get('phone'));
-        }
-        window.onload = prefillForm;
     </script>
 </body>
 </html>
