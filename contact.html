@@ -92,6 +92,10 @@
             font-size: 1em;
             font-family: 'Open Sans', Helvetica, sans-serif;
         }
+        textarea.highlight {
+            border: 2px solid #007bff;
+            box-shadow: 0 0 5px rgba(0,123,255,0.3);
+        }
         .checkbox-label {
             display: flex;
             align-items: center;
@@ -284,9 +288,9 @@
     <div id="smsModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p id="smsInstructions">We’ve sent a 4-6 digit verification code to your phone number. Enter it below to continue.</p>
+            <p id="smsInstructions">We’ve sent a 6-digit verification code to your phone number. Enter it below to continue.</p>
             <input type="text" id="smsCode" name="smsCode" required aria-describedby="smsCodeError">
-            <span id="smsCodeError" class="error">Valid SMS verification code is required (4-6 digits).</span>
+            <span id="smsCodeError" class="error">Valid 6-digit SMS verification code is required.</span>
             <button onclick="verifySMSCode()">Verify</button>
             <button onclick="closeSMSModal()">Cancel</button>
         </div>
@@ -312,6 +316,20 @@
             if (value.length > 6) formatted += '-' + value.slice(6, 10);
             e.target.value = formatted;
         });
+
+        // Highlight message field on custom question selection
+        const questionSelect = document.getElementById('question');
+        const messageField = document.getElementById('message');
+        function highlightMessageField() {
+            if (questionSelect.value === 'Custom question (use Message field below)') {
+                messageField.classList.add('highlight');
+                messageField.focus();
+            } else {
+                messageField.classList.remove('highlight');
+            }
+        }
+        questionSelect.addEventListener('input', highlightMessageField);
+        questionSelect.addEventListener('change', highlightMessageField);
 
         // Form validation
         function validateContactForm(event) {
@@ -365,7 +383,7 @@
                 const phone = document.getElementById('phone').value;
                 const question = document.getElementById('question').value;
                 console.log('Selected question:', question || message); // For future backend integration
-                document.getElementById('smsInstructions').textContent = `We’ve sent a 4-6 digit verification code to ${phone}. Enter it below to continue.`;
+                document.getElementById('smsInstructions').textContent = `We’ve sent a 6-digit verification code to ${phone}. Enter it below to continue.`;
                 document.getElementById('smsModal').style.display = 'block';
             }
             return valid;
@@ -375,7 +393,7 @@
         function verifySMSCode() {
             const code = document.getElementById('smsCode').value;
             const error = document.getElementById('smsCodeError');
-            if (/^\d{4,6}$/.test(code)) {
+            if (/^\d{6}$/.test(code)) {
                 error.style.display = 'none';
                 console.log('SMS code valid, ready to submit to backend.');
                 // In production, send code and question/message to backend for Twilio/Ainsley
