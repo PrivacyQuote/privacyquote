@@ -58,11 +58,15 @@
             margin-bottom: 20px;
             color: #007bff;
         }
-        .section p {
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto 30px;
             text-align: center;
-            margin-bottom: 30px;
             font-size: 1.1em;
             color: #555;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
         }
         form {
             max-width: 600px;
@@ -81,11 +85,15 @@
         input, select, textarea {
             width: 100%;
             padding: 10px;
-            margin-bottom: 5px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 1em;
             font-family: 'Open Sans', Helvetica, sans-serif;
+        }
+        textarea.highlight {
+            border: 2px solid #007bff;
+            box-shadow: 0 0 5px rgba(0,123,255,0.3);
         }
         .checkbox-label {
             display: flex;
@@ -129,11 +137,7 @@
         .compliance-note a:hover {
             text-decoration: underline;
         }
-        .state-compliance {
-            display: none;
-            margin-bottom: 10px;
-        }
-        .state-compliance-checkbox {
+        #stateCompliance {
             display: none;
         }
         .modal {
@@ -203,6 +207,9 @@
             .section h2 {
                 font-size: 2em;
             }
+            .contact-info {
+                font-size: 1em;
+            }
             form {
                 width: 90%;
             }
@@ -226,24 +233,26 @@
         </div>
     </header>
     <section class="section">
-        <h2>Get Started with Ainsley</h2>
-        <p>Fill out this short form to get started. We need your State of Operation to tailor our services to your state's compliance laws, such as specific opt-in requirements.</p>
+        <h2>Get Started</h2>
+        <div class="contact-info">
+            <p>Ready to enhance your insurance leads with PrivacyQuote’s AI-powered SMS platform? Contact our team to get started with Ainsley!</p>
+            <p>Email: <a href="mailto:support@privacyquote.com">support@privacyquote.com</a></p>
+            <p>Phone: 866-580-7552</p>
+            <p>Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
+        </div>
         <form id="getStartedForm" onsubmit="return validateGetStartedForm(event)">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required aria-describedby="nameError">
+            <input type="text" id="name" name="name" required>
             <span id="nameError" class="error">Name is required.</span>
-
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required aria-describedby="emailError">
+            <input type="email" id="email" name="email" required>
             <span id="emailError" class="error">Valid email is required.</span>
-
             <label for="phone">Phone (123-456-7890):</label>
-            <input type="tel" id="phone" name="phone" placeholder="___-___-____" required aria-describedby="phoneError">
+            <input type="tel" id="phone" name="phone" placeholder="___-___-____" required>
             <span id="phoneError" class="error">Phone must be in 123-456-7890 format.</span>
-
-            <label for="state">State of Operation:</label>
-            <select id="state" name="state" required aria-describedby="stateError">
-                <option value="">Select State</option>
+            <label for="state">State:</label>
+            <select id="state" name="state" required>
+                <option value="" disabled selected>Select State</option>
                 <option value="AL">AL</option>
                 <option value="AK">AK</option>
                 <option value="AZ">AZ</option>
@@ -296,35 +305,29 @@
                 <option value="WY">WY</option>
             </select>
             <span id="stateError" class="error">State is required.</span>
-
-            <label for="message">Message (optional):</label>
-            <textarea id="message" name="message" aria-describedby="messageError"></textarea>
-            <span id="messageError" class="error">Message cannot be empty if provided.</span>
-
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <span id="messageError" class="error">A message is required.</span>
+            <p class="compliance-note">By submitting this form, you consent to receive SMS replies from Ainsley. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out, HELP for info. See our <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance Page</a>.</p>
+            <p id="stateCompliance" class="compliance-note"></p>
             <label class="checkbox-label">
-                <input type="checkbox" id="consent" name="consent" required aria-describedby="consentError">
+                <input type="checkbox" id="consent" name="consent" required>
                 I consent to be contacted.
             </label>
             <span id="consentError" class="error">Consent is required.</span>
-
             <label class="checkbox-label">
-                <input type="checkbox" id="ageConfirm" name="ageConfirm" required aria-describedby="ageConfirmError">
+                <input type="checkbox" id="ageConfirm" name="ageConfirm" required>
                 I confirm I am 18 years of age or older. Our services are designed exclusively for licensed insurance agents, and we do not collect information from individuals under 13.
             </label>
             <span id="ageConfirmError" class="error">Age confirmation is required.</span>
-
             <div class="state-compliance-checkbox">
                 <label class="checkbox-label">
-                    <input type="checkbox" id="stateConsent" name="stateConsent" required aria-describedby="stateConsentError">
+                    <input type="checkbox" id="stateConsent" name="stateConsent" required>
                     I acknowledge the state-specific requirements and consent to automated calls and SMS under my state's law.
                 </label>
                 <span id="stateConsentError" class="error">State-specific consent is required.</span>
             </div>
-
-            <p class="compliance-note">By submitting this form, you consent to receive SMS replies from Ainsley. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out, HELP for info. See our <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance Page</a>.</p>
-            <p id="stateCompliance" class="compliance-note"></p>
-
-            <button type="submit">Submit</button>
+            <button type="submit">Get Started</button>
         </form>
     </section>
     <div id="smsModal" class="modal">
@@ -358,7 +361,6 @@
             if (value.length > 6) formatted += '-' + value.slice(6, 10);
             e.target.value = formatted;
         });
-
         // State-specific compliance text and checkbox
         const stateSelect = document.getElementById('state');
         const stateCompliance = document.getElementById('stateCompliance');
@@ -391,12 +393,11 @@
                 stateCompliance.textContent = '';
                 stateCompliance.style.display = 'none';
                 stateComplianceCheckbox.style.display = 'none';
-                stateConsentCheckbox.checked = false; // Reset checkbox
+                stateConsentCheckbox.checked = false;
             }
         }
         stateSelect.addEventListener('input', updateStateCompliance);
         stateSelect.addEventListener('change', updateStateCompliance);
-
         // Form validation
         function validateGetStartedForm(event) {
             event.preventDefault();
@@ -405,8 +406,6 @@
                 { id: 'name', errorId: 'nameError', check: value => value.trim() !== '', msg: 'Name is required.' },
                 { id: 'email', errorId: 'emailError', check: value => /\S+@\S+\.\S+/.test(value), msg: 'Valid email is required.' },
                 { id: 'phone', errorId: 'phoneError', check: value => /\d{3}-\d{3}-\d{4}/.test(value), msg: 'Phone must be in 123-456-7890 format.' },
-                { id: 'state', errorId: 'stateError', check: value => value.trim() !== '', msg: 'State is required.' },
-                { id: 'message', errorId: 'messageError', check: value => value.trim() === '' || value.trim().length > 0, msg: 'Message cannot be empty if provided.' },
                 { id: 'consent', errorId: 'consentError', check: () => document.getElementById('consent').checked, msg: 'Consent is required.' },
                 { id: 'ageConfirm', errorId: 'ageConfirmError', check: () => document.getElementById('ageConfirm').checked, msg: 'Age confirmation is required.' }
             ];
@@ -424,7 +423,29 @@
                     error.style.display = 'none';
                 }
             });
-            // Validate state-specific consent if visible
+            const state = document.getElementById('state').value;
+            const stateError = document.getElementById('stateError');
+            if (state.trim() === '' || state === 'Select State') {
+                stateError.style.display = 'block';
+                valid = false;
+                if (!firstInvalidField) {
+                    firstInvalidField = document.getElementById('state');
+                }
+            } else {
+                stateError.style.display = 'none';
+            }
+            const message = document.getElementById('message').value;
+            const messageError = document.getElementById('messageError');
+            if (message.trim() === '') {
+                messageError.style.display = 'block';
+                valid = false;
+                if (!firstInvalidField) {
+                    firstInvalidField = document.getElementById('message');
+                }
+            } else {
+                messageError.style.display = 'none';
+            }
+            // Only check state-specific consent if the checkbox is visible
             if (stateComplianceCheckbox.style.display === 'block' && !stateConsentCheckbox.checked) {
                 const error = document.getElementById('stateConsentError');
                 error.style.display = 'block';
@@ -439,35 +460,37 @@
             if (!valid && firstInvalidField) {
                 firstInvalidField.focus();
             } else if (valid) {
-                // Show SMS verification modal
                 const phone = document.getElementById('phone').value;
                 document.getElementById('smsInstructions').textContent = `We’ve sent a 6-digit verification code to ${phone}. Enter it below to continue.`;
                 document.getElementById('smsModal').style.display = 'block';
             }
             return valid;
         }
-
         // SMS modal functions
         function verifySMSCode() {
             const code = document.getElementById('smsCode').value;
             const error = document.getElementById('smsCodeError');
             if (/^\d{6}$/.test(code)) {
                 error.style.display = 'none';
-                console.log('SMS code valid, ready to submit to backend.');
-                // In production, send code to backend for Twilio verification
-                // Example: fetch('/verify', { method: 'POST', body: JSON.stringify({ code, phone }) });
+                console.log('SMS code valid, ready to submit to backend:', {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    state: document.getElementById('state').value,
+                    message: document.getElementById('message').value
+                });
+                // In production, send to backend (e.g., Twilio/Ainsley)
                 document.getElementById('smsModal').style.display = 'none';
+                alert('Thank you for verifying! A representative will contact you soon.');
             } else {
                 error.style.display = 'block';
             }
         }
-
         function closeSMSModal() {
             document.getElementById('smsModal').style.display = 'none';
             document.getElementById('smsCode').value = '';
             document.getElementById('smsCodeError').style.display = 'none';
         }
-
         // Modal close behavior
         document.querySelector('.modal .close').onclick = closeSMSModal;
         window.onclick = function(event) {
@@ -475,15 +498,6 @@
                 closeSMSModal();
             }
         };
-
-        // Prefill form from URL query parameters
-        function prefillForm() {
-            const params = new URLSearchParams(window.location.search);
-            if (params.has('name')) document.getElementById('name').value = decodeURIComponent(params.get('name'));
-            if (params.has('email')) document.getElementById('email').value = decodeURIComponent(params.get('email'));
-            if (params.has('phone')) document.getElementById('phone').value = decodeURIComponent(params.get('phone'));
-        }
-        window.onload = prefillForm;
     </script>
 </body>
 </html>
