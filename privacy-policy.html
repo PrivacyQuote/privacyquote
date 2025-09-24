@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,52 +133,57 @@
     </header>
     <section class="section">
         <h2>Privacy Policy</h2>
-        <p>Last Updated: September 22, 2025</p>
-        <p>At PrivacyQuote, we are committed to protecting your privacy and ensuring compliance with the Telephone Consumer Protection Act (TCPA), state mini-TCPA laws, the National Do Not Call Registry (DNC), CTIA guidelines, and other applicable regulations. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you use our website, SaaS platform, or AI-powered SMS lead nurturing services, including interactions with our AI assistant, Ainsley. We distinguish between agent partners (licensed insurance agents) and consumers (individuals requesting quotes via vendors).</p>
+        <p>Last Updated: September 24, 2025</p>
+        <p>At PrivacyQuote, we are committed to protecting your privacy and ensuring compliance with the Telephone Consumer Protection Act (TCPA), state mini-TCPA laws, the National Do Not Call Registry (DNC), CTIA guidelines, and other applicable regulations, including the California Consumer Privacy Act (CCPA). This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you use our website, SaaS platform, or AI-powered SMS lead nurturing services, including interactions with our AI assistant, Ainsley. We distinguish between agents (licensed insurance agents) and consumers (individuals requesting quotes via vendors).</p>
         <h3>1. Information We Collect</h3>
-        <p><strong>For Agent Partners</strong>: We collect personal information such as:</p>
+        <p><strong>For Agents</strong>: We collect personal information such as:</p>
         <ul>
             <li>Name, email address, phone number, and state of operation from forms (e.g., Contact Us, Get Started).</li>
             <li>Usage data (e.g., IP address, browser type, form submission timestamps) for compliance and analytics.</li>
         </ul>
-        <p><strong>For Consumers</strong>: We do not collect or maintain a consumer database. We receive minimal, prescreened, DNC-opted-in data (e.g., name, phone number) from third-party vendors, with verified Prior Express Written Consent (PEWC). We retain only phone number and opt-out status for compliance.</p>
+        <p><strong>For Consumers</strong>: We do not collect or maintain a consumer database. We receive minimal, prescreened data (e.g., name, phone number) from third-party vendors with verified Prior Express Written Consent (PEWC). This data is scrubbed via DataScrub’s API against National and State DNC Registries, litigator lists, and reassigned numbers before SMS initiation. We retain only phone number and opt-out status for compliance.</p>
         <h3>2. How We Use Your Information</h3>
-        <p><strong>For Agent Partners</strong>: We use your information to:</p>
+        <p><strong>For Agents</strong>: We use your information to:</p>
         <ul>
             <li>Provide and improve our SaaS platform for lead nurturing.</li>
             <li>Communicate via SMS (up to 30 messages per session, up to 60/month for multiple sessions) for onboarding, support, and marketing.</li>
             <li>Ensure compliance with TCPA, CTIA, and mini-TCPA laws in Arizona, Connecticut, Florida, Georgia, Maryland, Mississippi, New Jersey, New York, Oklahoma, Tennessee, Texas, Utah, Virginia, Washington, and Wisconsin.</li>
         </ul>
-        <p><strong>For Consumers</strong>: We use your verified data to facilitate nurturing via Ainsley, delivering conversational SMS (up to 30 messages per session) to explore discounts and connect with agents via Click-to-Call, based on your consent.</p>
+        <p><strong>For Consumers</strong>: We use your verified data to:</p>
+        <ul>
+            <li>Scrub leads via DataScrub’s API to ensure DNC compliance before SMS initiation.</li>
+            <li>Facilitate nurturing via Ainsley, delivering conversational SMS (up to 30 messages per session) to explore discounts and connect with agents via Click-to-Call, based on your consent.</li>
+            <li>Add rejected leads to our internal DNC list, retained for 5 years per TCPA § 64.1200.</li>
+        </ul>
         <h3>3. Consent for Communications</h3>
-        <p><strong>For Agent Partners</strong>: By submitting forms (e.g., Contact Us, Get Started), you provide PEWC to receive automated SMS/MMS messages (up to 30 messages per session, up to 60/month). Consent is verified via a 6-digit SMS code. Message and data rates may apply. Consent is optional and not a condition of purchase. Reply STOP to opt out.</p>
+        <p><strong>For Agents</strong>: By submitting forms (e.g., Contact Us, Get Started), you provide PEWC to receive automated SMS/MMS messages (up to 30 messages per session, up to 60/month). Consent is verified via a 6-digit SMS code. Message and data rates may apply. Consent is optional and not a condition of purchase. Reply STOP to opt out.</p>
         <p><strong>For Consumers</strong>: Your consent is consumer-initiated via a vendor's quote request form (first opt-in). PrivacyQuote requires a second opt-in via SMS (e.g., "Reply YES to confirm"). Conversations involve up to 30 messages per session, ending with opt-out, Click-to-Call, or a final message (e.g., "We've covered a lot! Want to keep going? Reply YES or STOP to end"). Reply STOP to opt out.</p>
         <h3>4. Opt-Out and Do Not Call Compliance</h3>
-        <p><strong>For Agent Partners</strong>: You must provide consumers prescreened for DNC compliance by vendors. PrivacyQuote may implement internal DNC scrubbing via API to reject non-compliant numbers. Reply STOP to any SMS to opt out immediately. Opt-out records are retained for 5 years per TCPA § 64.1200. Contact <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552 to opt out. Reply HELP for support.</p>
-        <p><strong>For Consumers</strong>: Your inclusion is contingent on vendor DNC prescreening. We maintain an internal DNC list based on your opt-out requests. Reply STOP to any SMS to opt out immediately. Opt-out records are retained for 5 years per TCPA § 64.1200. Contact <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552 to opt out. Reply HELP for support.</p>
+        <p><strong>For Agents</strong>: You must provide consumers prescreened for DNC compliance by vendors. PrivacyQuote scrubs all consumer leads via DataScrub’s API against National and State DNC Registries, litigator lists, and reassigned numbers before Ainsley initiates SMS. Rejected leads are returned to you with a note (e.g., “Lead rejected due to DNC match. Please verify vendor compliance.”) and added to our internal DNC list. Excessive rejections (e.g., >5% of leads) may lead to review or removal from our platform. Reply STOP to any SMS to opt out immediately. Opt-out records are retained for 5 years per TCPA § 64.1200. Contact <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or <a href="tel:+1-866-580-7552">866-580-7552</a> to opt out. Reply HELP for support.</p>
+        <p><strong>For Consumers</strong>: Your inclusion is contingent on vendor DNC prescreening, verified by our DataScrub API. We maintain an internal DNC list based on your opt-out requests. Reply STOP to any SMS to opt out immediately. Opt-out records are retained for 5 years per TCPA § 64.1200. Contact <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or <a href="tel:+1-866-580-7552">866-580-7552</a> to opt out. Reply HELP for support.</p>
         <h3>5. State-Specific Compliance</h3>
-        <p>We comply with mini-TCPA laws in Arizona, Connecticut, Florida, Georgia, Maryland, Mississippi, New Jersey, New York, Oklahoma, Tennessee, Texas, Utah, Virginia, Washington, and Wisconsin, requiring PEWC, time limits (e.g., 8 a.m. to 8 p.m., except Texas: 9 a.m. to 9 p.m. weekdays, no texts after 12 p.m. Sundays), call frequency limits (3 attempts in 24 hours), and opt-out options. California's CCPA grants additional data rights (e.g., opt-out of data sharing).</p>
+        <p>We comply with mini-TCPA laws in Arizona, Connecticut, Florida (Fla. Stat. § 501.059), Georgia, Maryland, Mississippi, New Jersey, New York, Oklahoma, Tennessee, Texas (Bus. & Com. Code § 305), Utah, Virginia, Washington (CEMA, RCW 19.190), and Wisconsin, requiring PEWC, time limits (e.g., 8 a.m.–8 p.m., except Texas: 9 a.m.–9 p.m. weekdays, no texts after 12 p.m. Sundays), call frequency limits (3 attempts in 24 hours), and opt-out options. California’s CCPA grants additional data rights (e.g., opt-out of data sharing).</p>
         <h3>6. Data Sharing</h3>
-        <p>We do not sell or share personal information with third parties. Data is shared only with:</p>
+        <p>We do not sell or share personal information with third parties for marketing purposes. Data is shared only with:</p>
         <ul>
             <li>Vendors for real-time integrations, with verified PEWC.</li>
-            <li>Service providers (e.g., Twilio) under strict confidentiality agreements.</li>
+            <li>Service providers (e.g., Twilio for SMS delivery, DataScrub for DNC compliance verification) under strict confidentiality agreements.</li>
             <li>Legal authorities as required by law.</li>
         </ul>
         <h3>7. Data Security</h3>
-        <p>We use AES-256 encryption for data transmission and storage. In case of a data breach, we will notify affected parties within 72 hours per CCPA and GDPR. Security measures are audited regularly.</p>
+        <p>We use AES-256 encryption for data transmission and storage. DataScrub’s API enhances compliance by verifying DNC status. In case of a data breach, we will notify affected parties within 72 hours per CCPA and GDPR. Security measures are audited regularly.</p>
         <h3>8. Data Retention and Deletion</h3>
-        <p>We retain agent data for 5 years or until opt-out, and consumer data (phone, opt-out status) for 5 years for TCR audits. Request deletion via <a href="mailto:support@privacyquote.com">support@privacyquote.com</a>; we comply within 30 days unless required by law.</p>
+        <p>We retain agent data for 5 years or until opt-out, and consumer data (phone, opt-out status, internal DNC list entries) for 5 years for TCR audits. Request deletion via <a href="mailto:support@privacyquote.com">support@privacyquote.com</a>; we comply within 30 days unless required by law.</p>
         <h3>9. Cookies and Tracking</h3>
         <p>Our website uses cookies to enhance user experience and analyze usage. You can manage preferences via our consent popup. Cookies do not collect personal information without consent.</p>
         <h3>10. Limitation of Liability</h3>
-        <p>PrivacyQuote is not liable for indirect, incidental, consequential, or punitive damages arising from data use, breaches, or third-party actions, with liability capped at fees paid in the prior 12 months or $100. Agents and consumers indemnify PrivacyQuote against claims from inaccurate data or non-compliance.</p>
+        <p>PrivacyQuote is not liable for indirect, incidental, consequential, or punitive damages arising from data use, breaches, or third-party actions, with liability capped at fees paid in the prior 12 months or $100. Agents indemnify PrivacyQuote against claims from inaccurate data or non-compliance.</p>
         <h3>11. Changes to This Policy</h3>
         <p>We may update this policy, with 30-day notice via email to agents and posting on this page for all users. Continued use constitutes acceptance.</p>
         <h3>12. Contact Us</h3>
         <p>For questions, data requests, or to opt out, contact:</p>
         <p>Email: <a href="mailto:support@privacyquote.com">support@privacyquote.com</a><br>
-        Phone: 866-580-7552<br>
+        Phone: <a href="tel:+1-866-580-7552">866-580-7552</a><br>
         Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </section>
     <footer>
@@ -188,7 +194,8 @@
             <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance</a> |
             <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
         </div>
-        <p>Email: support@privacyquote.com | Phone: 866-580-7552 | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
+        <p>Email: <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> | Phone: <a href="tel:+1-866-580-7552">866-580-7552</a> | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
 </body>
 </html>
+```
