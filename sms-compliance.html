@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,35 +133,76 @@
     </header>
     <section class="section">
         <h2>SMS Compliance</h2>
-        <p>PrivacyQuote is committed to full compliance with the Telephone Consumer Protection Act (TCPA), state mini-TCPA laws, the National Do Not Call Registry (DNC), and CTIA guidelines for toll-free texting. This SMS Compliance Policy outlines our rigorous standards to protect consumers, uphold legal obligations, and secure carrier approval for our AI-powered lead nurturing platform.</p>
-        <h3>1. Consent Requirements</h3>
-        <p><strong>For Agent Partners</strong>: You must ensure third-party vendors obtain Prior Express Written Consent (PEWC) from consumers requesting quotes, constituting the first opt-in. PrivacyQuote conducts a mandatory second opt-in via SMS from Ainsley (e.g., “Reply YES to confirm SMS for quote assistance”). You are liable for vendor non-compliance with PEWC.</p>
-        <p><strong>For Consumers</strong>: Your consent is initiated via a vendor’s quote request form (first opt-in). PrivacyQuote requires a second opt-in via SMS to verify your willingness to receive messages, ensuring compliance with TCPA and CTIA.</p>
-        <h3>2. Message Frequency and Content</h3>
-        <p><strong>For Agent Partners</strong>: You consent to automated SMS/MMS messages for onboarding, support, and marketing (up to 30 messages per session, up to 60/month for multiple sessions).</p>
-        <p><strong>For Consumers</strong>: Nurturing conversations with Ainsley involve up to 30 messages per session, ending with your STOP request, Click-to-Call, or a final message (e.g., “We’re here if you want to restart”). No further messages are sent after a session concludes.</p>
-        <h3>3. Opt-Out Process</h3>
-        <p><strong>For Agent Partners and Consumers</strong>: Reply STOP to any SMS to opt out immediately. Opt-out records are retained for 5 years per TCPA § 64.1200. Contact <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552 to opt out. Reply HELP for support.</p>
-        <h3>4. Do Not Call Compliance</h3>
-        <p><strong>For Agent Partners</strong>: You must provide consumers prescreened for DNC compliance by vendors. PrivacyQuote may implement internal DNC scrubbing via API to reject non-compliant numbers. Reply STOP to any SMS to opt out immediately. Opt-out records are retained for 5 years per TCPA § 64.1200. Contact <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552 to opt out.</p>
-        <p><strong>For Consumers</strong>: Your inclusion is contingent on vendor DNC prescreening. We maintain an internal DNC list based on your opt-out requests. Reply STOP to any SMS to opt out immediately. Opt-out records are retained for 5 years per TCPA § 64.1200. Contact <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or 866-580-7552 to opt out.</p>
-        <h3>5. Messaging Hours and Timing</h3>
-        <p><strong>For Agent Partners and Consumers</strong>: Ainsley adheres to TCPA/DNC hours (8 a.m.–9 p.m. local time) for initiating SMS. Off-hours responses are treated as continuations of prior interactions, with all messages timestamped. Off-hours consumer submissions are queued until 8 a.m. local time.</p>
-        <h3>6. State-Specific Compliance</h3>
-        <p>We comply with mini-TCPA laws in Arizona, Connecticut, Florida, Georgia, Maryland, Mississippi, New Jersey, New York, Oklahoma, Tennessee, Texas, Utah, Virginia, Washington, and Wisconsin, requiring PEWC, time limits (e.g., 8 a.m.–8 p.m., except Texas: 9 a.m.–9 p.m. weekdays, no texts after 12 p.m. Sundays), call frequency limits (3 attempts in 24 hours), and opt-out options.</p>
-        <h3>7. Security and Data Handling</h3>
-        <p>We use AES-256 encryption for data transmission and storage, with regular audits. In case of a breach, we notify affected parties within 72 hours per CCPA/GDPR. We retain minimal data (phone, opt-out status) for 5 years for TCR audits.</p>
-        <h3>8. Enforcement and Verification</h3>
-        <p>We reserve the right to suspend messaging, terminate vendor integrations, or pursue legal remedies for non-compliance. We verify vendor PEWC via documented proofs (e.g., forms, timestamps) and may audit agent-provided consumers randomly. Non-compliance results in termination and agent liability for costs (e.g., $500–$1,500 per TCPA violation).</p>
-        <h3>9. Limitation of Liability</h3>
-        <p>PrivacyQuote is not liable for indirect, incidental, or consequential damages from messaging errors or third-party non-compliance, with liability capped at fees paid in the prior 12 months or $100. Agents indemnify PrivacyQuote against claims from non-compliance.</p>
-        <h3>10. Indemnification</h3>
-        <p><strong>For Agent Partners</strong>: You indemnify PrivacyQuote, its affiliates, and agents against claims, fines, and expenses (including attorney fees) from your or your vendors’ non-compliance with TCPA, CTIA, or mini-TCPA laws.</p>
-        <p><strong>For Consumers</strong>: You indemnify PrivacyQuote against claims from inaccurate vendor-supplied data, limited to direct damages.</p>
-        <h3>11. Contact Us</h3>
-        <p>For SMS compliance questions, contact:</p>
+        <p>Last Updated: September 24, 2025</p>
+        <p>PrivacyQuote is committed to compliance with the Telephone Consumer Protection Act (TCPA), state mini-TCPA laws, National and State Do Not Call (DNC) Registries, CTIA Messaging Principles (2023), and Twilio’s toll-free messaging requirements. Our platform is exclusively for licensed insurance agents to nurture real-time, vendor-purchased consumer leads using Ainsley, our AI-powered SMS platform, registered with Twilio for conversational messaging. This page outlines our SMS practices for agent communications and consumer lead nurturing.</p>
+        <h3>1. Agent-Facing Platform</h3>
+        <p>Our website (<a href="https://privacyquote.github.io/privacyquote">privacyquote.github.io</a>) collects only agent data (name, email, phone, primary office state) via forms (Get Started, Contact Us). Consumers do not interact with our website; consumer data (e.g., phone number, name) is provided by integrated vendors with Prior Express Written Consent (PEWC) for SMS nurturing.</p>
+        <h3>2. SMS Consent</h3>
+        <p><strong>For Agents</strong>: By submitting our forms, you provide PEWC for automated SMS/MMS from Ainsley or our support team, limited to:</p>
+        <ul>
+            <li><strong>Opt-In</strong>: Explicit consent via form checkboxes and a 6-digit SMS verification code.</li>
+            <li><strong>Message Frequency</strong>: Up to 30 messages per session for onboarding and support, with a maximum of 60 messages per month for multiple sessions.</li>
+            <li><strong>Permitted Hours</strong>: Based on your selected primary office state (e.g., 8 a.m.–8 p.m. for Arizona, Connecticut, Florida, Georgia, Maryland, Mississippi, New Jersey, New York, Oklahoma, Tennessee, Utah, Virginia, Wisconsin; 9 a.m.–9 p.m. weekdays for Texas; 8 a.m.–8 p.m. for Washington’s CEMA, RCW 19.190).</li>
+            <li><strong>Opt-Out</strong>: Reply “STOP” to opt out immediately, with records retained for 5 years per TCPA § 64.1200.</li>
+            <li><strong>Message and Data Rates</strong>: Standard rates may apply. Reply “HELP” for assistance.</li>
+        </ul>
+        <p><strong>For Consumer Leads</strong>: Ainsley nurtures vendor-provided leads with PEWC, adding a second opt-in via SMS (“Reply YES”). SMS practices include:</p>
+        <ul>
+            <li><strong>Opt-In</strong>: Vendor PEWC plus our mandatory second opt-in (“Reply YES”).</li>
+            <li><strong>Message Frequency</strong>: Up to 30 messages per session for conversational lead nurturing, ending with a “STOP” request, Click-to-Call action, or a final message (e.g., “We’re here if you want to restart”).</li>
+            <li><strong>Permitted Hours</strong>: Messages are sent only within permitted hours (e.g., 8 a.m.–8 p.m. for Arizona, Connecticut, Florida, Georgia, Maryland, Mississippi, New Jersey, New York, Oklahoma, Tennessee, Utah, Virginia, Wisconsin; 9 a.m.–9 p.m. weekdays for Texas, no texts after 12 p.m. Sundays; 8 a.m.–8 p.m. for Washington’s CEMA, RCW 19.190). Responses to consumer-initiated messages are permitted outside these hours.</li>
+            <li><strong>Opt-Out</strong>: Consumers can reply “STOP” to opt out immediately, with records retained for 5 years.</li>
+            <li><strong>Content</strong>: Conversational SMS to explore insurance options, including click-to-call functionality to connect consumers with agents for quotes.</li>
+            <li><strong>Message and Data Rates</strong>: Standard rates may apply. Reply “HELP” for assistance.</li>
+        </ul>
+        <h3>3. Do Not Call Compliance</h3>
+        <p><strong>For Agents</strong>: You must provide consumer leads prescreened for DNC compliance by vendors. PrivacyQuote uses DataScrub’s API to scrub all leads against National and State DNC Registries, litigator lists, and reassigned numbers before Ainsley initiates SMS. Rejected leads are returned to you with a note (e.g., “Lead rejected due to DNC match. Please verify vendor compliance.”) and added to our internal DNC list. Excessive rejections (e.g., >5% of leads) may lead to review or removal from our platform.</p>
+        <p><strong>For Consumer Leads</strong>: Your inclusion is contingent on vendor DNC compliance, verified by our DataScrub API. You can opt out by replying “STOP,” with records added to our internal DNC list and retained for 5 years per TCPA § 64.1200.</p>
+        <h3>4. Compliance with Laws</h3>
+        <p>PrivacyQuote ensures compliance with:</p>
+        <ul>
+            <li><strong>TCPA (47 CFR § 64.1200)</strong>: Requires PEWC, opt-out mechanisms, and 5-year record retention for consumer SMS.</li>
+            <li><strong>CTIA Messaging Principles (2023)</strong>: Prohibits unsolicited messages and mandates clear consent and opt-out options.</li>
+            <li><strong>DNC</strong>: Agents must provide DNC-compliant leads; we scrub via DataScrub’s API and manage opt-outs via <a href="mailto:support@privacyquote.com">support@privacyquote.com</a>.</li>
+            <li><strong>Mini-TCPA Laws</strong>: We adhere to regulations in:
+                <ul>
+                    <li>Arizona: 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>Connecticut: 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>Florida (Fla. Stat. § 501.059): 8 a.m.–8 p.m., PEWC and opt-out options.</li>
+                    <li>Georgia: 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>Maryland: 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>Mississippi: 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>New Jersey: 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>New York: 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>Oklahoma: 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>Tennessee: 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>Texas (Bus. & Com. Code § 305): 9 a.m.–9 p.m. weekdays, no texts after 12 p.m. Sundays, PEWC required.</li>
+                    <li>Utah: 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>Virginia: 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>Washington (CEMA, RCW 19.190): 8 a.m.–8 p.m., PEWC required.</li>
+                    <li>Wisconsin: 8 a.m.–8 p.m., PEWC required.</li>
+                </ul>
+                All states limit calls to 3 attempts in 24 hours and require opt-out options.</li>
+            <li><strong>Twilio</strong>: Our toll-free numbers are registered for conversational messaging, with documented PEWC and DataScrub API verification.</li>
+        </ul>
+        <h3>5. Agent Responsibilities</h3>
+        <p>Agents must:</p>
+        <ul>
+            <li>Provide real-time, consumer-initiated leads with verified PEWC and DNC compliance, maintaining documentation for audits.</li>
+            <li>Select their primary office state in forms to ensure compliance with mini-TCPA laws.</li>
+            <li>Indemnify PrivacyQuote against claims, fines (e.g., $500–$1,500 per TCPA violation), or damages from non-compliant leads or misuse of Ainsley.</li>
+            <li>Contact <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> or <a href="tel:+1-866-580-7552">866-580-7552</a> to manage DNC preferences.</li>
+        </ul>
+        <h3>6. Security and Data Handling</h3>
+        <p>We use AES-256 encryption for data transmission and storage, with regular compliance audits. In case of a breach, we notify affected parties within 72 hours per CCPA/GDPR. We retain minimal data (phone, opt-out status) for 5 years for TCR audits.</p>
+        <h3>7. Enforcement and Verification</h3>
+        <p>We reserve the right to suspend messaging, terminate vendor integrations, or pursue legal remedies for non-compliance. We verify vendor PEWC via documented proofs (e.g., forms, timestamps) and scrub leads via DataScrub’s API. Excessive non-compliant leads (e.g., >5% rejected) may lead to agent review or removal. Non-compliance results in termination and agent liability for costs (e.g., $500–$1,500 per TCPA violation).</p>
+        <h3>8. Limitation of Liability</h3>
+        <p>PrivacyQuote is not liable for indirect, incidental, or consequential damages from messaging errors or third-party non-compliance, with liability capped at the greater of fees paid in the prior 12 months or $100. Agents indemnify PrivacyQuote against claims from non-compliance.</p>
+        <h3>9. Contact Us</h3>
+        <p>For SMS compliance questions or to manage DNC preferences, contact:</p>
         <p>Email: <a href="mailto:support@privacyquote.com">support@privacyquote.com</a><br>
-        Phone: 866-580-7552<br>
+        Phone: <a href="tel:+1-866-580-7552">866-580-7552</a><br>
         Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </section>
     <footer>
@@ -171,7 +213,8 @@
             <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance</a> |
             <a href="https://privacyquote.github.io/privacyquote/contact.html">Contact</a>
         </div>
-        <p>Email: support@privacyquote.com | Phone: 866-580-7552 | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
+        <p>Email: <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> | Phone: <a href="tel:+1-866-580-7552">866-580-7552</a> | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
 </body>
 </html>
+```
