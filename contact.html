@@ -83,6 +83,10 @@
             flex-direction: column;
             gap: 15px;
         }
+        form.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
         form label {
             display: flex;
             flex-direction: column;
@@ -200,6 +204,16 @@
         .modal-content .cancel-btn:hover {
             background: #5a6268;
         }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #007bff;
+        }
         footer {
             background-color: #343a40;
             color: white;
@@ -260,127 +274,123 @@
             <p>Phone: <a href="tel:+1-866-580-7552">866-580-7552</a></p>
             <p>Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
         </div>
-        <form role="form" aria-label="Contact Form" onsubmit="return validateForm(event)">
-            <label>
-                Name:
-                <input type="text" name="name" required>
-                <span class="error">Name is required.</span>
-            </label>
-            <label>
-                Email:
-                <input type="email" name="email" required>
-                <span class="error">Valid email is required.</span>
-            </label>
-            <label>
-                Phone (123-456-7890):
-                <input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" oninput="formatPhoneNumber(this)" required>
-                <span class="error">Phone must be in 123-456-7890 format.</span>
-            </label>
-            <label>
-                State (optional):
-                <select name="state" onchange="updateStateConsent(this)">
-                    <option value="">Select State</option>
-                    <option value="AL">AL</option>
-                    <option value="AK">AK</option>
-                    <option value="AZ">AZ</option>
-                    <option value="AR">AR</option>
-                    <option value="CA">CA</option>
-                    <option value="CO">CO</option>
-                    <option value="CT">CT</option>
-                    <option value="DE">DE</option>
-                    <option value="FL">FL</option>
-                    <option value="GA">GA</option>
-                    <option value="HI">HI</option>
-                    <option value="ID">ID</option>
-                    <option value="IL">IL</option>
-                    <option value="IN">IN</option>
-                    <option value="IA">IA</option>
-                    <option value="KS">KS</option>
-                    <option value="KY">KY</option>
-                    <option value="LA">LA</option>
-                    <option value="ME">ME</option>
-                    <option value="MD">MD</option>
-                    <option value="MA">MA</option>
-                    <option value="MI">MI</option>
-                    <option value="MN">MN</option>
-                    <option value="MS">MS</option>
-                    <option value="MO">MO</option>
-                    <option value="MT">MT</option>
-                    <option value="NE">NE</option>
-                    <option value="NV">NV</option>
-                    <option value="NH">NH</option>
-                    <option value="NJ">NJ</option>
-                    <option value="NM">NM</option>
-                    <option value="NY">NY</option>
-                    <option value="NC">NC</option>
-                    <option value="ND">ND</option>
-                    <option value="OH">OH</option>
-                    <option value="OK">OK</option>
-                    <option value="OR">OR</option>
-                    <option value="PA">PA</option>
-                    <option value="RI">RI</option>
-                    <option value="SC">SC</option>
-                    <option value="SD">SD</option>
-                    <option value="TN">TN</option>
-                    <option value="TX">TX</option>
-                    <option value="UT">UT</option>
-                    <option value="VT">VT</option>
-                    <option value="VA">VA</option>
-                    <option value="WA">WA</option>
-                    <option value="WV">WV</option>
-                    <option value="WI">WI</option>
-                    <option value="WY">WY</option>
-                </select>
-                <span class="error">State is required if selected.</span>
-            </label>
-            <label>
-                Frequently Asked Questions (Optional):
-                <select name="faq">
-                    <option value="none">None</option>
-                    <option value="ainsley_nurture">How does Ainsley nurture my leads via SMS?</option>
-                    <option value="pricing">What are the pricing options for using PrivacyQuote?</option>
-                    <option value="vendor_integration">How does PrivacyQuote integrate with my lead vendors?</option>
-                    <option value="compliance">How does PrivacyQuote ensure TCPA and CTIA compliance?</option>
-                    <option value="crm_integration">Can Ainsley integrate with my existing CRM system?</option>
-                    <option value="lead_qualification">How does Ainsley qualify my leads for potential discounts?</option>
-                    <option value="signup_speed">How quickly can I start using Ainsley after signing up?</option>
-                    <option value="custom">Custom question (use Message field below)</option>
-                </select>
-                <span class="error">A question or message is required.</span>
-                <p class="consent-text">By submitting this form, you consent to receive automated SMS/MMS replies from Ainsley or our support team, up to 30 messages per session. Ainsley only responds to messages outside permitted hours and never initiates texts outside state-specific time restrictions. Msg & data rates may apply. Reply STOP to opt out, HELP for info. See our <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance Page</a>. Leads must be DNC-compliant; contact <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> to manage DNC preferences.</p>
-            </label>
-            <label>
-                Message:
-                <textarea name="message" required></textarea>
-                <span class="error">A question or message is required.</span>
-            </label>
+        <form id="contactForm" class="disabled" role="form" aria-label="Contact Form" onsubmit="return validateForm(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <span id="nameError" class="error">Name is required.</span>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <span id="emailError" class="error">Valid email is required.</span>
+            <label for="phone">Phone (123-456-7890):</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" oninput="formatPhoneNumber(this)" required>
+            <span id="phoneError" class="error">Phone must be in 123-456-7890 format.</span>
+            <label for="state">State where primary office is located:</label>
+            <select id="state" name="state" required onchange="updateStateConsent(this)">
+                <option value="" disabled selected>Select State</option>
+                <option value="AL">AL</option>
+                <option value="AK">AK</option>
+                <option value="AZ">AZ</option>
+                <option value="AR">AR</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DE">DE</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="IA">IA</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="ME">ME</option>
+                <option value="MD">MD</option>
+                <option value="MA">MA</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MS">MS</option>
+                <option value="MO">MO</option>
+                <option value="MT">MT</option>
+                <option value="NE">NE</option>
+                <option value="NV">NV</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NY">NY</option>
+                <option value="NC">NC</option>
+                <option value="ND">ND</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="WA">WA</option>
+                <option value="WV">WV</option>
+                <option value="WI">WI</option>
+                <option value="WY">WY</option>
+            </select>
+            <span id="stateError" class="error">State is required.</span>
+            <label for="faq">Frequently Asked Questions (Optional):</label>
+            <select id="faq" name="faq">
+                <option value="none">None</option>
+                <option value="ainsley_nurture">How does Ainsley nurture my leads via SMS?</option>
+                <option value="pricing">What are the pricing options for using PrivacyQuote?</option>
+                <option value="vendor_integration">How does PrivacyQuote integrate with my lead vendors?</option>
+                <option value="compliance">How does PrivacyQuote ensure TCPA and CTIA compliance?</option>
+                <option value="crm_integration">Can Ainsley integrate with my existing CRM system?</option>
+                <option value="lead_qualification">How does Ainsley qualify my leads for potential discounts?</option>
+                <option value="signup_speed">How quickly can I start using Ainsley after signing up?</option>
+                <option value="custom">Custom question (use Message field below)</option>
+            </select>
+            <span id="faqError" class="error">A question or message is required.</span>
+            <p class="consent-text">By submitting this form, you consent to receive automated SMS/MMS replies from Ainsley or our support team, up to 30 messages per session. Ainsley only responds to messages outside permitted hours and never initiates texts outside state-specific time restrictions. Msg & data rates may apply. Reply STOP to opt out, HELP for info. See our <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance Page</a>. Leads must be DNC-compliant; contact <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> to manage DNC preferences.</p>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <span id="messageError" class="error">A question or message is required.</span>
             <label class="consent-label">
-                <input type="checkbox" name="sms_consent" required>
+                <input type="checkbox" id="smsConsent" name="sms_consent" required>
                 <span>I consent to receive automated SMS/MMS from PrivacyQuote via Ainsley or our support team.</span>
-                <span class="error">Consent is required.</span>
+                <span id="smsConsentError" class="error">Consent is required.</span>
             </label>
             <label class="consent-label">
-                <input type="checkbox" name="age_confirmation" required>
+                <input type="checkbox" id="ageConfirm" name="age_confirmation" required>
                 <span>I confirm I am 18 years of age or older. Our services are designed exclusively for licensed insurance agents, and we do not collect information from individuals under 13 years of age.</span>
-                <span class="error">Age confirmation is required.</span>
+                <span id="ageConfirmError" class="error">Age confirmation is required.</span>
             </label>
             <label id="state-consent-label" class="consent-label">
-                <input type="checkbox" name="state_consent">
+                <input type="checkbox" id="stateConsent" name="state_consent">
                 <span id="state-consent-text"></span>
-                <span class="error">State-specific consent is required.</span>
+                <span id="stateConsentError" class="error">State-specific consent is required.</span>
             </label>
             <button type="submit">Submit</button>
         </form>
-        <div class="modal" role="dialog" aria-modal="true" aria-label="SMS Verification Modal">
-            <div class="modal-content">
-                <p>We’ve sent a 6-digit verification code to your phone number. Enter it below to continue.</p>
-                <input type="text" name="verification_code" required>
-                <span class="error">Valid 6-digit SMS verification code is required.</span>
-                <button>Verify</button>
-                <button class="cancel-btn">Cancel</button>
-            </div>
-        </div>
     </section>
+    <div id="agentDisclaimerModal" class="modal" role="dialog" aria-modal="true" aria-label="Agent Acknowledgment Disclaimer">
+        <div class="modal-content">
+            <span class="close" aria-label="Close agent disclaimer modal">&times;</span>
+            <p>PrivacyQuote's AI-powered SMS platform, Ainsley, is for licensed insurance agents only. By proceeding, you confirm you are a licensed agent or inquiring on behalf of a licensed agent. Please acknowledge to complete the form.</p>
+            <button onclick="acknowledgeAgentDisclaimer()">I Acknowledge</button>
+        </div>
+    </div>
+    <div id="smsModal" class="modal" role="dialog" aria-modal="true" aria-label="SMS Verification Modal">
+        <div class="modal-content">
+            <span class="close" aria-label="Close SMS verification modal">&times;</span>
+            <p id="smsInstructions">We’ve sent a 6-digit verification code to your phone number. Enter it below to continue.</p>
+            <input type="text" id="smsCode" name="smsCode" required aria-describedby="smsCodeError">
+            <span id="smsCodeError" class="error">Valid 6-digit SMS verification code is required.</span>
+            <button onclick="verifySMSCode()">Verify</button>
+            <button onclick="closeSMSModal()" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
     <footer>
         <p>&copy; 2025 PrivacyQuote. All rights reserved.</p>
         <div>
@@ -392,6 +402,18 @@
         <p>Email: <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> | Phone: <a href="tel:+1-866-580-7552">866-580-7552</a> | Address: 1225 N Willow Ave., Suite 100, Clovis, CA 93619</p>
     </footer>
     <script>
+        // Show agent disclaimer modal on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('agentDisclaimerModal').style.display = 'block';
+            updateStateConsent(document.getElementById('state')); // Initialize state consent
+        });
+
+        // Acknowledge agent disclaimer
+        function acknowledgeAgentDisclaimer() {
+            document.getElementById('agentDisclaimerModal').style.display = 'none';
+            document.getElementById('contactForm').classList.remove('disabled');
+        }
+
         // Format phone number as XXX-XXX-XXXX
         function formatPhoneNumber(input) {
             let value = input.value.replace(/\D/g, '');
@@ -407,7 +429,7 @@
         function updateStateConsent(select) {
             const stateConsentLabel = document.getElementById('state-consent-label');
             const stateConsentText = document.getElementById('state-consent-text');
-            const stateConsentCheckbox = document.querySelector('input[name="state_consent"]');
+            const stateConsentCheckbox = document.getElementById('stateConsent');
             const miniTCPAStates = ['AZ', 'CT', 'FL', 'GA', 'MD', 'MS', 'NJ', 'NY', 'OK', 'TN', 'TX', 'UT', 'VA', 'WA', 'WI'];
             const stateConsentMessages = {
                 'AZ': 'I consent to automated calls and SMS under Arizona law, requiring prior express written consent, between 8 a.m. and 8 p.m. local time.',
@@ -438,58 +460,109 @@
             }
         }
 
-        // Form validation to show error messages on submit
+        // Form validation
         function validateForm(event) {
             event.preventDefault();
-            const form = event.target;
-            const inputs = form.querySelectorAll('input[required], select[required]');
-            let isValid = true;
+            let valid = true;
+            const fields = [
+                { id: 'name', errorId: 'nameError', check: value => value.trim() !== '', msg: 'Name is required.' },
+                { id: 'email', errorId: 'emailError', check: value => /\S+@\S+\.\S+/.test(value), msg: 'Valid email is required.' },
+                { id: 'phone', errorId: 'phoneError', check: value => /\d{3}-\d{3}-\d{4}/.test(value), msg: 'Phone must be in 123-456-7890 format.' },
+                { id: 'state', errorId: 'stateError', check: value => value.trim() !== '', msg: 'State is required.' },
+                { id: 'smsConsent', errorId: 'smsConsentError', check: () => document.getElementById('smsConsent').checked, msg: 'Consent is required.' },
+                { id: 'ageConfirm', errorId: 'ageConfirmError', check: () => document.getElementById('ageConfirm').checked, msg: 'Age confirmation is required.' }
+            ];
+            let firstInvalidField = null;
 
-            inputs.forEach(input => {
-                const errorSpan = input.nextElementSibling.classList.contains('error') ? input.nextElementSibling : null;
-                if (errorSpan && !input.checkValidity()) {
-                    errorSpan.style.display = 'block';
-                    isValid = false;
-                } else if (errorSpan) {
-                    errorSpan.style.display = 'none';
+            fields.forEach(field => {
+                const value = document.getElementById(field.id).value;
+                const error = document.getElementById(field.errorId);
+                if (!field.check(value)) {
+                    error.style.display = 'block';
+                    valid = false;
+                    if (!firstInvalidField) {
+                        firstInvalidField = document.getElementById(field.id);
+                    }
+                } else {
+                    error.style.display = 'none';
                 }
             });
 
-            // Special handling for FAQ or message
-            const faq = form.querySelector('select[name="faq"]');
-            const message = form.querySelector('textarea[name="message"]');
-            const faqError = faq.nextElementSibling.nextElementSibling;
-            if (faq.value === 'none' && !message.value.trim()) {
+            const faq = document.getElementById('faq').value;
+            const message = document.getElementById('message').value;
+            const faqError = document.getElementById('faqError');
+            if (faq === 'none' && !message.trim()) {
                 faqError.style.display = 'block';
-                isValid = false;
+                valid = false;
+                if (!firstInvalidField) {
+                    firstInvalidField = document.getElementById('message');
+                }
             } else {
                 faqError.style.display = 'none';
             }
 
             // Check state-specific consent
-            const stateConsentCheckbox = document.querySelector('input[name="state_consent"]');
-            const stateConsentError = stateConsentCheckbox.nextElementSibling.nextElementSibling;
+            const stateConsentCheckbox = document.getElementById('stateConsent');
+            const stateConsentError = document.getElementById('stateConsentError');
             if (stateConsentCheckbox.required && !stateConsentCheckbox.checked) {
                 stateConsentError.style.display = 'block';
-                isValid = false;
-            } else if (stateConsentError) {
+                valid = false;
+                if (!firstInvalidField) {
+                    firstInvalidField = stateConsentCheckbox;
+                }
+            } else {
                 stateConsentError.style.display = 'none';
             }
 
-            if (isValid) {
-                // Simulate form submission (replace with actual backend logic)
-                document.querySelector('.modal').style.display = 'block';
+            if (!valid && firstInvalidField) {
+                firstInvalidField.focus();
+            } else if (valid) {
+                const phone = document.getElementById('phone').value;
+                document.getElementById('smsInstructions').textContent = `We’ve sent a 6-digit verification code to ${phone}. Enter it below to continue.`;
+                document.getElementById('smsModal').style.display = 'block';
             }
 
-            return isValid;
+            return valid;
         }
 
-        // Modal handling
-        document.querySelectorAll('.modal-content button').forEach(button => {
-            button.addEventListener('click', () => {
-                document.querySelector('.modal').style.display = 'none';
-            });
-        });
+        // SMS modal functions
+        function verifySMSCode() {
+            const code = document.getElementById('smsCode').value;
+            const error = document.getElementById('smsCodeError');
+            if (/^\d{6}$/.test(code)) {
+                error.style.display = 'none';
+                console.log('SMS code valid, ready to submit to backend:', {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    state: document.getElementById('state').value,
+                    faq: document.getElementById('faq').value,
+                    message: document.getElementById('message').value
+                });
+                document.getElementById('smsModal').style.display = 'none';
+                alert('Thank you for verifying! A representative will contact you soon.');
+            } else {
+                error.style.display = 'block';
+            }
+        }
+
+        function closeSMSModal() {
+            document.getElementById('smsModal').style.display = 'none';
+            document.getElementById('smsCode').value = '';
+            document.getElementById('smsCodeError').style.display = 'none';
+        }
+
+        // Modal close behavior
+        document.querySelector('#smsModal .close').onclick = closeSMSModal;
+        document.querySelector('#agentDisclaimerModal .close').onclick = acknowledgeAgentDisclaimer;
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('smsModal')) {
+                closeSMSModal();
+            }
+            if (event.target === document.getElementById('agentDisclaimerModal')) {
+                acknowledgeAgentDisclaimer();
+            }
+        };
     </script>
 </body>
 </html>
