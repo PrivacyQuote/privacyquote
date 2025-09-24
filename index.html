@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
             font-family: 'Roboto', Arial, sans-serif;
             color: #333;
             background-color: #f9f9f9;
-            line-height: 1.6;
+            line-height: 1. councillors;
         }
         header {
             background: linear-gradient(90deg, #007bff, #0056b3);
@@ -473,18 +474,19 @@
     <section id="compliance" class="section compliance">
         <h2>Our Commitment to Compliance</h2>
         <p>Up to 30 texts per session; Msg & data rates may apply.</p>
-        <p style="margin-bottom: 30px;">PrivacyQuote and Ainsley prioritize privacy and regulatory compliance. All SMS communications adhere to TCPA and CTIA guidelines, including:</p>
+        <p style="margin-bottom: 30px;">PrivacyQuote and Ainsley prioritize privacy and regulatory compliance. All SMS communications adhere to TCPA, CTIA, and toll-free messaging guidelines, including:</p>
         <ul>
             <li>Prior express written consent for all texts.</li>
             <li>Double opt-in: Consumers reply "YES" to confirm participation with Ainsley.</li>
             <li>Easy opt-out: Reply "STOP" to unsubscribe anytime.</li>
             <li>No data selling or sharing beyond one-to-one agent connections.</li>
+            <li>Registered toll-free campaigns with Twilio for carrier compliance.</li>
         </ul>
         <p style="text-align: center;">For full details, review our <a href="https://privacyquote.github.io/privacyquote/privacy-policy.html">Privacy Policy</a> and <a href="https://privacyquote.github.io/privacyquote/sms-compliance.html">SMS Compliance Page</a>.</p>
     </section>
-    <div id="demoModal" class="modal">
+    <div id="demoModal" class="modal" role="dialog" aria-modal="true" aria-label="Ainsley's SMS Demo Conversation">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" aria-label="Close SMS demo modal">&times;</span>
             <h3>Ainsley's SMS Demo Conversation with Sarah</h3>
             <div class="conversation">
                 <div class="message ainsley">
@@ -609,7 +611,7 @@
                 </div>
                 <div class="message ainsley">
                     <span class="sender">Ainsley</span>
-                    <div class="message-text">Perfect! Click to call a licensed agent: [tel:+1-866-580-7552]. More questions? I’m here! Reply STOP to opt out.</div>
+                    <div class="message-text">Perfect! Click to call a licensed agent: <a href="tel:+1-866-580-7552">[tel:+1-866-580-7552]</a>. Reply HELP for info, STOP to opt out.</div>
                 </div>
             </div>
             <p class="demo-info">This demo shows Ainsley’s nurturing style—guiding to licensed agents for coverage details while building trust and ensuring TCPA compliance with easy opt-outs. Up to 30 messages per session are allowed. Interested in seeing how Ainsley works with your leads? Check out our demo!</p>
@@ -737,3 +739,4 @@
     </script>
 </body>
 </html>
+```
