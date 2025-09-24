@@ -140,10 +140,10 @@
         <h3>2. Eligibility</h3>
         <p>Our services are exclusively for licensed insurance agents or their authorized representatives, aged 18 or older. Our website does not collect consumer data; Ainsley uses vendor-provided consumer data (e.g., phone number, name) with PEWC for SMS nurturing. We do not collect data from individuals under 13, ensuring compliance with the Children’s Online Privacy Protection Act (COPPA).</p>
         <h3>3. Use of Services</h3>
-        <p><strong>For Agents</strong>: PrivacyQuote enables licensed insurance agents to nurture vendor-purchased consumer leads using Ainsley’s AI-powered SMS platform, registered with Twilio for toll-free conversational messaging. You must:</p>
+        <p><strong>For Agents</strong>: PrivacyQuote enables licensed insurance agents to nurture vendor-purchased consumer leads using Ainsley’s AI-powered SMS platform, registered with Twilio for toll-free conversational messaging. We use DataScrub’s API to scrub consumer leads against National and State Do Not Call (DNC) Registries, litigator lists, and reassigned numbers before Ainsley initiates SMS. Rejected leads are returned to you with a note (e.g., “Lead rejected due to DNC match. Please verify vendor compliance.”) and added to our internal DNC list. You must:</p>
         <ul>
             <li>Provide accurate agent information (e.g., name, email, phone, primary office state) in forms and integrations, selecting your primary office state for compliance with state mini-TCPA laws.</li>
-            <li>Ensure consumer leads are sourced from vendors with verified PEWC and scrubbed against National and State Do Not Call Registries.</li>
+            <li>Ensure consumer leads are sourced from vendors with verified PEWC and scrubbed against DNC Registries.</li>
             <li>Use Ainsley only for lawful purposes, prohibiting unauthorized messaging, harassment, or non-compliant activities.</li>
             <li>Utilize the Click-to-Call feature to connect consumers to agents, ensuring compliance with TCPA and mini-TCPA call frequency limits (max 3 attempts in 24 hours).</li>
         </ul>
@@ -163,9 +163,9 @@
         <h3>5. Agent Responsibilities</h3>
         <p>You are responsible for:</p>
         <ul>
-            <li>Ensuring vendor-provided consumer leads comply with TCPA, CTIA, DNC, and mini-TCPA laws in states including Arizona, Connecticut, Florida (Fla. Stat. § 501.059), Georgia, Maryland, Mississippi, New Jersey, New York, Oklahoma, Tennessee, Texas (Bus. & Com. Code § 305), Utah, Virginia, Washington (CEMA, RCW 19.190), and Wisconsin.</li>
+            <li>Ensuring vendor-provided consumer leads comply with TCPA, CTIA, DNC, and mini-TCPA laws in states including Arizona, Connecticut, Florida (Fla. Stat. § 501.059), Georgia, Maryland, Mississippi, New Jersey, New York, Oklahoma, Tennessee, Texas (Bus. & Com. Code § 305), Utah, Virginia, Washington (CEMA, RCW 19.190), and Wisconsin. PrivacyQuote’s DataScrub API scrubbing is an additional safeguard, not a replacement for your compliance obligation.</li>
             <li>Maintaining PEWC documentation and DNC compliance for all leads.</li>
-            <li>Indemnifying PrivacyQuote against claims, fines (e.g., $500–$1,500 per TCPA violation), or damages from non-compliant leads or misuse of Ainsley.</li>
+            <li>Indemnifying PrivacyQuote against claims, fines (e.g., $500–$1,500 per TCPA violation), or damages from non-compliant leads or misuse of Ainsley. Excessive non-compliant leads (e.g., >5% rejected by DataScrub) may result in review or removal from our platform.</li>
             <li>Contacting <a href="mailto:support@privacyquote.com">support@privacyquote.com</a> to manage DNC preferences.</li>
         </ul>
         <h3>6. Intellectual Property</h3>
@@ -175,13 +175,13 @@
         <h3>8. Limitation of Liability</h3>
         <p>PrivacyQuote is not liable for indirect, incidental, consequential, special, punitive, or exemplary damages, including loss of profits, data breaches, or service interruptions, even if advised of the possibility. Our liability is capped at the greater of fees paid in the prior 12 months or $100. Agents assume full responsibility for non-compliant leads, indemnifying PrivacyQuote without limitation.</p>
         <h3>9. Indemnification</h3>
-        <p>You agree to indemnify, defend, and hold harmless PrivacyQuote, its affiliates, officers, directors, employees, and agents from all claims, liabilities, damages, fines (e.g., TCPA penalties), and expenses (including attorney fees) arising from your use, vendor non-compliance, or violation of these Terms or laws.</p>
+        <p>You agree to indemnify, defend, and hold harmless PrivacyQuote, its affiliates, officers, directors, employees, and agents from all claims, liabilities, damages, fines (e.g., TCPA penalties), and expenses (including attorney fees) arising from your use, vendor non-compliance, or violation of these Terms or laws, even with our DataScrub API scrubbing.</p>
         <h3>10. Dispute Resolution</h3>
         <p>Disputes shall be resolved through binding arbitration under the American Arbitration Association (AAA) Commercial Arbitration Rules in Clovis, California, before a single arbitrator with telecommunications expertise. Class actions, consolidated arbitrations, or appeals are prohibited. The prevailing party recovers reasonable attorney fees, costs, and interest at the maximum legal rate. This clause survives termination and is governed by the Federal Arbitration Act.</p>
         <h3>11. Governing Law</h3>
         <p>These Terms are governed by California law, without regard to conflict of law principles. Non-arbitration actions must be brought in state or federal courts in Fresno County, California, where you consent to jurisdiction and waive objections to venue.</p>
         <h3>12. Termination</h3>
-        <p>We may terminate your access immediately for violations (e.g., non-compliance, unauthorized messaging), with no notice required. Termination includes account disabling, toll-free number revocation, fee forfeiture as liquidated damages, and pursuit of legal remedies (e.g., damages up to $1,500 per violation). Post-termination notice is provided within 24 hours, with a 10-day appeal period at our discretion.</p>
+        <p>We may terminate your access immediately for violations (e.g., non-compliance, unauthorized messaging, excessive non-compliant leads), with no notice required. Termination includes account disabling, toll-free number revocation, fee forfeiture as liquidated damages, and pursuit of legal remedies (e.g., damages up to $1,500 per violation). Post-termination notice is provided within 24 hours, with a 10-day appeal period at our discretion.</p>
         <h3>13. Force Majeure</h3>
         <p>PrivacyQuote is not liable for delays or failures due to acts of God, natural disasters, government actions, carrier outages, or cyberattacks. Services may be suspended without liability during such events.</p>
         <h3>14. Severability</h3>
